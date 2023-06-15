@@ -4,10 +4,12 @@ import { me } from "@/config/site"
 
 import {
   LanyardResponse,
+  WakatimeResponse,
   PinnedReposResponse,
   RecentlyReadResponse,
   RecentlyWatchedResponse,
 } from "./types"
+
 
 export async function getPinnedRepos(): Promise<PinnedReposResponse[]> {
   const res = await fetch(
@@ -59,4 +61,17 @@ export async function lanyard() {
   const response = await resp.json()
   const lanyard = response.data as LanyardResponse
   return lanyard
+}
+
+export async function wakatime() {
+  const resp = await fetch(
+    "https://wakatime.com/api/v1/users/current/all_time_since_today",
+    {
+      headers: {
+        Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString('base64')}`,
+      },
+    }
+  );
+  const data : WakatimeResponse = await resp.json();
+  return data
 }

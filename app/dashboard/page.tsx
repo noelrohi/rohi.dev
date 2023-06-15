@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 
-import { AnimeCard, MangaCard } from "@/components/Animanga"
+import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
+import { Stats } from "@/components/Stats"
 import { DiscordCard } from "@/components/Discord"
 import Heading from "@/components/Heading"
 
@@ -20,11 +21,7 @@ export default function DashboardPage() {
       </div>
       <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 ">
         <DiscordCard />
-        <AnimeCard />
-        <MangaCard />
-        <MangaCard />
-        <MangaCard />
-        <MangaCard />
+        <Stats/>
       </div>
     </section>
   )

@@ -6,6 +6,7 @@ export const env = createEnv({
     // DATABASE_URL: z.string().url(),
     // OPEN_AI_API_KEY: z.string().min(1),
     MAL_CLIENT_ID: z.string().min(1),
+    WAKATIME_API_KEY: z.string().startsWith('waka_')
   },
   client: {
     // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
@@ -15,5 +16,6 @@ export const env = createEnv({
     // OPEN_AI_API_KEY: process.env.OPEN_AI_API_KEY,
     // NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
     MAL_CLIENT_ID: process.env.MAL_CLIENT_ID,
+    WAKATIME_API_KEY: process.env.WAKATIME_API_KEY
   },
 });
