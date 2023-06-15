@@ -1,7 +1,13 @@
 export type SiteConfig = typeof siteConfig
 
-export const siteConfig = {
+export const me = {
+  tag: "gneiru",
   name: "Noel Rohi Garcia",
+  discordID: "666483486735073312",
+}
+
+export const siteConfig = {
+  name: "gneiru",
   description:
     "Beautifully designed components built with Radix UI and Tailwind CSS.",
   mainNav: [
@@ -15,8 +21,8 @@ export const siteConfig = {
     }
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
+    twitter: "https://twitter.com/gneiru",
+    github: "https://github.com/gneiru",
     docs: "https://ui.shadcn.com",
   },
 }
