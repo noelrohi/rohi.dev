@@ -1,16 +1,16 @@
-import { Suspense } from "react"
 import Link from "next/link"
+import { ReactNode } from "react"
 
 import { me } from "@/config/site"
 import { wakatime } from "@/lib/api"
+import { getAge } from "@/lib/utils"
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import AgeCard from "./Age"
-import { getAge } from "@/lib/utils"
+import { AnimeCard, MangaCard } from "./Animanga"
 
 export async function Stats() {
   const { data: wakatimeData } = await wakatime()
-
   const data = [
     {
       title: "Coding Hours",
@@ -23,10 +23,11 @@ export async function Stats() {
   return (
     <>
       <AgeCard age={getAge()} />
-      {data.map((item) => {
-        const { link, title, value } = item
-        return <ItemCard link={link} title={title} value={value} />
+      {data.map((item, idx) => {
+        return <ItemCard {...item} key={idx} />
       })}
+      <AnimeCard />
+      <MangaCard />
     </>
   )
 }
@@ -38,10 +39,10 @@ export function ItemCard({
 }: {
   link: string
   title: string
-  value: string | undefined | number
+  value: ReactNode
 }) {
   return (
-    <Link href={link}>
+    <Link href={link} target="_blank" rel="noopener noreferrer">
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>{title}</CardTitle>

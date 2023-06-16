@@ -1,13 +1,17 @@
+import { Circle, Star } from "lucide-react"
 import Link from "next/link"
 
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "@/components/ui/card"
 import { me, siteConfig } from "@/config/site"
 import { getPinnedRepos } from "@/lib/api"
+import { PinnedReposResponse } from "@/lib/types"
+import { cn } from "@/lib/utils"
 
 import Heading from "./Heading"
 import { Icons } from "./icons"
@@ -21,11 +25,10 @@ export const Projects = async () => {
         <Link href={siteConfig.links.github}>Projects</Link>
       </Heading>
 
-      <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
-        {datas.map(({ link, description, website, repo }, idx) => (
-          <Link key={idx} href={website ?? link}>
-            <ProjectCard description={description} repo={repo} />
-          </Link>
+      <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 ">
+        {/* {JSON.stringify(datas)} */}
+        {datas.map((data, idx) => (
+          <ProjectCard key={idx} {...data} />
         ))}
         <Link
           href={`https://github.com/${me.tag}?tab=repositories`}
@@ -41,21 +44,55 @@ export const Projects = async () => {
 function ProjectCard({
   description,
   repo,
-}: {
-  description: string
-  repo: string
-}) {
+  language,
+  stars,
+  link,
+  // forks,
+}: PinnedReposResponse) {
   return (
-    <Card className="h-32 w-[350px]">
-      <CardHeader>
-        <CardTitle>
-          <div className="flex justify-between">
-            <p>{repo}</p>
-            <Icons.external className="opacity-40"/>
-          </div>
-        </CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-    </Card>
+    <Link href={link}>
+      <Card className=" w-[350px]">
+        <CardHeader>
+          <CardTitle>
+            <div className="flex justify-between">
+              <p>{repo}</p>
+              <Icons.external className="opacity-40" />
+            </div>
+          </CardTitle>
+          <CardDescription>{description}</CardDescription>
+          <CardContent className="p-0">
+            <div className="flex justify-between gap-4 space-x-0 text-sm text-muted-foreground">
+              <div className="flex items-center ">
+                <Circle
+                  className={cn(
+                    "mr-1 h-3 w-3",
+                    language === "JavaScript"
+                      ? "fill-javascript"
+                      : language === "TypeScript"
+                      ? "fill-typescript"
+                      : language === "Python"
+                      ? "fill-python"
+                      : language === "Svelte"
+                      ? "fill-svelte"
+                      : "fill-black"
+                  )}
+                />
+                {language}
+              </div>
+              <div className="flex justify-between gap-4">
+                {/* <div className="flex items-center space-x-1">
+                  <Icons.fork />
+                  {forks}
+                </div> */}
+                <span className="flex items-center space-x-1">
+                  <Star className="h-4 w-4" />
+                  {stars}
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </CardHeader>
+      </Card>
+    </Link>
   )
 }
