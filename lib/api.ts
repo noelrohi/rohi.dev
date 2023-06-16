@@ -23,9 +23,9 @@ export async function getPinnedRepos(): Promise<PinnedReposResponse[]> {
   return data
 }
 
-export async function recentlyWatched(): Promise<RecentlyWatchedResponse> {
+export async function recentlyWatched(){
   const res = await fetch(
-    "https://api.myanimelist.net/v2/users/gneiru/animelist?sort=list_updated_at&fields=list_status",
+    "https://api.myanimelist.net/v2/users/gneiru/animelist?sort=list_updated_at&fields=list_status&limit=1",
     {
       headers: {
         "X-MAL-CLIENT-ID": env.MAL_CLIENT_ID,
@@ -33,13 +33,13 @@ export async function recentlyWatched(): Promise<RecentlyWatchedResponse> {
       next: { revalidate: 60 * 5 },
     }
   )
-  const data = await res.json()
-  return data
+  const data : RecentlyWatchedResponse= await res.json()
+  return data.data[0]
 }
 
-export async function recentlyRead(): Promise<RecentlyReadResponse> {
+export async function recentlyRead() {
   const res = await fetch(
-    "https://api.myanimelist.net/v2/users/gneiru/mangalist?sort=list_updated_at&fields=list_status",
+    "https://api.myanimelist.net/v2/users/gneiru/mangalist?sort=list_updated_at&fields=list_status&limit=1",
     {
       headers: {
         "X-MAL-CLIENT-ID": env.MAL_CLIENT_ID,
@@ -47,8 +47,8 @@ export async function recentlyRead(): Promise<RecentlyReadResponse> {
       next: { revalidate: 60 * 5 },
     }
   )
-  const data = await res.json()
-  return data
+  const data : RecentlyReadResponse = await res.json()
+  return data.data[0]
 }
 
 export async function lanyard() {
