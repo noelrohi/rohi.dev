@@ -6,6 +6,7 @@ import { wakatime } from "@/lib/api"
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import AgeCard from "./Age"
+import { getAge } from "@/lib/utils"
 
 export async function Stats() {
   const { data: wakatimeData } = await wakatime()
@@ -21,7 +22,7 @@ export async function Stats() {
   ]
   return (
     <>
-      <AgeCard />
+      <AgeCard age={getAge()} />
       {data.map((item) => {
         const { link, title, value } = item
         return <ItemCard link={link} title={title} value={value} />

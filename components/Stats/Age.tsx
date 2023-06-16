@@ -1,23 +1,18 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-import { ItemCard } from "."
 import { getAge } from "@/lib/utils"
+import { ItemCard } from "."
 
-export default function AgeCard() {
+export default function AgeCard(props: {age: string | undefined}) {
     
 
-  const [age, setAge] = useState(getAge())
-  const [mounted, setMounted] = useState(false)
+  const [age, setAge] = useState(props.age)
 
   setInterval(() => {
     setAge(getAge())
   }, 10)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   return (
     <ItemCard title="My Age" value={age} link="/" />
