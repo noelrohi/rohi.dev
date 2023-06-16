@@ -39,7 +39,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <div className="mx-auto my-4 max-w-[75ch] px-4 sm:my-8 md:my-14">
+          <div className="mx-auto my-4 max-w-[80ch] px-4 sm:my-8 md:my-14">
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <div className="relative flex min-h-screen flex-col">
                 <SiteHeader />
