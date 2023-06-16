@@ -14,6 +14,10 @@ module.exports = {
     },
     extend: {
       colors: {
+        svelte: "#ff3e00",
+        python: "#3572A5",
+        javascript: "#f1e05a",
+        typescript: "#2b7489",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
