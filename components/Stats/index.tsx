@@ -1,19 +1,16 @@
-import { ReactNode } from "react"
+import { Suspense } from "react"
 import Link from "next/link"
 
 import { me } from "@/config/site"
 import { wakatime } from "@/lib/api"
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import AgeCard from "./Age"
 
 export async function Stats() {
   const { data: wakatimeData } = await wakatime()
+
   const data = [
-    {
-      title: "My Age",
-      link: `https://wakatime.com/@${me.tag}`,
-      value: 23,
-    },
     {
       title: "Coding Hours",
       link: `https://wakatime.com/@${me.tag}`,
@@ -24,6 +21,7 @@ export async function Stats() {
   ]
   return (
     <>
+      <AgeCard />
       {data.map((item) => {
         const { link, title, value } = item
         return <ItemCard link={link} title={title} value={value} />
@@ -32,7 +30,7 @@ export async function Stats() {
   )
 }
 
-function ItemCard({
+export function ItemCard({
   link,
   title,
   value,

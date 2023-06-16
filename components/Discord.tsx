@@ -12,7 +12,7 @@ export async function DiscordCard() {
     <Card className="w-[350px]">
       <CardContent className="flex justify-between py-4">
         <div className="flex flex-col space-y-2">
-          <div>{`${user.username}#${user.discriminator}`}</div>
+          <div>{user.username}</div>
           <div
             className={cn(
               "flex gap-2",
