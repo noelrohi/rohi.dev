@@ -18,11 +18,21 @@ export const siteConfig = {
     {
       title: "Dashboard",
       href: "/dashboard",
-    }
+    },
+    {
+      title: "Links",
+      href: "/links",
+    },
   ],
   links: {
     twitter: "https://twitter.com/gneiru",
     github: "https://github.com/gneiru",
     docs: "https://ui.shadcn.com",
+  },
+  contacts: {
+    email: "mailto:n@rohi.dev",
+    twitter: "https://twitter.com/gneiru",
+    linkedin: "https://linkedin.com/in/gneiru",
+    calcom: "https://calcom.com/gneiru",
   },
 }
