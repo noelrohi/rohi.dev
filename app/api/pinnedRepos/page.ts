@@ -1,7 +1,7 @@
 import { me } from '@/config/site';
 import { NextResponse } from 'next/server'
 
-export const runtime = 'edge'
+export const runtime = "nodejs"
 
 export default async function GET() {
     const url = `https://gh-pinned-repos.egoist.dev/?username=${me.tag}`;

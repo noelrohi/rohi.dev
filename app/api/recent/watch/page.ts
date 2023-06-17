@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 import { RecentlyWatchedResponse } from "@/lib/types"
 import { myEnv } from "@/lib/utils"
 
-export const runtime = "edge"
+export const runtime = "nodejs"
 
 export default async function GET() {
   const res = await fetch(

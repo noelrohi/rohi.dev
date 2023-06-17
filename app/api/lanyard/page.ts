@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 import { me } from "@/config/site"
 
-export const runtime = "edge"
+export const runtime = "nodejs"
 
 export default async function GET() {
   const url = `https://api.lanyard.rest/v1/users/${me.discordID}`
