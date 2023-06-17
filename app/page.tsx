@@ -1,5 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
-
+import { Suspense } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -44,8 +43,9 @@ export default function IndexPage() {
           </div>
         </div>
       </section>
-
-      <Projects />
+      <Suspense fallback={<>Loading projects ...</>}>
+        <Projects />
+      </Suspense>
     </section>
   )
 }

@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Metadata } from "next"
 
 import { getAge } from "@/lib/utils"
@@ -7,6 +8,7 @@ import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
 import { CodingCard } from "@/components/Stats/Coding"
 import { DiscordCard } from "@/components/Stats/Discord"
 import { SpotifyPlayCount } from "@/components/Stats/PlayCount"
+import { SkeletonCard } from "@/components/Stats"
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -23,13 +25,23 @@ export default function DashboardPage() {
         </p>
       </div>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
-        <DiscordCard />
-        <AgeCard age={getAge()} />
-        <SpotifyPlayCount />
-        <CodingCard />
-        <AnimeCard />
-        <MangaCard />
+        <Suspense fallback={<SkeletonCard count={6}/>}>
+          <Stats />
+        </Suspense>
       </div>
     </section>
+  )
+}
+
+function Stats() {
+  return (
+    <>
+      <DiscordCard />
+      <AgeCard age={getAge()} />
+      <SpotifyPlayCount />
+      <CodingCard />
+      <AnimeCard />
+      <MangaCard />
+    </>
   )
 }
