@@ -8,6 +8,7 @@ import {
   PinnedReposResponse,
   RecentlyReadResponse,
   RecentlyWatchedResponse,
+  LastFmUserResponse,
 } from "./types"
 
 
@@ -74,4 +75,14 @@ export async function wakatime() {
   );
   const data : WakatimeResponse = await resp.json();
   return data
+}
+
+
+export async function spotifyPlays() {
+  const res = await fetch(
+    `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${me.tag}&api_key=${env.LAST_FM_API_KEY}&format=json`
+  );
+  const data = await res.json();
+  const user : LastFmUserResponse = data.user;
+  return user
 }

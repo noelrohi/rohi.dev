@@ -103,3 +103,8 @@ export type WakatimeResponse = {
     total_seconds: number
   }
 }
+
+export type LastFmUserResponse = {
+  url: string;
+  playcount: number;
+};
