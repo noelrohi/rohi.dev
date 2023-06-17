@@ -1,13 +1,11 @@
 import "@/styles/globals.css"
-import { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
-
-import { me, siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { me, siteConfig } from "@/config/site"
+import { fontSans } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 
 export const metadata = {
   title: {
@@ -24,31 +22,22 @@ export const metadata = {
     "Lastfm",
     "MyAnimeList",
   ],
-  authors: [
-    {
-      name: me.tag,
-      url: siteConfig.url,
-    },
-  ],
-  creator: me.tag,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    description : siteConfig.description,
+    locale: 'en-US',
+    siteName: me.name,
+    title: me.name,
+    type: 'website',
+    url: origin,
   },
   twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
-    creator: me.tag,
+    card: 'summary_large_image',
+    creator: `@${me.tag}`,
+    site: `@${me.tag}`,
   },
   icons: {
     icon: "/me.png",

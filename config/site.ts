@@ -10,7 +10,7 @@ export const siteConfig = {
   name: "Rohi",
   url: "https://rohi.dev",
   description:
-    "Personal Website of Noel Rohi Garcia, a software engineer.",
+    "23 y/o Software engineer based in Philippined",
   mainNav: [
     {
       title: "Home",
