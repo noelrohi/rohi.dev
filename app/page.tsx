@@ -3,9 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { me, siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
 import { Projects } from "@/components/Projects"
+import { me, siteConfig } from "@/config/site"
 
 export default function IndexPage() {
   return (
@@ -50,19 +49,3 @@ export default function IndexPage() {
     </section>
   )
 }
-
-// import { Link } from '@/components/Link';
-// import { Projects } from '@/components/Projects';
-// import { fullname } from '@/lib/constants';
-// import Image from 'next/image';
-
-// const Home = async () => {
-
-//   return (
-//     <div className="flex flex-col space-y-6 sm:space-y-8 md:space-y-12 mt-4 sm:mt-8 md:mt-14">
-//
-//     </div>
-//   );
-// };
-
-// export default Home;
