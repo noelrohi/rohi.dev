@@ -7,9 +7,10 @@ export const me = {
 }
 
 export const siteConfig = {
-  name: "gneiru",
+  name: "Rohi",
+  url: "https://rohi.dev",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Personal Website of Noel Rohi Garcia, a software engineer.",
   mainNav: [
     {
       title: "Home",
