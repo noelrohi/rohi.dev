@@ -26,7 +26,7 @@ export function MainNav({ items }: MainNavProps) {
                   className={cn(
                     "flex items-center text-sm font-medium text-muted-foreground",
                     item.disabled && "cursor-not-allowed opacity-80",
-                    path === item.href && "underline opacity-100"
+                    path === item.href && "text-current underline opacity-100"
                   )}
                 >
                   {item.title}

@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
-import { DiscordCard } from "@/components/Discord"
+import { DiscordCard } from "@/components/Stats/Discord"
 import Heading from "@/components/Heading"
 import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
 import AgeCard from "@/components/Stats/Age"

@@ -17,7 +17,7 @@ const MediaCard = ({
   imageSrc: string
   number: number
   link: string
-  mediaType: string
+  mediaType: 'Chapter' | 'Episode'
   title: string
   updated_at: string
 }) => (
@@ -30,7 +30,7 @@ const MediaCard = ({
           </CardHeader>
           <CardContent>
             <div className="text-sm ">
-              {`${mediaType}. ${number}`}
+              {`${mediaType} ${number}`}
               <div className="opacity-50">
                 {"Updated "} {getRelativeTime(updated_at)}
               </div>
@@ -56,7 +56,7 @@ export async function AnimeCard() {
       imageSrc={node.main_picture.medium}
       updated_at={list_status.updated_at}
       link={link}
-      mediaType="ep"
+      mediaType="Episode"
     />
   )
 }
@@ -72,7 +72,7 @@ export async function MangaCard() {
       imageSrc={node.main_picture.medium}
       updated_at={list_status.updated_at}
       link={link}
-      mediaType="chap"
+      mediaType="Chapter"
     />
   )
 }
