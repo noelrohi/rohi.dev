@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ReactNode } from "react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Skeleton } from "../ui/skeleton"
 
 export function ItemCard({
   link,
