@@ -9,7 +9,7 @@ export const me = {
 export const siteConfig = {
   name: "Rohi",
   url: "https://rohi.dev",
-  description: "23 y/o Software engineer based in Philippined",
+  description: "23 y/o Software engineer based in Philippines",
   mainNav: [
     {
       title: "Home",
