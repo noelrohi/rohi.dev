@@ -5,7 +5,7 @@ import { WakatimeResponse } from "@/lib/types"
 
 export const runtime = "edge"
 
-export async function GET() {
+export default async function GET() {
   const url = `https://wakatime.com/api/v1/users/current/all_time_since_today`
   const res = await fetch(url, {
     headers: {
@@ -16,5 +16,5 @@ export async function GET() {
   })
   const data : WakatimeResponse = await res.json()
 
-  return NextResponse.json({ data })
+  return NextResponse.json(data)
 }
