@@ -1,9 +1,12 @@
 import { Metadata } from "next"
 
-import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
-import { Stats } from "@/components/Stats"
 import { DiscordCard } from "@/components/Discord"
 import Heading from "@/components/Heading"
+import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
+import AgeCard from "@/components/Stats/Age"
+import { getAge } from "@/lib/utils"
+import { CodingCard } from "@/components/Stats/Coding"
+import { SpotifyPlayCount } from "@/components/Stats/PlayCount"
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -21,7 +24,11 @@ export default function DashboardPage() {
       </div>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
         <DiscordCard />
-        <Stats/>
+        <AgeCard age={getAge()} />
+        <SpotifyPlayCount />
+        <CodingCard />
+        <AnimeCard />
+        <MangaCard />
       </div>
     </section>
   )

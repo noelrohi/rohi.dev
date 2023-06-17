@@ -13,5 +13,5 @@ export default function AgeCard(props: { age: string | undefined }) {
     setAge(getAge())
   }, 10)
 
-  return <ItemCard title="My Age" value={age} link="/" />
+  return <ItemCard title="My Age" value={age} link="/" newtab={false} />
 }

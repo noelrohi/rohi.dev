@@ -23,14 +23,14 @@ const MediaCard = ({
 }) => (
   <Link href={link} target="_blank" rel="noopener noreferrer">
     <div>
-      <Card className={cn("w-[350px]", imageSrc && "flex justify-between")}>
+      <Card className={cn("w-[350px] hover:border-2 hover:border-black dark:hover:border-white", imageSrc && "flex justify-between")}>
         <div>
           <CardHeader>
-            <CardTitle>{title}</CardTitle>
+            <CardTitle className="h-10">{title}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-sm ">
-              {`${title} ${mediaType}. ${number}`}
+              {`${mediaType}. ${number}`}
               <div className="opacity-50">
                 {"Updated "} {getRelativeTime(updated_at)}
               </div>
@@ -38,7 +38,7 @@ const MediaCard = ({
           </CardContent>
         </div>
         <div className="p-4">
-          <Image src={imageSrc} alt={title} width={64} height={64} />
+          <Image src={imageSrc} alt={title} width={64} height={64} className="rounded-lg object-contain"/>
         </div>
       </Card>
     </div>
