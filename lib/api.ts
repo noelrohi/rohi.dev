@@ -4,13 +4,12 @@ import { me } from "@/config/site"
 
 import {
   LanyardResponse,
-  WakatimeResponse,
+  LastFmUserResponse,
   PinnedReposResponse,
   RecentlyReadResponse,
   RecentlyWatchedResponse,
-  LastFmUserResponse,
+  WakatimeResponse,
 } from "./types"
-
 
 export async function getPinnedRepos(): Promise<PinnedReposResponse[]> {
   const res = await fetch(
@@ -24,7 +23,7 @@ export async function getPinnedRepos(): Promise<PinnedReposResponse[]> {
   return data
 }
 
-export async function recentlyWatched(){
+export async function recentlyWatched() {
   const res = await fetch(
     "https://api.myanimelist.net/v2/users/gneiru/animelist?sort=list_updated_at&fields=list_status&limit=1",
     {
@@ -34,7 +33,7 @@ export async function recentlyWatched(){
       next: { revalidate: 60 * 5 },
     }
   )
-  const data : RecentlyWatchedResponse= await res.json()
+  const data: RecentlyWatchedResponse = await res.json()
   return data.data[0]
 }
 
@@ -48,7 +47,7 @@ export async function recentlyRead() {
       next: { revalidate: 60 * 5 },
     }
   )
-  const data : RecentlyReadResponse = await res.json()
+  const data: RecentlyReadResponse = await res.json()
   return data.data[0]
 }
 
@@ -69,20 +68,21 @@ export async function wakatime() {
     "https://wakatime.com/api/v1/users/current/all_time_since_today",
     {
       headers: {
-        Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString('base64')}`,
+        Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString(
+          "base64"
+        )}`,
       },
     }
-  );
-  const data : WakatimeResponse = await resp.json();
+  )
+  const data: WakatimeResponse = await resp.json()
   return data
 }
-
 
 export async function spotifyPlays() {
   const res = await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${me.tag}&api_key=${env.LAST_FM_API_KEY}&format=json`
-  );
-  const data = await res.json();
-  const user : LastFmUserResponse = data.user;
+  )
+  const data = await res.json()
+  const user: LastFmUserResponse = data.user
   return user
 }

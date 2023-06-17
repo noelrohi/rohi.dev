@@ -3,7 +3,7 @@ import { spotifyPlays } from "@/lib/api"
 import { ItemCard } from "."
 
 export async function SpotifyPlayCount() {
-  const {url, playcount} = await spotifyPlays()
+  const { url, playcount } = await spotifyPlays()
   return (
     <>
       {/* {JSON.stringify(data)} */}

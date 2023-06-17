@@ -3,8 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { Projects } from "@/components/Projects"
 import { me, siteConfig } from "@/config/site"
+import { Projects } from "@/components/Projects"
 
 export default function IndexPage() {
   return (

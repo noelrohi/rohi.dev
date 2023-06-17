@@ -105,6 +105,6 @@ export type WakatimeResponse = {
 }
 
 export type LastFmUserResponse = {
-  url: string;
-  playcount: number;
-};
+  url: string
+  playcount: number
+}

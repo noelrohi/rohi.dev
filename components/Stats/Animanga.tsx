@@ -17,13 +17,18 @@ const MediaCard = ({
   imageSrc: string
   number: number
   link: string
-  mediaType: 'Chapter' | 'Episode'
+  mediaType: "Chapter" | "Episode"
   title: string
   updated_at: string
 }) => (
   <Link href={link} target="_blank" rel="noopener noreferrer">
     <div>
-      <Card className={cn("w-[350px] hover:border-2 hover:border-black dark:hover:border-white", imageSrc && "flex justify-between")}>
+      <Card
+        className={cn(
+          "w-[350px] hover:border-2 hover:border-black dark:hover:border-white",
+          imageSrc && "flex justify-between"
+        )}
+      >
         <div>
           <CardHeader>
             <CardTitle className="h-10">{title}</CardTitle>
@@ -38,7 +43,13 @@ const MediaCard = ({
           </CardContent>
         </div>
         <div className="p-4">
-          <Image src={imageSrc} alt={title} width={64} height={64} className="rounded-lg object-contain"/>
+          <Image
+            src={imageSrc}
+            alt={title}
+            width={64}
+            height={64}
+            className="rounded-lg object-contain"
+          />
         </div>
       </Card>
     </div>

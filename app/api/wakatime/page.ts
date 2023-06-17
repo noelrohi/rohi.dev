@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
-import { myEnv } from "@/lib/utils"
 import { WakatimeResponse } from "@/lib/types"
+import { myEnv } from "@/lib/utils"
 
 export const runtime = "nodejs"
 
@@ -14,7 +14,7 @@ export default async function GET() {
       )}`,
     },
   })
-  const data : WakatimeResponse = await res.json()
+  const data: WakatimeResponse = await res.json()
 
   return NextResponse.json(data)
 }

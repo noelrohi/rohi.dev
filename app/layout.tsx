@@ -1,11 +1,12 @@
 import "@/styles/globals.css"
 import { Analytics } from "@vercel/analytics/react"
-import { SiteHeader } from "@/components/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
+
 import { me, siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { SiteHeader } from "@/components/site-header"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
   title: {
@@ -27,15 +28,15 @@ export const metadata = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
   openGraph: {
-    description : siteConfig.description,
-    locale: 'en-US',
+    description: siteConfig.description,
+    locale: "en-US",
     siteName: me.name,
     title: me.name,
-    type: 'website',
+    type: "website",
     url: origin,
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     creator: `@${me.tag}`,
     site: `@${me.tag}`,
   },

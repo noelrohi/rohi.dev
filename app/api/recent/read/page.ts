@@ -11,11 +11,11 @@ export default async function GET() {
     {
       headers: {
         "X-MAL-CLIENT-ID": myEnv.MAL_CLIENT_ID,
-      }
+      },
     }
   )
   const data: RecentlyReadResponse = await res.json()
-  const nodeandlist =  data.data[0]
+  const nodeandlist = data.data[0]
 
   return NextResponse.json(nodeandlist)
 }

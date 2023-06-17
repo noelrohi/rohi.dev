@@ -11,7 +11,7 @@ export default async function GET() {
     {
       headers: {
         "X-MAL-CLIENT-ID": myEnv.MAL_CLIENT_ID,
-      }
+      },
     }
   )
   const data: RecentlyWatchedResponse = await res.json()

@@ -47,7 +47,7 @@ function ProjectCard({
   language,
   stars,
   link,
-  website
+  website,
 }: PinnedReposResponse) {
   return (
     <Link href={website ?? link}>

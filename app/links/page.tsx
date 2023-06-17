@@ -24,7 +24,12 @@ export default function Links() {
       <ul className="py-4">
         {Object.entries(site.contacts).map(([name, link]) => (
           <li className="max-w-sm">
-            <Link href={link} key={name} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={link}
+              key={name}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="flex justify-between">
                 {capitalize(name)}
                 {name === "email" ? (

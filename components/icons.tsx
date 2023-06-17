@@ -1,13 +1,13 @@
 import {
   Calendar,
   ExternalLink,
+  Linkedin,
   LucideProps,
   Mail,
   Moon,
   SunMedium,
   Twitter,
   type Icon as LucideIcon,
-  Linkedin,
 } from "lucide-react"
 
 export type Icon = LucideIcon

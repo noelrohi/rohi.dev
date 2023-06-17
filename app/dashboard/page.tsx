@@ -1,11 +1,11 @@
 import { Metadata } from "next"
 
-import { DiscordCard } from "@/components/Stats/Discord"
-import Heading from "@/components/Heading"
-import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
-import AgeCard from "@/components/Stats/Age"
 import { getAge } from "@/lib/utils"
+import Heading from "@/components/Heading"
+import AgeCard from "@/components/Stats/Age"
+import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
 import { CodingCard } from "@/components/Stats/Coding"
+import { DiscordCard } from "@/components/Stats/Discord"
 import { SpotifyPlayCount } from "@/components/Stats/PlayCount"
 
 export const metadata: Metadata = {
