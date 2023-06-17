@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   description: "Stuffs related to Noel Rohi Garcia",
 }
 
+export const runtime = "edge"
+
 export default function DashboardPage() {
   return (
     <section className="container pb-8 pt-6 md:py-10">

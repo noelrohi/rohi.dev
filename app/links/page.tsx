@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "Contact information | Social Media Links",
 }
 
+export const runtime = "edge"
+
 export default function Links() {
   return (
     <section className="container pb-8 pt-6 md:py-10">
