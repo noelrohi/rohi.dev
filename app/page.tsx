@@ -19,7 +19,7 @@ export default function IndexPage() {
                 Hi there,
               </div>
               <h1 className="text-xl font-extrabold leading-tight sm:text-2xl sm:leading-tight md:text-4xl md:leading-tight">
-                I'm{" "}
+                I&rsquo;m{" "}
                 <span className="animate-heading bg-gradient-to-r from-red-500 to-amber-400 bg-[length:200%] bg-clip-text text-transparent">
                   {me.name}
                 </span>
@@ -27,12 +27,12 @@ export default function IndexPage() {
             </div>
           </div>
           <div className="pt-2 text-xs opacity-90 dark:opacity-80 md:text-sm">
-            I'm a Software Engineer based in Philippines, building full-stack
+            I&rsquo;m a Software Engineer based in Philippines, building full-stack
             web applications with React, Node.js, TypeScript, and MySQL. I like
             to play games & watch anime and kdrama.
           </div>
           <div className="text-xs opacity-90 dark:opacity-80 md:text-sm ">
-            I'm currently working at{" "}
+            I&rsquo;m currently working at{" "}
             <Link
               href="https://www.capex.com.ph/"
               className="underline decoration-blue-500 decoration-wavy"
