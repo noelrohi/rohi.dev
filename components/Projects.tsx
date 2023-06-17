@@ -1,6 +1,10 @@
-import { Circle, Star } from "lucide-react"
 import Link from "next/link"
+import { Circle, Star } from "lucide-react"
 
+import { me, siteConfig } from "@/config/site"
+import { getPinnedRepos } from "@/lib/api"
+import { PinnedReposResponse } from "@/lib/types"
+import { cn } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -8,10 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { me, siteConfig } from "@/config/site"
-import { getPinnedRepos } from "@/lib/api"
-import { PinnedReposResponse } from "@/lib/types"
-import { cn } from "@/lib/utils"
 
 import Heading from "./Heading"
 import { Icons } from "./icons"
@@ -47,10 +47,10 @@ function ProjectCard({
   language,
   stars,
   link,
-  // forks,
+  website
 }: PinnedReposResponse) {
   return (
-    <Link href={link}>
+    <Link href={website ?? link}>
       <Card className=" w-[350px]">
         <CardHeader>
           <CardTitle>
@@ -80,13 +80,9 @@ function ProjectCard({
                 {language}
               </div>
               <div className="flex justify-between gap-4">
-                {/* <div className="flex items-center space-x-1">
-                  <Icons.fork />
-                  {forks}
-                </div> */}
-                <span className="flex items-center space-x-1">
+                <span className="flex items-center space-x-2">
                   <Star className="h-4 w-4" />
-                  {stars}
+                  <p>{stars}</p>
                 </span>
               </div>
             </div>
