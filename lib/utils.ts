@@ -1,3 +1,4 @@
+import { env as myEnv } from "@/env"
 import { clsx, type ClassValue } from "clsx"
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
@@ -33,3 +34,5 @@ export function getRelativeTime(input: string | number): string {
   const date = new Date(input)
   return dayjs(date).fromNow()
 }
+
+export { myEnv }
