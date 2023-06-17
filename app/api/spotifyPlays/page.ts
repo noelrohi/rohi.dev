@@ -4,9 +4,7 @@ import { me } from "@/config/site"
 import { LastFmUserResponse } from "@/lib/types"
 import { myEnv } from "@/lib/utils"
 
-export const runtime = "nodejs"
-
-export default async function GET() {
+export async function GET() {
   const url = `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${me.tag}&api_key=${myEnv.LAST_FM_API_KEY}&format=json`
   const res = await fetch(url)
   const data = await res.json()

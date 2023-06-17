@@ -3,9 +3,7 @@ import { NextResponse } from "next/server"
 import { RecentlyReadResponse, RecentlyWatchedResponse } from "@/lib/types"
 import { myEnv } from "@/lib/utils"
 
-export const runtime = "nodejs"
-
-export default async function GET() {
+export async function GET() {
   const res = await fetch(
     "https://api.myanimelist.net/v2/users/gneiru/mangalist?sort=list_updated_at&fields=list_status&limit=1",
     {

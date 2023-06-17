@@ -3,9 +3,7 @@ import { NextResponse } from "next/server"
 import { WakatimeResponse } from "@/lib/types"
 import { myEnv } from "@/lib/utils"
 
-export const runtime = "nodejs"
-
-export default async function GET() {
+export async function GET() {
   const url = `https://wakatime.com/api/v1/users/current/all_time_since_today`
   const res = await fetch(url, {
     headers: {
