@@ -1,7 +1,5 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { Calendar, Linkedin, Mail, Twitter } from "lucide-react"
-
 import { siteConfig as site } from "@/config/site"
 import { capitalize } from "@/lib/utils"
 import Heading from "@/components/Heading"
@@ -40,6 +38,8 @@ export default function Links() {
                   <Icons.linkedin />
                 ) : name === "twitter" ? (
                   <Icons.twitter />
+                ) : name === "github" ? (
+                  <Icons.github />
                 ) : (
                   <Icons.calcom />
                 )}

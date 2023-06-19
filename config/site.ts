@@ -34,5 +34,6 @@ export const siteConfig = {
     twitter: "https://twitter.com/gneiru",
     linkedin: "https://linkedin.com/in/gneiru",
     calcom: "https://calcom.com/gneiru",
+    github: "https://github.com/gneiru"
   },
 }
