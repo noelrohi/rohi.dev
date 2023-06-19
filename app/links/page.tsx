@@ -25,7 +25,7 @@ export default function Links() {
       </div>
       <ul className="py-4">
         {Object.entries(site.contacts).map(([name, link]) => (
-          <li className="max-w-sm" id={name}>
+          <li className="max-w-sm" key={name}>
             <Link
               href={link}
               key={name}
