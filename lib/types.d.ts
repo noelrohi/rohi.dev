@@ -60,17 +60,28 @@ export interface RecentlyReadResponse {
   }
 }
 
-export interface PinnedReposResponse {
-  owner: string
-  repo: string
-  link: string
+export interface PinnedRepo {
+  topics: string[]
+  website: string
+  title: string
   description: string
-  image: string
+  link: string
   language: string
-  languageColor: string
-  stars: string
-  forks: number
-  website?: string
+  languageColor: string | undefined
+  forks: string | number
+  stars: string | number
+  owner: string
+}
+
+export interface PinnedReposResponse {
+  data: PinnedRepo[]
+  baseurl: string
+  username: string
+}
+
+export interface RepoDetails {
+  website: string
+  topics: string[]
 }
 
 export type LanyardResponse = {
