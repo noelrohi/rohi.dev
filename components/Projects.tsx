@@ -56,7 +56,7 @@ function ProjectCard({
           <CardTitle>
             <div className="flex justify-between">
               <p>{repo}</p>
-              <Icons.external className="opacity-40" />
+              <Icons.external className="h-4 w-4 opacity-40" />
             </div>
           </CardTitle>
           <CardDescription>{description}</CardDescription>
