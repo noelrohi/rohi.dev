@@ -37,13 +37,11 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: "/me.png",
   },
   twitter: {
     card: "summary_large_image",
     title: me.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/me.png`],
   },
   icons: {
     icon: "/me.png",
