@@ -52,19 +52,26 @@ function ProjectCard({
   website,
   forks,
   topics,
+  languageColor,
 }: PinnedRepo) {
   return (
     <Card className=" w-[350px]">
       <CardHeader>
         <CardTitle>
-          <Link href={website || link} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={website || link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div className="flex justify-between">
               <p>{title}</p>
               <Icons.external className="h-4 w-4 opacity-40" />
             </div>
           </Link>
         </CardTitle>
-        <CardDescription className="line-clamp-2 h-10">{description}</CardDescription>
+        <CardDescription className="line-clamp-2 flex h-10 items-center">
+          {description}
+        </CardDescription>
       </CardHeader>
 
       <CardContent>
@@ -74,35 +81,23 @@ function ProjectCard({
           </Badge>
         ))}
       </CardContent>
-      <CardFooter className="flex flex-wrap space-x-1 space-y-1">
-        <div className="flex justify-between gap-4 space-x-0 text-sm text-muted-foreground">
-          <div className="flex items-center">
-            <Circle
-              className={cn(
-                "mr-1 h-3 w-3",
-                language === "JavaScript"
-                  ? "fill-javascript"
-                  : language === "TypeScript"
-                  ? "fill-typescript"
-                  : language === "Python"
-                  ? "fill-python"
-                  : language === "Svelte"
-                  ? "fill-svelte"
-                  : "fill-black"
-              )}
-            />
-            {language}
-          </div>
-          <div className="flex justify-between gap-4">
-            <span className="flex space-x-2">
-              <Star className="h-4 w-4" />
-              <p>{stars}</p>
-            </span>
-            <span className="flex space-x-2">
-              <Icons.fork />
-              <p>{forks}</p>
-            </span>
-          </div>
+      <CardFooter className="flex justify-between text-sm text-muted-foreground">
+        <div className="flex items-center">
+          <span
+            className="mr-2 h-4 w-4 rounded-full"
+            style={{ backgroundColor: languageColor }}
+          ></span>
+          {language}
+        </div>
+        <div className="flex justify-end gap-4">
+          <span className="flex items-center space-x-2">
+            <Star className="h-4 w-4" />
+            <p>{stars}</p>
+          </span>
+          <span className="flex items-center space-x-2">
+            <Icons.fork />
+            <p>{forks}</p>
+          </span>
         </div>
       </CardFooter>
     </Card>
