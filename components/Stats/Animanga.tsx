@@ -11,6 +11,7 @@ const MediaCard = ({
   number,
   link,
   mediaType,
+  action,
   title,
   updated_at,
 }: {
@@ -18,6 +19,7 @@ const MediaCard = ({
   number: number
   link: string
   mediaType: "Chapter" | "Episode"
+  action: "Read" | "Watched",
   title: string
   updated_at: string
 }) => (
@@ -37,7 +39,7 @@ const MediaCard = ({
             <div className="text-sm ">
               {`${mediaType} ${number}`}
               <div className="opacity-50">
-                {"Updated "} {getRelativeTime(updated_at)}
+                {action} {getRelativeTime(updated_at)}
               </div>
             </div>
           </CardContent>
@@ -68,6 +70,7 @@ export async function AnimeCard() {
       updated_at={list_status.updated_at}
       link={link}
       mediaType="Episode"
+      action="Watched"
     />
   )
 }
@@ -84,6 +87,7 @@ export async function MangaCard() {
       updated_at={list_status.updated_at}
       link={link}
       mediaType="Chapter"
+      action="Read"
     />
   )
 }
