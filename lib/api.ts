@@ -23,9 +23,9 @@ export async function pinnedRepos(username: string){
         const title = $el.find('span.repo').text()
         const description = $el.find('.pinned-item-desc').text().trim()
         const language = $el.find('span[itemprop="programmingLanguage"]').text()
-        const languageColor = $el.find('.repo-language-color').attr('style')
-        const forks = $el.find('svg[aria-label="fork"]').parent().text().trim() || 0
-        const stars = $el.find('svg[aria-label="star"]').parent().text().trim() || 0
+        const languageColor = $el.find('.repo-language-color').attr('style')?.split(': ')[1]
+        const forks = parseInt($el.find('svg[aria-label="fork"]').parent().text().trim()) || 0
+        const stars = parseInt($el.find('svg[aria-label="star"]').parent().text().trim()) || 0
         const link = "https://github.com" + $el.find('a').attr('href')
         const owner = $el.find('span.owner').text() ? $el.find('span.owner').text() : username
         return {title, description, link, language, languageColor, forks, stars, owner}

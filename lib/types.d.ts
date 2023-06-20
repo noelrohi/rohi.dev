@@ -68,8 +68,8 @@ export interface PinnedRepo {
   link: string
   language: string
   languageColor: string | undefined
-  forks: string | number
-  stars: string | number
+  forks: number
+  stars: number
   owner: string
 }
 
