@@ -57,7 +57,7 @@ function ProjectCard({
     <Card className=" w-[350px]">
       <CardHeader>
         <CardTitle>
-          <Link href={website || link}>
+          <Link href={website || link} target="_blank" rel="noopener noreferrer">
             <div className="flex justify-between">
               <p>{title}</p>
               <Icons.external className="h-4 w-4 opacity-40" />
