@@ -81,19 +81,35 @@ export async function lanyard() {
   return lanyard
 }
 
-export async function wakatime() {
-  const resp = await fetch(
-    "https://wakatime.com/api/v1/users/current/all_time_since_today",
-    {
-      headers: {
-        Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString(
-          "base64"
-        )}`,
-      },
-    }
-  )
-  const data: WakatimeResponse = await resp.json()
-  return data
+export const wakatime = {
+  alltime : async () => {
+    const resp = await fetch(
+      "https://wakatime.com/api/v1/users/current/all_time_since_today",
+      {
+        headers: {
+          Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString(
+            "base64"
+          )}`,
+        },
+      }
+    )
+    const data: WakatimeResponse = await resp.json()
+    return data
+  },
+  duration : async () => {
+    const resp = await fetch(
+      "https://wakatime.com/api/v1/users/current/stats",
+      {
+        headers: {
+          Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString(
+            "base64"
+          )}`,
+        },
+      }
+    )
+    const data = await resp.json()
+    return data
+  }
 }
 
 export async function spotifyPlays() {
