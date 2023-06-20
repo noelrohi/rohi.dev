@@ -1,18 +1,13 @@
 import { env } from "@/env"
-
 import { me } from "@/config/site"
-
+import { load } from "cheerio"
 import {
   LanyardResponse,
   LastFmUserResponse,
-  PinnedReposResponse,
   RecentlyReadResponse,
   RecentlyWatchedResponse,
-  RepoDetails,
-  WakatimeResponse,
+  WakatimeResponse
 } from "./types"
-import { absoluteUrl } from "./utils"
-import { load } from "cheerio"
 
 export async function pinnedRepos(username: string){
     const baseurl = `https://github.com/${username}`
@@ -44,22 +39,6 @@ export async function pinnedRepos(username: string){
       })
     )
     return { data: overallData, baseurl, username }
-}
-
-export async function getPinnedRepos() {
-  const url = absoluteUrl(`/api/github/pinnedRepos?username=${me.tag}`)
-  const { data, baseurl, username }: PinnedReposResponse = await fetch(url).then((r) => r.json())
-  const overallData = await Promise.all(
-    data.map(async (repo) => {
-      const resp = await fetch(absoluteUrl(`/api/github/repoHomepage?link=${repo.link}`))
-      const repodata: RepoDetails = await resp.json()
-      return {
-        ...repo,
-        ...repodata,
-      }
-    })
-  )
-  return { data: overallData, baseurl, username }
 }
 
 export async function recentlyWatched() {
