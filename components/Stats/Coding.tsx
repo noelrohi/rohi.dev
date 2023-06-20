@@ -20,17 +20,16 @@ interface Languages {
 }
 
 export async function CodingCard() {
-  const { data: wakatimeData } = await wakatime.alltime()
-  const data = await wakatime.duration()
+  const data = await wakatime.stats()
   const languages: Languages[] = data.data.languages
-  const { total_seconds: seconds } = wakatimeData
+  const total_seconds = data.data.categories[0].total_seconds
   return (
     <HoverCard>
-      <HoverCardTrigger>
+      <HoverCardTrigger asChild>
         <ItemCard
           link={`https://wakatime.com/@${me.tag}`}
           title="Coding Hours"
-          value={`${Math.round(seconds / 60 / 60)} hrs`}
+          value={`${Math.round(total_seconds / 60 / 60)} hrs`}
         />
       </HoverCardTrigger>
       <HoverCardContent>

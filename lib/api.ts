@@ -96,7 +96,7 @@ export const wakatime = {
     const data: WakatimeResponse = await resp.json()
     return data
   },
-  duration : async () => {
+  stats : async () => {
     const resp = await fetch(
       "https://wakatime.com/api/v1/users/current/stats",
       {
