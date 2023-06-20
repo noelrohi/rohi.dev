@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
+
 import { siteConfig as site } from "@/config/site"
 import { capitalize } from "@/lib/utils"
 import Heading from "@/components/Heading"
@@ -9,8 +10,6 @@ export const metadata: Metadata = {
   title: "Links",
   description: "Contact information | Social Media Links",
 }
-
-export const runtime = "edge"
 
 export default function Links() {
   return (
