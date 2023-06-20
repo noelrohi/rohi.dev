@@ -11,6 +11,7 @@ export const env = createEnv({
   },
   client: {
     // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
+    NEXT_PUBLIC_APP_URL: z.string().min(1),
   },
   runtimeEnv: {
     // DATABASE_URL: process.env.DATABASE_URL,
@@ -18,6 +19,7 @@ export const env = createEnv({
     // NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
     LAST_FM_API_KEY: process.env.LAST_FM_API_KEY,
     MAL_CLIENT_ID: process.env.MAL_CLIENT_ID,
-    WAKATIME_API_KEY: process.env.WAKATIME_API_KEY
+    WAKATIME_API_KEY: process.env.WAKATIME_API_KEY,
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   },
 });

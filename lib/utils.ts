@@ -35,4 +35,8 @@ export function getRelativeTime(input: string | number): string {
   return dayjs(date).fromNow()
 }
 
+export function absoluteUrl(path: string) {
+  return `${myEnv.NEXT_PUBLIC_APP_URL}${path}`
+}
+
 export { myEnv }
