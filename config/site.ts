@@ -1,3 +1,5 @@
+import { getAge } from "@/lib/utils"
+
 export type SiteConfig = typeof siteConfig
 
 export const me = {
@@ -9,7 +11,7 @@ export const me = {
 export const siteConfig = {
   name: "Rohi",
   url: "https://rohi.dev",
-  description: "23 y/o Software engineer based in Philippines",
+  description: `${parseInt(getAge())} y/o Software engineer based in Philippines`,
   mainNav: [
     {
       title: "Home",
