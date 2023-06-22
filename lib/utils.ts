@@ -10,14 +10,14 @@ dayjs.extend(updateLocale)
 dayjs.updateLocale("en", {
   relativeTime: {
     future: "in %s",
-    past: "%s",
+    past: "%s ago",
     s: "s",
     m: "1m",
     mm: "%dm",
     h: "1h",
     hh: "%dh",
-    d: "1d",
-    dd: "%dd",
+    d: "1 day",
+    dd: "%d days",
     M: "1mo",
     MM: "%dmo",
     y: "1yr",
@@ -55,8 +55,8 @@ export const relatime = {
   date: async function (input: string | number) {
     return dayjs(new Date(input)).fromNow()
   },
-  unix: function (input: EpochTimeStamp) {
-    return dayjs.unix(input).fromNow(true)
+  unix: function (input: EpochTimeStamp, ago: boolean = false) {
+    return dayjs.unix(input).fromNow(ago)
   },
 }
 
