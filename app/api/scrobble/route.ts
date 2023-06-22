@@ -11,5 +11,5 @@ export async function GET(request: Request) {
   // if (auth !== myEnv.LAST_FM_API_KEY) return new Response("Unauthorized", { status: 401 })
   const tracks = await spotify.recentTracks()
   const plays = await spotify.totalPlays()
-  return NextResponse.json({tracks, plays})
+  return NextResponse.json({ tracks, plays })
 }

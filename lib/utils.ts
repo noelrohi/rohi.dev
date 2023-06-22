@@ -7,11 +7,11 @@ import { twMerge } from "tailwind-merge"
 
 dayjs.extend(relativeTime)
 dayjs.extend(updateLocale)
-dayjs.updateLocale('en', {
+dayjs.updateLocale("en", {
   relativeTime: {
     future: "in %s",
     past: "%s",
-    s: 's',
+    s: "s",
     m: "1m",
     mm: "%dm",
     h: "1h",
@@ -21,8 +21,8 @@ dayjs.updateLocale('en', {
     M: "1mo",
     MM: "%dmo",
     y: "1yr",
-    yy: "%dyr"
-  }
+    yy: "%dyr",
+  },
 })
 
 export function cn(...inputs: ClassValue[]) {
@@ -30,8 +30,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const fetcher = (url: URL) => fetch(url).then((res) => res.json())
-export const fetcherWithHeaders = (url: URL, token: string) => fetch(url, {headers: { Authorization: token }}).then((res) => res.json())
-
+export const fetcherWithHeaders = (url: URL, token: string) =>
+  fetch(url, { headers: { Authorization: token } }).then((res) => res.json())
 
 export const capitalize = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1)

@@ -1,6 +1,7 @@
 "use client"
 
 import useSWR from "swr"
+
 import { LastFmUserResponse, Track } from "@/lib/types"
 import { fetcher, relatime } from "@/lib/utils"
 import { ItemCard, SkeletonCard } from "@/components/Stats"
@@ -12,7 +13,7 @@ export function SpotifyPlayCount() {
     plays: LastFmUserResponse
   }>("/api/scrobble", fetcher, { refreshInterval: 15 * 1000 })
   if (error) return <div>failed to load</div>
-  if (!data) return <SkeletonCard/>
+  if (!data) return <SkeletonCard />
   const { plays, tracks } = data
   return (
     <>

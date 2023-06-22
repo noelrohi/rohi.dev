@@ -1,5 +1,6 @@
 import {
   Calendar,
+  Disc3,
   ExternalLink,
   Github,
   Linkedin,
@@ -9,7 +10,6 @@ import {
   SunMedium,
   Twitter,
   type Icon as LucideIcon,
-  Disc3,
 } from "lucide-react"
 
 export type Icon = LucideIcon

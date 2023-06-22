@@ -3,7 +3,6 @@ import Image from "next/image"
 import { lanyard } from "@/lib/api"
 import { capitalize, cn } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
-
 import { Icons } from "@/components/icons"
 
 export async function DiscordCard() {

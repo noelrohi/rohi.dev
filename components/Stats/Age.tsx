@@ -3,7 +3,6 @@
 import { useState } from "react"
 
 import { getAge } from "@/lib/utils"
-
 import { ItemCard } from "@/components/Stats"
 
 export default function AgeCard(props: { age: string | undefined }) {

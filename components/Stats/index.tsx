@@ -1,8 +1,9 @@
 import { ReactNode } from "react"
 import Link from "next/link"
 
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
+
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 
 export function ItemCard({
   link,
