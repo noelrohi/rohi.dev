@@ -29,9 +29,9 @@ export default function IndexPage() {
             </div>
           </div>
           <div className="pt-2 text-xs opacity-90 dark:opacity-80 md:text-sm">
-            I&rsquo;m a Software Engineer based in Philippines, building full-stack
-            web applications with React, Node.js, TypeScript, and MySQL. I like
-            to play games & watch anime and kdrama.
+            I&rsquo;m a Software Engineer based in Philippines, building
+            full-stack web applications with React, Node.js, TypeScript, and
+            MySQL. I like to play games & watch anime and kdrama.
           </div>
           <div className="text-xs opacity-90 dark:opacity-80 md:text-sm ">
             I&rsquo;m currently working at{" "}

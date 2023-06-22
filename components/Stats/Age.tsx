@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { getAge } from "@/lib/utils"
 
-import { ItemCard } from "."
+import { ItemCard } from "@/components/Stats"
 
 export default function AgeCard(props: { age: string | undefined }) {
   const [age, setAge] = useState(props.age)
@@ -13,5 +13,9 @@ export default function AgeCard(props: { age: string | undefined }) {
     setAge(getAge())
   }, 10)
 
-  return <ItemCard title="My Age" value={age} link="/" newtab={false} />
+  return (
+    <ItemCard title="My Age" link="/" newtab={false}>
+      {age}
+    </ItemCard>
+  )
 }

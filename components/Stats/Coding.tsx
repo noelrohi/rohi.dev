@@ -6,7 +6,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
 
-import { ItemCard } from "."
+import { ItemCard } from "@/components/Stats"
 
 interface Languages {
   name: string
@@ -26,11 +26,9 @@ export async function CodingCard() {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <ItemCard
-          link={`https://wakatime.com/@${me.tag}`}
-          title="Coding Hours"
-          value={`${Math.round(total_seconds / 60 / 60)} hrs`}
-        />
+        <ItemCard link={`https://wakatime.com/@${me.tag}`} title="Coding Hours">
+          {`${Math.round(total_seconds / 60 / 60)} hrs`}
+        </ItemCard>
       </HoverCardTrigger>
       <HoverCardContent>
         <ul>

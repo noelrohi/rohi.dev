@@ -1,6 +1,7 @@
 import {
   Calendar,
   ExternalLink,
+  Github,
   Linkedin,
   LucideProps,
   Mail,
@@ -8,12 +9,13 @@ import {
   SunMedium,
   Twitter,
   type Icon as LucideIcon,
-  Github,
+  Disc3,
 } from "lucide-react"
 
 export type Icon = LucideIcon
 
 export const Icons = {
+  disc: Disc3,
   sun: SunMedium,
   discord: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
@@ -56,5 +58,5 @@ export const Icons = {
       />
     </svg>
   ),
-  github: Github
+  github: Github,
 }

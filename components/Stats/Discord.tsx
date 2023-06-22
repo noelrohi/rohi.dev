@@ -4,7 +4,7 @@ import { lanyard } from "@/lib/api"
 import { capitalize, cn } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
 
-import { Icons } from "../icons"
+import { Icons } from "@/components/icons"
 
 export async function DiscordCard() {
   const { discord_user: user, discord_status: status } = await lanyard()

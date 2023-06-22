@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { me } from "@/config/site"
 import { recentlyRead, recentlyWatched } from "@/lib/api"
-import { cn, getRelativeTime } from "@/lib/utils"
+import { cn, relatime } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const MediaCard = ({
@@ -19,7 +19,7 @@ const MediaCard = ({
   number: number
   link: string
   mediaType: "Chapter" | "Episode"
-  action: "Read" | "Watched",
+  action: "Read" | "Watched"
   title: string
   updated_at: string
 }) => (
@@ -39,7 +39,7 @@ const MediaCard = ({
             <div className="text-sm ">
               {`${mediaType} ${number}`}
               <div className="opacity-50">
-                {action} {getRelativeTime(updated_at)}
+                {action} {relatime.date(updated_at)}
               </div>
             </div>
           </CardContent>

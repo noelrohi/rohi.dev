@@ -11,7 +11,9 @@ export const me = {
 export const siteConfig = {
   name: "Rohi",
   url: "https://rohi.dev",
-  description: `${parseInt(getAge())} y/o Software engineer based in Philippines`,
+  description: `${parseInt(
+    getAge()
+  )} y/o Software engineer based in Philippines`,
   mainNav: [
     {
       title: "Home",
@@ -36,6 +38,6 @@ export const siteConfig = {
     twitter: "https://twitter.com/gneiru",
     linkedin: "https://linkedin.com/in/gneiru",
     calcom: "https://calcom.com/gneiru",
-    github: "https://github.com/gneiru"
+    github: "https://github.com/gneiru",
   },
 }

@@ -3,12 +3,12 @@ import { Metadata } from "next"
 
 import { getAge } from "@/lib/utils"
 import Heading from "@/components/Heading"
+import { SkeletonCard } from "@/components/Stats"
 import AgeCard from "@/components/Stats/Age"
 import { AnimeCard, MangaCard } from "@/components/Stats/Animanga"
 import { CodingCard } from "@/components/Stats/Coding"
 import { DiscordCard } from "@/components/Stats/Discord"
-import { SpotifyPlayCount } from "@/components/Stats/PlayCount"
-import { SkeletonCard } from "@/components/Stats"
+import { SpotifyPlayCount } from "@/components/Stats/Spotify"
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -27,7 +27,7 @@ export default function DashboardPage() {
         </p>
       </div>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
-        <Suspense fallback={<SkeletonCard count={6}/>}>
+        <Suspense fallback={<SkeletonCard count={6} />}>
           <Stats />
         </Suspense>
       </div>
