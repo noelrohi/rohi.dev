@@ -20,7 +20,7 @@ export default function IndexPage() {
           className="hidden aspect-auto h-auto w-auto object-cover transition-all hover:scale-105 md:block"
           unoptimized
         />
-        <div className="md:col-span-2">
+        <div className="animate-fade-up md:col-span-2" style={{ animationDelay: "1.20s", animationFillMode: "backwards" }}>
           <div>
             <div className="text-3xl leading-none sm:text-4xl sm:leading-tight">
               Hi there,
