@@ -2,17 +2,17 @@ import { ReactNode } from "react"
 import Link from "next/link"
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
-import { Skeleton } from "../ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export function ItemCard({
   link,
   title,
-  value,
+  children,
   newtab,
 }: {
   link: string
   title: string
-  value: ReactNode
+  children: ReactNode
   newtab?: boolean
 }) {
   return (
@@ -25,7 +25,7 @@ export function ItemCard({
         <CardHeader>
           <CardTitle>{title}</CardTitle>
         </CardHeader>
-        <CardContent>{value}</CardContent>
+        <CardContent>{children}</CardContent>
       </Card>
     </Link>
   )
