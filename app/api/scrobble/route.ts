@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server"
-
+import { headers } from 'next/headers'
 import { spotify } from "@/lib/api"
-import { myEnv } from "@/lib/utils"
+import { me } from "@/config/site"
 
 export const runtime = "edge"
 
-export async function GET(request: Request) {
-  // const requestHeaders = new Headers(request.headers)
-  // const auth = requestHeaders.get("Authorization")
-  // if (auth !== myEnv.LAST_FM_API_KEY) return new Response("Unauthorized", { status: 401 })
+export async function GET() {
+  const headersList = headers()
+  const host = headersList.get('host')
+  if(host !== 'localhost:3000' || me.host) return new Response("Unauthorized", { status: 401 })
   const tracks = await spotify.recentTracks()
   const plays = await spotify.totalPlays()
   return NextResponse.json({ tracks, plays })

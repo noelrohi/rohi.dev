@@ -6,6 +6,7 @@ export const me = {
   tag: "gneiru",
   name: "Noel Rohi Garcia",
   discordID: "666483486735073312",
+  host: "rohi.dev"
 }
 
 export const siteConfig = {
