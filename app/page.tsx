@@ -17,8 +17,9 @@ export default function IndexPage() {
           alt={siteConfig.name}
           width={640}
           height={400}
-          className="hidden aspect-auto h-auto w-auto object-cover transition-all hover:scale-105 md:block"
+          className="hidden aspect-auto h-auto w-auto animate-fade-up object-cover transition-all hover:scale-105 md:block"
           unoptimized
+          style={{ animationDelay: "0.20s", animationFillMode: "backwards" }}
         />
         <div className=" md:col-span-2" >
           <div>
