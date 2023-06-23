@@ -20,19 +20,19 @@ export default function IndexPage() {
           className="hidden aspect-auto h-auto w-auto object-cover transition-all hover:scale-105 md:block"
           unoptimized
         />
-        <div className="animate-fade-up md:col-span-2" style={{ animationDelay: "1.20s", animationFillMode: "backwards" }}>
+        <div className=" md:col-span-2" >
           <div>
-            <div className="text-3xl leading-none sm:text-4xl sm:leading-tight">
+            <div className="animate-fade-up text-3xl leading-none sm:text-4xl sm:leading-tight" style={{ animationDelay: "0.20s", animationFillMode: "backwards" }}>
               Hi there,
             </div>
-            <h1 className="text-3xl font-extrabold leading-none sm:text-4xl sm:leading-tight">
+            <h1 className="animate-fade-up text-3xl font-extrabold leading-none sm:text-4xl sm:leading-tight" style={{ animationDelay: "0.30s", animationFillMode: "backwards" }}>
               I&rsquo;m{" "}
               <span className="animate-heading bg-gradient-to-r from-red-500 to-amber-400 bg-[length:200%] bg-clip-text text-transparent">
                 {me.name}
               </span>
             </h1>
           </div>
-          <Balancer>
+          <Balancer className="animate-fade-up" style={{ animationDelay: "0.40s", animationFillMode: "backwards" }}>
             <div className="pt-2 text-xs opacity-90 dark:opacity-80 md:text-sm">
               I&rsquo;m a Software Engineer based in Philippines, building
               full-stack web applications with React, Node.js, TypeScript, and
