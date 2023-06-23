@@ -1,15 +1,15 @@
-import { NextResponse } from "next/server"
-import { headers } from 'next/headers'
+import { NextRequest, NextResponse } from "next/server"
 import { spotify } from "@/lib/api"
-import { me } from "@/config/site"
+import { revalidateTag } from "next/cache"
+import { myEnv } from "@/lib/utils"
 
 export const runtime = "edge"
 
-export async function GET() {
-  const headersList = headers()
-  const host = headersList.get('host')
-  if(host !== 'localhost:3000' || me.host) return new Response("Unauthorized", { status: 401 })
+export async function GET(req: NextRequest) {
+  const host = req.headers.get('host')
+  if(host !== myEnv.NEXT_PUBLIC_APP_URL.split('//')[1]) return new Response("Unauthorized", { status: 401 })
   const tracks = await spotify.recentTracks()
   const plays = await spotify.totalPlays()
+  revalidateTag('mal')
   return NextResponse.json({ tracks, plays })
 }
