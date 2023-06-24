@@ -1,10 +1,6 @@
+import { Star } from "lucide-react"
 import Link from "next/link"
-import { Circle, Star } from "lucide-react"
 
-import { me, siteConfig } from "@/config/site"
-import { pinnedRepos } from "@/lib/api"
-import { PinnedRepo } from "@/lib/types"
-import { cn } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -13,33 +9,37 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { me, siteConfig } from "@/config/site"
+import { pinnedRepos } from "@/lib/api"
+import { PinnedRepo } from "@/lib/types"
 
 import Heading from "./Heading"
 import { Icons } from "./icons"
 import { Badge } from "./ui/badge"
 
 export const Projects = async () => {
-  const { data: datas } = await pinnedRepos(me.tag)
+  const { data } = await pinnedRepos(me.tag)
 
   return (
-    <section>
-      <Heading>
-        <Link href={siteConfig.links.github}>Projects</Link>
-      </Heading>
+    <>
+      <section>
+        <Heading>
+          <Link href={siteConfig.links.github}>Projects</Link>
+        </Heading>
 
-      <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 ">
-        {/* {JSON.stringify(datas)} */}
-        {datas.map((data, idx) => (
-          <ProjectCard key={idx} {...data} />
-        ))}
-        <Link
-          href={`https://github.com/${me.tag}?tab=repositories`}
-          className="underline"
-        >
-          See more ...
-        </Link>
-      </div>
-    </section>
+        <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
+          {data.map((d, idx) => (
+            <ProjectCard key={idx} {...d} />
+          ))}
+        </div>
+      </section>
+      <Link
+        href={`https://github.com/${me.tag}?tab=repositories`}
+        className="mt-1 underline"
+      >
+        See more ...
+      </Link>
+    </>
   )
 }
 
@@ -74,14 +74,14 @@ function ProjectCard({
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="min-h-[80px]">
         {topics.map((topic, idx) => (
           <Badge variant={"secondary"} key={idx}>
             {topic}
           </Badge>
         ))}
       </CardContent>
-      <CardFooter className="flex justify-between text-sm text-muted-foreground">
+      <CardFooter className="flex justify-between  text-sm text-muted-foreground">
         <div className="flex items-center">
           <span
             className="mr-2 h-4 w-4 rounded-full"
