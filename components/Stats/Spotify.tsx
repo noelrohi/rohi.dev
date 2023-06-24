@@ -34,10 +34,12 @@ export function SpotifyPlayCount() {
             <Listening song={song} artist={artist} />
           ) : (
             <>
-              <span className="text-muted-foreground ">
-                Listened to {song} by {artist} on{" "}
-                {relatime.unix(tracks[0].date.uts, true)}
-              </span>
+              <p>
+                Listened to {song} by {artist}{" "}
+                <span className="text-muted-foreground">
+                  {relatime.unix(tracks[0].date.uts)}
+                </span>
+              </p>
             </>
           )}
         </div>
