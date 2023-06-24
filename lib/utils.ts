@@ -4,6 +4,9 @@ import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import updateLocale from "dayjs/plugin/updateLocale"
 import { twMerge } from "tailwind-merge"
+import { z } from "zod"
+
+import { emailBodySchema } from "./schema"
 
 dayjs.extend(relativeTime)
 dayjs.extend(updateLocale)
@@ -32,6 +35,8 @@ export function cn(...inputs: ClassValue[]) {
 export const fetcher = (url: URL) => fetch(url).then((res) => res.json())
 export const fetcherWithHeaders = (url: URL, token: string) =>
   fetch(url, { headers: { Authorization: token } }).then((res) => res.json())
+export const emailFetcher = (url: URL, body: z.infer<typeof emailBodySchema>) =>
+  fetch(url, { body: JSON.stringify(body) }).then((res) => res.json())
 
 export const capitalize = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1)

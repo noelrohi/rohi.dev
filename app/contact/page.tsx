@@ -4,18 +4,19 @@ import Link from "next/link"
 import { siteConfig as site } from "@/config/site"
 import { capitalize } from "@/lib/utils"
 import Heading from "@/components/Heading"
+import { MailForm } from "@/components/emailform"
 import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
-  title: "Links",
+  title: "Contact",
   description: "Contact information | Social Media Links",
 }
 
-export default function Links() {
+export default function ContactPage() {
   return (
     <section className="container pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <Heading>Links</Heading>
+        <Heading>Contact</Heading>
         <p className="max-w-[700px] text-muted-foreground">
           My contact info and social media links.
         </p>
@@ -29,8 +30,7 @@ export default function Links() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="flex justify-between">
-                {capitalize(name)}
+              <div className="flex gap-4">
                 {name === "email" ? (
                   <Icons.email />
                 ) : name === "linkedin" ? (
@@ -42,11 +42,23 @@ export default function Links() {
                 ) : (
                   <Icons.calcom />
                 )}
+                {capitalize(name)}
               </div>
             </Link>
           </li>
         ))}
       </ul>
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            Or send mail via form
+          </span>
+        </div>
+      </div>
+      <MailForm />
     </section>
   )
 }
