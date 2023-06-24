@@ -2,8 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import useSWR, { mutate } from "swr"
 import * as z from "zod"
 
+import { emailBodySchema } from "@/lib/schema"
+import { absoluteUrl, emailFetcher } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -15,11 +18,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { emailBodySchema } from "@/lib/schema"
-import { absoluteUrl, emailFetcher } from "@/lib/utils"
-import useSWR, { mutate } from "swr"
 
-const formSchema = emailBodySchema;
+const formSchema = emailBodySchema
 
 export function MailForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -31,11 +31,10 @@ export function MailForm() {
     },
   })
 
-
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+
     console.log(values)
   }
 
@@ -56,7 +55,6 @@ export function MailForm() {
               </FormDescription>
               <FormMessage />
             </FormItem>
-            
           )}
         />
         <FormField
@@ -68,12 +66,9 @@ export function MailForm() {
               <FormControl>
                 <Input placeholder="nrohi@example.com" {...field} />
               </FormControl>
-              <FormDescription>
-                Your Email Address.
-              </FormDescription>
+              <FormDescription>Your Email Address.</FormDescription>
               <FormMessage />
             </FormItem>
-            
           )}
         />
         <FormField
@@ -85,12 +80,9 @@ export function MailForm() {
               <FormControl>
                 <Input {...field} />
               </FormControl>
-              <FormDescription>
-                Message you want to send.
-              </FormDescription>
+              <FormDescription>Message you want to send.</FormDescription>
               <FormMessage />
             </FormItem>
-            
           )}
         />
         <Button type="submit">Submit</Button>

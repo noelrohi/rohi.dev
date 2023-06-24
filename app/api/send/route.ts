@@ -5,7 +5,7 @@ import { Resend } from "resend"
 
 import { emailBodySchema } from "@/lib/schema"
 import { myEnv, relatime } from "@/lib/utils"
-import EmailTemplate from "@/components/email"
+import { EmailTemplate } from "@/components/Email/template"
 
 const resend = new Resend(myEnv.RESEND_API_KEY)
 const ratelimit = new Ratelimit({

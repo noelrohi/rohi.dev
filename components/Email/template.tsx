@@ -76,5 +76,3 @@ export const EmailTemplate = ({
     </Html>
   )
 }
-
-export default EmailTemplate

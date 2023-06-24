@@ -3,8 +3,8 @@ import Link from "next/link"
 
 import { siteConfig as site } from "@/config/site"
 import { capitalize } from "@/lib/utils"
+import { MailForm } from "@/components/Email/form"
 import Heading from "@/components/Heading"
-import { MailForm } from "@/components/emailform"
 import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
