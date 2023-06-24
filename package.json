@@ -16,6 +16,7 @@
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.0.6",
     "@radix-ui/react-slot": "^1.0.2",
+    "@react-email/components": "^0.0.7",
     "@t3-oss/env-nextjs": "^0.4.0",
     "@upstash/ratelimit": "^0.4.3",
     "@vercel/analytics": "^1.0.1",
