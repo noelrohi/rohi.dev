@@ -18,25 +18,24 @@ export function SpotifyPlayCount() {
   return (
     <>
       <ItemCard link={plays.url} title="Spotify Plays">
-        <div className="flex justify-between gap-4">
+        <div className="flex items-center justify-evenly gap-4">
           <div>{plays.playcount}</div>
-          <div className="flex justify-end gap-1 text-sm">
-            <p className="flex items-center gap-2 text-right">
-              {tracks[0].name}
+          <p>
+            {tracks[0].name}
+            {" - "}
+            {tracks[0].artist["#text"]}
+          </p>
+
+          {!tracks[0]["@attr"]?.nowplaying ? (
+            <span className="text-muted-foreground ">
               {" - "}
-              {tracks[0].artist["#text"]}
-              {!tracks[0]["@attr"]?.nowplaying ? (
-                <span className="text-muted-foreground ">
-                  {" - "}
-                  {relatime.unix(tracks[0].date.uts)}
-                </span>
-              ) : (
-                <span>
-                  <Icons.disc className="h-4 w-4 animate-spin" />
-                </span>
-              )}
-            </p>
-          </div>
+              {relatime.unix(tracks[0].date.uts)}
+            </span>
+          ) : (
+            <span>
+              <Icons.disc className="h-4 w-4 animate-spin" />
+            </span>
+          )}
         </div>
       </ItemCard>
     </>

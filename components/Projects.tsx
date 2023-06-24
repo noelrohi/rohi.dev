@@ -55,7 +55,7 @@ function ProjectCard({
   languageColor,
 }: PinnedRepo) {
   return (
-    <Card className=" w-[350px]">
+    <Card>
       <CardHeader>
         <CardTitle>
           <Link

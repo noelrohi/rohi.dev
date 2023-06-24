@@ -22,7 +22,7 @@ export function ItemCard({
       target={newtab == false ? "" : "_blank"}
       rel="noopener noreferrer"
     >
-      <Card className="w-[350px] hover:border-2 hover:border-black dark:hover:border-white">
+      <Card className="hover:border-2 hover:border-black dark:hover:border-white">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
         </CardHeader>
@@ -35,7 +35,7 @@ export function ItemCard({
 export function SkeletonCard({ count }: { count?: number }) {
   const skeletons = Array.from({ length: count || 1 }).map((_, i) => (
     <Card
-      className="w-[350px] hover:border-2 hover:border-black dark:hover:border-white"
+      className="hover:border-2 hover:border-black dark:hover:border-white"
       key={i}
     >
       <CardHeader>

@@ -27,7 +27,7 @@ const MediaCard = ({
     <div>
       <Card
         className={cn(
-          "w-[350px] hover:border-2 hover:border-black dark:hover:border-white",
+          "hover:border-2 hover:border-black dark:hover:border-white",
           imageSrc && "flex justify-between"
         )}
       >
