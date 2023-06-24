@@ -4,13 +4,13 @@ import {
   ExternalLink,
   Github,
   Linkedin,
+  Loader2,
   LucideProps,
   Mail,
   Moon,
   SunMedium,
   Twitter,
   type Icon as LucideIcon,
-  Loader2,
 } from "lucide-react"
 
 export type Icon = LucideIcon

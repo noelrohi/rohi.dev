@@ -8,13 +8,13 @@ import {
   Preview,
   Section,
   Tailwind,
-  Text
+  Text,
 } from "@react-email/components"
 import { z } from "zod"
 
 import { me } from "@/config/site"
-import { emailBodySchema } from "@/lib/validations"
 import { myEnv } from "@/lib/utils"
+import { emailBodySchema } from "@/lib/validations"
 
 type EmailBodyProps = z.infer<typeof emailBodySchema>
 
