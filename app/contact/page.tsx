@@ -7,6 +7,8 @@ import { MailForm } from "@/components/Email/form"
 import Heading from "@/components/Heading"
 import { Icons } from "@/components/icons"
 
+export const runtime = "edge"
+
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact information | Social Media Links",

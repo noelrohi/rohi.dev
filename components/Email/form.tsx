@@ -40,11 +40,17 @@ export function MailForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSending(true)
     const data = await send(values)
-    console.log(data)
+    // console.log(data)
     setIsSending(false)
     form.reset()
+    if(data.message == "Email Sent!")
+      return toast({
+        title: data.message,
+      })
     toast({
-      title: data.message,
+      title: "Uh-oh! Something went wrong.",
+      variant: "destructive"
+    
     })
   }
 
