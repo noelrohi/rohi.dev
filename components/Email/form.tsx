@@ -102,7 +102,7 @@ export function MailForm() {
               sending && "block animate-spin"
             )}
           />
-          Submit
+          {`${sending ? "Sending" : 'Send Mail'}`}
         </Button>
       </form>
     </Form>

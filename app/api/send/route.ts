@@ -30,9 +30,9 @@ export async function POST(req: Request) {
       )
     const d = emailBodySchema.parse(await req.json())
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: `${d.messageBy} <n@rohi.dev>`,
       to: "n@rohi.dev",
-      subject: "Hello world",
+      subject: "Portfolio Mail",
       react: EmailTemplate({ ...d }),
     })
 
