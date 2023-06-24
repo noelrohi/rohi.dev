@@ -3,7 +3,7 @@ import { Ratelimit } from "@upstash/ratelimit"
 import { kv } from "@vercel/kv"
 import { Resend } from "resend"
 
-import { emailBodySchema } from "@/lib/schema"
+import { emailBodySchema } from "@/lib/validations"
 import { myEnv, relatime } from "@/lib/utils"
 import { EmailTemplate } from "@/components/Email/template"
 

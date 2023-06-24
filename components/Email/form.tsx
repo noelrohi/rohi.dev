@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import useSWR, { mutate } from "swr"
 import * as z from "zod"
 
-import { emailBodySchema } from "@/lib/schema"
+import { emailBodySchema } from "@/lib/validations"
 import { absoluteUrl, emailFetcher } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {

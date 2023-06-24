@@ -6,7 +6,7 @@ import updateLocale from "dayjs/plugin/updateLocale"
 import { twMerge } from "tailwind-merge"
 import { z } from "zod"
 
-import { emailBodySchema } from "./schema"
+import { emailBodySchema } from "./validations"
 
 dayjs.extend(relativeTime)
 dayjs.extend(updateLocale)

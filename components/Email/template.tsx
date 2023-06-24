@@ -15,7 +15,7 @@ import {
 import { z } from "zod"
 
 import { me, siteConfig } from "@/config/site"
-import { emailBodySchema } from "@/lib/schema"
+import { emailBodySchema } from "@/lib/validations"
 import { myEnv } from "@/lib/utils"
 
 type EmailBodyProps = z.infer<typeof emailBodySchema>
