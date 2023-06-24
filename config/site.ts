@@ -25,8 +25,8 @@ export const siteConfig = {
       href: "/dashboard",
     },
     {
-      title: "Links",
-      href: "/links",
+      title: "Contact",
+      href: "/contact",
     },
   ],
   links: {
