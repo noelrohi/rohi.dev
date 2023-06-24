@@ -1,3 +1,5 @@
+import { CreateEmailResponse } from "resend/build/src/emails/interfaces"
+
 interface node {
   id: number
   title: string
@@ -138,3 +140,13 @@ export interface NavItem {
   disabled?: boolean
   external?: boolean
 }
+
+export type EmailSentResponse =
+  | {
+      message: string
+      data: CreateEmailResponse
+      remaining: number
+    }
+  | {
+      error: unknown
+    }

@@ -1,12 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import useSWR, { mutate } from "swr"
 import * as z from "zod"
 
+import { send } from "@/lib/actions/form"
+import { cn } from "@/lib/utils"
 import { emailBodySchema } from "@/lib/validations"
-import { absoluteUrl, emailFetcher } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -18,10 +19,15 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useToast } from "@/components/ui/use-toast"
+
+import { Icons } from "../icons"
 
 const formSchema = emailBodySchema
 
 export function MailForm() {
+  const { toast } = useToast()
+  const [sending, setIsSending] = useState(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,11 +37,15 @@ export function MailForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSending(true)
+    const data = await send(values)
+    console.log(data)
+    setIsSending(false)
+    form.reset()
+    toast({
+      title: data.message,
+    })
   }
 
   return (
@@ -85,7 +95,15 @@ export function MailForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={sending}>
+          <Icons.loader
+            className={cn(
+              "mr-2 hidden h-4 w-4",
+              sending && "block animate-spin"
+            )}
+          />
+          Submit
+        </Button>
       </form>
     </Form>
   )

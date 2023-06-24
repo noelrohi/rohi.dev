@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import { Analytics } from "@vercel/analytics/react"
-
+import { Toaster } from "@/components/ui/toaster"
 import { me, siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -71,6 +71,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <TailwindIndicator />
             </ThemeProvider>
           </div>
+          <Toaster />
           <Analytics />
         </body>
       </html>

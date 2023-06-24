@@ -4,7 +4,7 @@ import "./env.mjs";
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: true,
+    serverActions: true
   },
   images: {
     remotePatterns: [

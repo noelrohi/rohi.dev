@@ -3,8 +3,8 @@ import { Ratelimit } from "@upstash/ratelimit"
 import { kv } from "@vercel/kv"
 import { Resend } from "resend"
 
-import { emailBodySchema } from "@/lib/validations"
 import { myEnv, relatime } from "@/lib/utils"
+import { emailBodySchema } from "@/lib/validations"
 import { EmailTemplate } from "@/components/Email/template"
 
 const resend = new Resend(myEnv.RESEND_API_KEY)
@@ -13,7 +13,7 @@ const ratelimit = new Ratelimit({
   limiter: Ratelimit.fixedWindow(2, `${60 * 60 * 24}s`),
 })
 
-export const runtime = "edge"
+// export const runtime = "edge"
 
 export async function POST(req: Request) {
   try {
@@ -22,9 +22,12 @@ export async function POST(req: Request) {
       ip ?? "anonymous"
     )
     if (!success)
-      return NextResponse.json({
-        message: "Ratelimited! Try again " + (await relatime.date(reset)),
-      })
+      return NextResponse.json(
+        {
+          message: "Ratelimited! Try again " + (await relatime.date(reset)),
+        },
+        { status: 429 }
+      )
     const d = emailBodySchema.parse(await req.json())
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",

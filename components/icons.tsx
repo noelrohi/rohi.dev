@@ -10,6 +10,7 @@ import {
   SunMedium,
   Twitter,
   type Icon as LucideIcon,
+  Loader2,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -59,4 +60,5 @@ export const Icons = {
     </svg>
   ),
   github: Github,
+  loader: Loader2,
 }
