@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { cn } from "@/lib/utils"
 import { NavItem } from "@/lib/types"
+import { cn } from "@/lib/utils"
 
 interface MainNavProps {
   items?: NavItem[]
