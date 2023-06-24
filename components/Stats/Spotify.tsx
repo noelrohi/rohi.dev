@@ -1,9 +1,10 @@
 "use client"
 
+import clsx from "clsx"
 import useSWR from "swr"
 
 import { LastFmUserResponse, Track } from "@/lib/types"
-import { fetcher, relatime } from "@/lib/utils"
+import { cn, fetcher, relatime } from "@/lib/utils"
 import { ItemCard, SkeletonCard } from "@/components/Stats"
 import { Icons } from "@/components/icons"
 
@@ -15,29 +16,46 @@ export function SpotifyPlayCount() {
   if (error) return <div>failed to load</div>
   if (!data) return <SkeletonCard />
   const { plays, tracks } = data
+  const song = tracks[0].name
+  const artist = tracks[0].artist["#text"]
+  const isListening = tracks[0]["@attr"]?.nowplaying
+
   return (
     <>
       <ItemCard link={plays.url} title="Spotify Plays">
-        <div className="flex items-center justify-evenly gap-4">
+        <div
+          className={cn(
+            "flex items-center gap-4",
+            isListening ? "justify-evenly" : "justify-between"
+          )}
+        >
           <div>{plays.playcount}</div>
-          <p>
-            {tracks[0].name}
-            {" - "}
-            {tracks[0].artist["#text"]}
-          </p>
-
-          {!tracks[0]["@attr"]?.nowplaying ? (
-            <span className="text-muted-foreground ">
-              {" - "}
-              {relatime.unix(tracks[0].date.uts)}
-            </span>
+          {isListening ? (
+            <Listening song={song} artist={artist} />
           ) : (
-            <span>
-              <Icons.disc className="h-4 w-4 animate-spin" />
-            </span>
+            <>
+              <span className="text-muted-foreground ">
+                Listened to {song} by {artist} on{" "}
+                {relatime.unix(tracks[0].date.uts, true)}
+              </span>
+            </>
           )}
         </div>
       </ItemCard>
+    </>
+  )
+}
+
+function Listening({ song, artist }: { song: string; artist: string }) {
+  const stringlength = song.length + artist.length
+  return (
+    <>
+      <p
+        className={cn("text-sm", stringlength > 20 && "text-xs")}
+      >{`${song} by ${artist}`}</p>
+      <span>
+        <Icons.disc className="h-6 w-6 animate-spin" />
+      </span>
     </>
   )
 }
