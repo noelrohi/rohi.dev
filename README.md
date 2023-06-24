@@ -1,22 +1,17 @@
-# next-template
+# rohi.dev
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+My personal website
+## Built using
 
-## Usage
+- [nextjs 13 ](https://nextjs.org/) with server actions
+- [shadcn-ui](https://ui.shadcn.com/)
+- [resend](https://resend.com)
+- [vercel](https://vercel.com/home) for deployement and [KV](https://vercel.com/storage/kv) db
+- [upstash](https://upstash.com/)
 
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
-
-## Features
-
-- Next.js 13 App Directory
-- Radix UI Primitives
-- Tailwind CSS
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Tailwind CSS class sorting, merging and linting.
-
-## License
-
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+## API used
+- Wakatime
+- Lastfm
+- MyAnmeList
+- Github API scraped using cheerio package
+- Discord API ft. Lanyard
