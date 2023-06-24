@@ -14,7 +14,7 @@ import { myEnv } from "./utils"
 
 export async function pinnedRepos(username: string) {
   const baseurl = `https://github.com/${username}`
-  const res = await fetch(baseurl)
+  const res = await fetch(baseurl, { next: { revalidate: 60 } })
   const $ = load(await res.text())
   const pinned = $(".js-pinned-items-reorder-list li")
     .toArray()
@@ -48,7 +48,7 @@ export async function pinnedRepos(username: string) {
     })
   const overallData = await Promise.all(
     pinned.map(async (repo) => {
-      const res = await fetch(repo.link)
+      const res = await fetch(repo.link, { next: { revalidate: 60 } })
       const $ = load(await res.text())
       const website = $("a[role='link']").first().text().trim()
         ? "https://" + $("a[role='link']").first().text().trim()
