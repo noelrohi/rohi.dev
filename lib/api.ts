@@ -73,7 +73,7 @@ export async function recentlyWatched() {
       headers: {
         "X-MAL-CLIENT-ID": myEnv.MAL_CLIENT_ID,
       },
-      next: { revalidate: 15, tags: ['mal'] },
+      next: { revalidate: 15, tags: ["mal"] },
     }
   )
   const data: RecentlyWatchedResponse = await res.json()
@@ -87,7 +87,7 @@ export async function recentlyRead() {
       headers: {
         "X-MAL-CLIENT-ID": myEnv.MAL_CLIENT_ID,
       },
-      next: { revalidate: 15, tags: ['mal'] },
+      next: { revalidate: 15, tags: ["mal"] },
     }
   )
   const data: RecentlyReadResponse = await res.json()
