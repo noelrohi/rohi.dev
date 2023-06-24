@@ -1,11 +1,11 @@
+import { NextResponse } from "next/server"
 import { Ratelimit } from "@upstash/ratelimit"
 import { kv } from "@vercel/kv"
-import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { z } from "zod"
 
-import { EmailTemplate } from "@/components/email"
 import { myEnv, relatime } from "@/lib/utils"
+import { EmailTemplate } from "@/components/email"
 
 const resend = new Resend(myEnv.RESEND_API_KEY)
 const ratelimit = new Ratelimit({
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     )
     if (!success)
       return NextResponse.json({
-        message: "Ratelimited! Try again  " + await relatime.date(reset),
+        message: "Ratelimited! Try again " + (await relatime.date(reset)),
       })
     const { firstName, message } = sendBodySchema.parse(await req.json())
     const data = await resend.emails.send({
