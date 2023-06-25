@@ -23,7 +23,7 @@ export default function ContactPage() {
           My contact info and social media links.
         </p>
       </div>
-      <ul className="py-4">
+      <ul className="space-y-2 py-4">
         {Object.entries(site.contacts).map(([name, link]) => (
           <li className="max-w-sm" key={name}>
             <Link
