@@ -28,9 +28,9 @@ export async function pinnedRepos(username: string) {
         .attr("style")
         ?.split(": ")[1]
       const forks =
-        parseInt($el.find('svg[aria-label="fork"]').parent().text().trim()) || 0
+        $el.find('svg.octicon-repo-forked').parent().text().trim() || 0
       const stars =
-        parseInt($el.find('svg[aria-label="star"]').parent().text().trim()) || 0
+        $el.find('svg.octicon-star').parent().text().trim() || 0
       const link = "https://github.com" + $el.find("a").attr("href")
       const owner = $el.find("span.owner").text()
         ? $el.find("span.owner").text()
