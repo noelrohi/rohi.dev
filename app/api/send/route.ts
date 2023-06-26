@@ -1,16 +1,16 @@
-import { NextResponse } from "next/server"
 import { Ratelimit } from "@upstash/ratelimit"
 import { kv } from "@vercel/kv"
+import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
-import { myEnv, relatime } from "@/lib/utils"
-import { emailBodySchema } from "@/lib/validations"
 import { EmailTemplate } from "@/components/Email/template"
+import { myEnv } from "@/lib/utils"
+import { emailBodySchema } from "@/lib/validations"
 
 const resend = new Resend(myEnv.RESEND_API_KEY)
 const ratelimit = new Ratelimit({
   redis: kv,
-  limiter: Ratelimit.fixedWindow(2, `${60 * 60 * 24}s`),
+  limiter: Ratelimit.fixedWindow(2, "1 d"),
 })
 
 // export const runtime = "edge"
@@ -18,16 +18,19 @@ const ratelimit = new Ratelimit({
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for")
-    const { success, remaining, reset } = await ratelimit.limit(
+    const { success, limit, remaining, reset } = await ratelimit.limit(
       ip ?? "anonymous"
     )
-    if (!success)
-      return NextResponse.json(
-        {
-          message: "Ratelimited! Try again " + (await relatime.date(reset)),
+    if (!success) {
+      return new Response("You have reached your request limit for the day.", {
+        status: 429,
+        headers: {
+          "X-RateLimit-Limit": limit.toString(),
+          "X-RateLimit-Remaining": remaining.toString(),
+          "X-RateLimit-Reset": reset.toString(),
         },
-        { status: 429 }
-      )
+      })
+    }
     const d = emailBodySchema.parse(await req.json())
     const data = await resend.emails.send({
       from: `${d.messageBy} <n@rohi.dev>`,
