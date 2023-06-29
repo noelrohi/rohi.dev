@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@hookform/resolvers':
     specifier: ^3.1.1
@@ -50,8 +54,8 @@ dependencies:
     specifier: ^1.11.8
     version: 1.11.8
   lucide-react:
-    specifier: 0.248.0
-    version: 0.248.0(react@18.2.0)
+    specifier: 0.257.0
+    version: 0.257.0(react@18.2.0)
   next:
     specifier: ^13.4.4
     version: 13.4.4(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)
@@ -3180,8 +3184,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-react@0.248.0(react@18.2.0):
-    resolution: {integrity: sha512-zMqVvwsvhLV6ooekfM8HEngR/lLGkIgOwZ4X140K+CDdAPwfp9LARnmJhMF32wlDganAIVEgN7saIv3pcCLUVw==}
+  /lucide-react@0.257.0(react@18.2.0):
+    resolution: {integrity: sha512-iP/RIvOhB8hI+AeocKXBleP9NopM1MgQbwB8hCfNdxYqJrQreJCsEvBtmXb3SS92kxwEGWp6ikJ0XQ6hqaYsdA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -4606,7 +4610,3 @@ packages:
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
