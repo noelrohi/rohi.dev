@@ -3,10 +3,10 @@
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import * as z from "zod"
 
-import { send } from "@/lib/actions/form"
-import { cn } from "@/lib/utils"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { emailBodySchema } from "@/lib/validations"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,14 +19,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useToast } from "@/components/ui/use-toast"
 
 import { Icons } from "../icons"
 
 const formSchema = emailBodySchema
 
 export function MailForm() {
-  const { toast } = useToast()
   const [sending, setIsSending] = useState(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,19 +37,25 @@ export function MailForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSending(true)
-    const data = await send(values)
-    // console.log(data)
-    setIsSending(false)
-    form.reset()
-    if(data.message == "Email Sent!")
-      return toast({
-        title: data.message,
+    try {
+      // console.log(data)
+      const res = await fetch(absoluteUrl("/api/send"), {
+        body: JSON.stringify(values),
+        method: "POST",
       })
-    toast({
-      title: "Uh-oh! Something went wrong.",
-      variant: "destructive"
-    
-    })
+      const statusCode = res.status
+      const data = await res.json()
+      form.reset()
+      if (statusCode === 200)
+        return toast.success(
+          `${data.message} You can still send ${data.remaining} emails today.`
+        )
+      throw new Error()
+    } catch (error) {
+      toast.error("Uh-oh! Something went wrong.")
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
