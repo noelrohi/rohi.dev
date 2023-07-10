@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
+    "@loglib/tracker": "^0.3.5",
     "@radix-ui/react-hover-card": "^1.0.6",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-separator": "^1.0.3",
@@ -22,7 +23,6 @@
     "@react-email/components": "^0.0.7",
     "@t3-oss/env-nextjs": "^0.6.0",
     "@upstash/ratelimit": "^0.4.3",
-    "@vercel/analytics": "^1.0.1",
     "@vercel/kv": "^0.2.2",
     "cheerio": "1.0.0-rc.12",
     "class-variance-authority": "^0.6.0",

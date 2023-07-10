@@ -1,5 +1,5 @@
 import "@/styles/globals.css"
-import { Analytics } from "@vercel/analytics/react"
+import Loglib from "@loglib/tracker/react";
 
 import { me, siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -73,7 +73,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </ThemeProvider>
           </div>
           <Toaster />
-          <Analytics />
+          <Loglib config={{
+            id: "www_rohi",
+            host: "https://www.loglib.io",
+          }} />
         </body>
       </html>
     </>

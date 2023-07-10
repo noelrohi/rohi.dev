@@ -1,13 +1,12 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@hookform/resolvers':
     specifier: ^3.1.1
     version: 3.1.1(react-hook-form@7.45.0)
+  '@loglib/tracker':
+    specifier: ^0.3.5
+    version: 0.3.5
   '@radix-ui/react-hover-card':
     specifier: ^1.0.6
     version: 1.0.6(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
@@ -29,9 +28,6 @@ dependencies:
   '@upstash/ratelimit':
     specifier: ^0.4.3
     version: 0.4.3
-  '@vercel/analytics':
-    specifier: ^1.0.1
-    version: 1.0.1
   '@vercel/kv':
     specifier: ^0.2.2
     version: 0.2.2
@@ -466,6 +462,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+
+  /@loglib/tracker@0.3.5:
+    resolution: {integrity: sha512-vlCO7URoJXzgBRDH1sls19VakNsh6cpDwHRrSeUKtlAY0r0VEWhQuyWEcEdoBSqgrwXiheqXh4G67q3jCczi+Q==}
+    dev: false
 
   /@next/env@13.4.8:
     resolution: {integrity: sha512-twuSf1klb3k9wXI7IZhbZGtFCWvGD4wXTY2rmvzIgVhXhs7ISThrbNyutBx3jWIL8Y/Hk9+woytFz5QsgtcRKQ==}
@@ -1258,10 +1258,6 @@ packages:
       isomorphic-fetch: 3.0.0
     transitivePeerDependencies:
       - encoding
-    dev: false
-
-  /@vercel/analytics@1.0.1:
-    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
     dev: false
 
   /@vercel/kv@0.2.2:
@@ -4544,3 +4540,7 @@ packages:
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
