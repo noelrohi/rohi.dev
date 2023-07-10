@@ -1,6 +1,9 @@
-import { Star } from "lucide-react"
 import Link from "next/link"
+import { Star } from "lucide-react"
 
+import { me, siteConfig } from "@/config/site"
+import { pinnedRepos } from "@/lib/api"
+import { PinnedRepo } from "@/lib/types"
 import {
   Card,
   CardContent,
@@ -9,9 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { me, siteConfig } from "@/config/site"
-import { pinnedRepos } from "@/lib/api"
-import { PinnedRepo } from "@/lib/types"
 
 import Heading from "./Heading"
 import { Icons } from "./icons"

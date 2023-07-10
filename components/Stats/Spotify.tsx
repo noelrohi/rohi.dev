@@ -5,8 +5,8 @@ import useSWR from "swr"
 
 import { LastFmUserResponse, Track } from "@/lib/types"
 import { cn, fetcher, relatime } from "@/lib/utils"
-import { ItemCard, SkeletonCard } from "@/components/Stats"
 import { Icons } from "@/components/icons"
+import { ItemCard, SkeletonCard } from "@/components/Stats"
 
 export function SpotifyPlayCount() {
   const { data, error } = useSWR<{

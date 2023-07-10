@@ -1,11 +1,11 @@
+import { NextResponse } from "next/server"
 import { Ratelimit } from "@upstash/ratelimit"
 import { kv } from "@vercel/kv"
-import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
-import { EmailTemplate } from "@/components/Email/template"
 import { myEnv } from "@/lib/utils"
 import { emailBodySchema } from "@/lib/validations"
+import { EmailTemplate } from "@/components/Email/template"
 
 const resend = new Resend(myEnv.RESEND_API_KEY)
 const ratelimit = new Ratelimit({
