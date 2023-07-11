@@ -69,8 +69,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0(react@18.2.0)
   resend:
-    specifier: ^0.16.0
-    version: 0.16.0
+    specifier: ^0.17.0
+    version: 0.17.0
   sharp:
     specifier: ^0.31.3
     version: 0.31.3
@@ -3862,8 +3862,8 @@ packages:
       functions-have-names: 1.2.3
     dev: true
 
-  /resend@0.16.0:
-    resolution: {integrity: sha512-6NnrtEapGD6FtnhRUrtDdfgQFH2av5cTkrnElUh6AjTzGrHXiMpD/GRwT46pqpA6i/AXSDXKV7Wh/hHQJLKFew==}
+  /resend@0.17.0:
+    resolution: {integrity: sha512-KYl4fC33f2AkJ134blSS1ZAbmpuYrzcKQVl72I1Fx67z+iXmOAOBs66OTKXJ0wmXaAy0ls8lSRo927/QXD1E8w==}
     dependencies:
       '@react-email/render': 0.0.7
       axios: 1.4.0
