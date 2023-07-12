@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "Stuffs related to Noel Rohi Garcia",
 }
 
-export const runtime = "edge"
+// export const runtime = "edge"
 
 export default function DashboardPage() {
   return (
