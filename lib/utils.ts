@@ -57,7 +57,7 @@ export function formatDate(input: string | number): string {
 }
 
 export const UTCToPHT = (input: string | number) => {
-  return dayjs(new Date(input)).add(8, 'hours').fromNow()
+  return process.env.NODE_ENV === "development" ? dayjs(new Date(input)).add(8, 'hours').fromNow() : dayjs(new Date(input)).fromNow()
 }
 
 export const relatime = {
