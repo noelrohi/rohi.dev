@@ -10,8 +10,9 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ClerkProvider } from "@clerk/nextjs"
+import { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -27,7 +28,12 @@ export const metadata = {
     "Lastfm",
     "MyAnimeList",
   ],
-  authors: [me.tag],
+  authors: [
+    {
+      name: me.tag,
+      url: siteConfig.links.github
+    }
+  ],
   creator: me.tag,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -47,16 +53,7 @@ export const metadata = {
     description: siteConfig.description,
     images: [`${siteConfig.url}/opengraph-image.png`],
     creator: `@${me.tag}`,
-  },
-  icons: {
-    icon: `${siteConfig.url}/icon`,
-    shortcut: `${siteConfig.url}/icon`,
-    apple: `${siteConfig.url}/apple-icon`,
-    other: {
-      rel: 'apple-touch-icon-precomponsed',
-      url: '`${siteConfig.url}/apple-icon`'
-    }
-  },
+  }
 }
 
 interface RootLayoutProps {
