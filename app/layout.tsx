@@ -45,9 +45,11 @@ export const metadata = {
     card: "summary_large_image",
     title: me.name,
     description: siteConfig.description,
+    images: [`${siteConfig.url}/og.png`],
+    creator: `@${me.tag}`,
   },
   icons: {
-    icon: "/me.png",
+    icon: "/favicon.ico",
   },
 }
 
