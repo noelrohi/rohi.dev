@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { usePathname, useSelectedLayoutSegment } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
 import { NavItem } from "@/lib/types"
@@ -16,7 +16,6 @@ interface MainNavProps {
 }
 
 export function MainNav({ items, children }: MainNavProps) {
-  const segment = useSelectedLayoutSegment()
   const path = usePathname()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 

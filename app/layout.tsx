@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ClerkProvider } from "@clerk/nextjs"
 
 export const metadata = {
   title: {
@@ -57,26 +58,28 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
-          <div className="mx-auto my-4 max-w-[100ch] px-4 sm:my-8 md:my-14">
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <div className="relative flex min-h-screen flex-col">
-                <SiteHeader />
-                <div className="flex-1">{children}</div>
-              </div>
-              <TailwindIndicator />
-            </ThemeProvider>
-          </div>
-          <Toaster />
-          <Analytics />
-        </body>
-      </html>
+      <ClerkProvider>
+        <html lang="en" suppressHydrationWarning>
+          <body
+            className={cn(
+              "min-h-screen bg-background font-sans antialiased",
+              fontSans.variable
+            )}
+          >
+            <div className="mx-auto mt-4 max-w-[100ch] px-4 sm:mt-8 md:mt-14">
+              <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                <div className="relative flex min-h-screen flex-col">
+                  <SiteHeader />
+                  <div className="flex-1">{children}</div>
+                </div>
+                <TailwindIndicator />
+              </ThemeProvider>
+            </div>
+            <Toaster />
+            <Analytics />
+          </body>
+        </html>
+      </ClerkProvider>
     </>
   )
 }

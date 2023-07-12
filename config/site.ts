@@ -28,6 +28,10 @@ export const siteConfig = {
       title: "Contact",
       href: "/contact",
     },
+    {
+      title: "Guestbook",
+      href: "/guestbook",
+    }
   ],
   links: {
     twitter: "https://twitter.com/gneiru",
