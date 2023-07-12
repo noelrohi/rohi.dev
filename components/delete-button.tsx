@@ -20,6 +20,6 @@ export default function DeleteButton({ id }: { id: Message["id"] }) {
             });
         })
     return (
-        <Button size={"icon"} variant={"destructive"} onClick={handleDelete} disabled={isPending}> {isPending ? <Icons.loader className='animate-spin' /> : <Icons.trash />}</Button >
+        <Button size={"icon"} className='mr-6' variant={"destructive"} onClick={handleDelete} disabled={isPending}> {isPending ? <Icons.loader className='animate-spin' /> : <Icons.trash className='w-4 h-4 ' />}</Button >
     )
 }

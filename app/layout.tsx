@@ -67,13 +67,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html lang="en" suppressHydrationWarning>
           <body
             className={cn(
-              "min-h-screen bg-background font-sans antialiased",
+              "bg-background font-sans antialiased",
               fontSans.variable
             )}
           >
             <div className="mx-auto mt-4 max-w-[100ch] px-4 sm:mt-8 md:mt-14">
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                <div className="relative flex min-h-screen flex-col">
+                <div className="relative flex flex-col">
                   <SiteHeader />
                   <div className="flex-1">{children}</div>
                 </div>
@@ -84,7 +84,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Analytics />
           </body>
         </html>
-      </ClerkProvider>
+      </ClerkProvider >
     </>
   )
 }
