@@ -13,3 +13,7 @@ export const emailBodySchema = z.object({
     .string()
     .min(30, { message: "Message must be atleast 30 characters." }),
 })
+
+export const guestMessageSchema = z.object({
+  message: z.string().min(2, { message: "Message must be atleast 2 characters." }),
+})

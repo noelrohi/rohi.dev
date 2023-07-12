@@ -56,6 +56,10 @@ export function formatDate(input: string | number): string {
   })
 }
 
+export const UTCToPHT = (input: string | number) => {
+  return dayjs(new Date(input)).add(8, 'hours').fromNow()
+}
+
 export const relatime = {
   date: async function (input: string | number) {
     return dayjs(new Date(input)).fromNow()
