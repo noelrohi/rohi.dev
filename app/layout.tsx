@@ -51,10 +51,10 @@ export const metadata = {
   icons: {
     icon: `${siteConfig.url}/icon`,
     shortcut: `${siteConfig.url}/icon`,
-    apple: `${siteConfig.url}/icon`,
+    apple: `${siteConfig.url}/apple-icon`,
     other: {
       rel: 'apple-touch-icon-precomponsed',
-      url: '`${siteConfig.url}/icon`'
+      url: '`${siteConfig.url}/apple-icon`'
     }
   },
 }
