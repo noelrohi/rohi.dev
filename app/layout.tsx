@@ -53,7 +53,11 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [`${siteConfig.url}/opengraph-image.png`],
     creator: `@${me.tag}`,
-  }
+  },
+  icons: {
+    icon: `${siteConfig.url}/icon`,
+    shortcut: `${siteConfig.url}/icon`,
+  },
 }
 
 interface RootLayoutProps {

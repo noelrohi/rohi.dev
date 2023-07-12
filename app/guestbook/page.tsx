@@ -27,15 +27,12 @@ export default async function Guestbook() {
     }))
 
     return (
-        <section className="container pt-6 md:pt-10 space-y-4">
+        <section className="container pt-4 space-y-4">
             <div className="flex max-w-[980px] flex-col items-start gap-2">
                 <Heading>Guestbook</Heading>
-                <p className="max-w-[700px] text-muted-foreground">
-                    Say something nice to me
-                </p>
             </div>
             <GuestForm />
-            <div className="h-[40vh] overflow-y-scroll">
+            <div className="h-[50vh] lg:overflow-y-auto">
                 {messagesWithUserObject.map((msg) => (
                     <div key={msg.id} className="flex gap-2 py-4 grow">
                         <UserAvatar src={msg.src} name={msg.name} />

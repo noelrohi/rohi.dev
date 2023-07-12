@@ -27,7 +27,7 @@ export default function GuestForm() {
         })
     return (
         <div className="space-y-2">
-            <Textarea name="message" onChange={(e) => setMessage(e.target.value)} value={message} />
+            <Textarea name="message" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Say something nice to me" />
             <SignedIn>
                 <div className="space-x-4">
                     <Button disabled={isPending} onClick={handlePost}>{isPending && <Icons.loader className="animate-spin h-4 w-4" />} Post message</Button>
