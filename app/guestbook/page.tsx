@@ -1,8 +1,6 @@
 import Heading from "@/components/Heading";
 import DeleteButton from "@/components/delete-button";
 import GuestForm from "@/components/guest-form";
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
 import { db } from "@/drizzle";
 import { messages } from "@/drizzle/schema/message";
@@ -10,10 +8,11 @@ import { UTCToPHT } from "@/lib/utils";
 import { clerkClient, currentUser } from "@clerk/nextjs";
 import { desc } from "drizzle-orm";
 
+// Disable once Edge function size errors
 export const runtime = "edge"
 
 export default async function Guestbook() {
-    const msgs = (await db.select().from(messages).orderBy(desc(messages.createdAt)));
+    const msgs = (await db.select().from(messages).orderBy(desc(messages.createdAt)).limit(100));
     const cuser = await currentUser()
     const messagesWithUserObject = await Promise.all(msgs.map(async (msg) => {
         const user = await clerkClient.users.getUser(msg.userId);
