@@ -7,8 +7,13 @@ import { messages } from "@/drizzle/schema/message";
 import { UTCToPHT } from "@/lib/utils";
 import { clerkClient, currentUser } from "@clerk/nextjs";
 import { desc } from "drizzle-orm";
+import { Metadata } from "next";
 
 // Disable once Edge function size errors
+export const metadata: Metadata = {
+    title: "Guestbook",
+    description: "Say something nice",
+}
 // export const runtime = "edge"
 
 export default async function Guestbook() {
