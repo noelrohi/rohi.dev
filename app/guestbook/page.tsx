@@ -9,7 +9,7 @@ import { clerkClient, currentUser } from "@clerk/nextjs";
 import { desc } from "drizzle-orm";
 
 // Disable once Edge function size errors
-export const runtime = "edge"
+// export const runtime = "edge"
 
 export default async function Guestbook() {
     const msgs = (await db.select().from(messages).orderBy(desc(messages.createdAt)).limit(100));
