@@ -1,24 +1,19 @@
 import { NextResponse } from "next/server"
-import { Ratelimit } from "@upstash/ratelimit"
-import { kv } from "@vercel/kv"
 import { Resend } from "resend"
 
+import { EmailTemplate } from "@/components/Email/template"
+import { ratelimiter } from "@/lib/ratelimit"
 import { myEnv } from "@/lib/utils"
 import { emailBodySchema } from "@/lib/validations"
-import { EmailTemplate } from "@/components/Email/template"
 
 const resend = new Resend(myEnv.RESEND_API_KEY)
-const ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.fixedWindow(2, "1 d"),
-})
 
 // export const runtime = "edge"
 
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for")
-    const { success, limit, remaining, reset } = await ratelimit.limit(
+    const { success, limit, remaining, reset } = await ratelimiter(2, "1 d").limit(
       ip ?? "anonymous"
     )
     if (!success) {
