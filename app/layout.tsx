@@ -45,11 +45,17 @@ export const metadata = {
     card: "summary_large_image",
     title: me.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og.png`],
+    images: [`${siteConfig.url}/opengraph-image.png`],
     creator: `@${me.tag}`,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: `${siteConfig.url}/icon`,
+    shortcut: `${siteConfig.url}/icon`,
+    apple: `${siteConfig.url}/icon`,
+    other: {
+      rel: 'apple-touch-icon-precomponsed',
+      url: '`${siteConfig.url}/icon`'
+    }
   },
 }
 
