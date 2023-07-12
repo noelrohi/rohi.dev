@@ -1,17 +1,15 @@
 "use client"
 
-import { sendGuestMessage } from "@/app/_actions/guest"
+import { sendGuestMessage } from "@/app/_actions/message"
 import { SignedIn, SignedOut, useClerk } from "@clerk/nextjs"
-import { Suspense, useState, useTransition } from "react"
+import { useState, useTransition } from "react"
 import { toast } from "sonner"
-import { ZodError } from "zod"
-import { SignInButton } from "./auth/sign-in"
+import { Icons } from "./icons"
 import { Button } from "./ui/button"
 import { Textarea } from "./ui/textarea"
-import { Icons } from "./icons"
 
 export default function GuestForm() {
-    const { signOut } = useClerk()
+    const { signOut, openSignIn } = useClerk()
     const [message, setMessage] = useState("")
     const [isPending, startTransition] = useTransition()
 
@@ -30,20 +28,31 @@ export default function GuestForm() {
     return (
         <div className="space-y-2">
             <Textarea name="message" onChange={(e) => setMessage(e.target.value)} value={message} />
-            <Suspense fallback={"Loading"}>
-                <SignedIn>
-                    <div className="space-x-4">
-                        <Button disabled={isPending} onClick={handlePost}>{isPending && <Icons.loader className="animate-spin h-4 w-4" />} Post message</Button>
+            <SignedIn>
+                <div className="space-x-4">
+                    <Button disabled={isPending} onClick={handlePost}>{isPending && <Icons.loader className="animate-spin h-4 w-4" />} Post message</Button>
 
-                        <Button variant={"secondary"} onClick={() => signOut()}>
-                            Sign Out
-                        </Button>
-                    </div>
-                </SignedIn>
-            </Suspense>
+                    <Button variant={"secondary"} onClick={() => signOut()}>
+                        Sign Out
+                    </Button>
+                </div>
+            </SignedIn>
 
             <SignedOut>
-                <SignInButton />
+                <Button
+                    onClick={() =>
+                        openSignIn({
+                            redirectUrl: "/guestbook",
+                            appearance: {
+                                variables: {
+                                    colorPrimary: "#0C0A09",
+                                },
+                            },
+                        })
+                    }
+                >
+                    Sign In to Post
+                </Button>
             </SignedOut>
         </div>
     )

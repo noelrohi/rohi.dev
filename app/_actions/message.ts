@@ -5,6 +5,7 @@ import { messages } from "@/drizzle/schema/message";
 import { ratelimit } from "@/lib/ratelimit";
 import { guestMessageSchema } from "@/lib/validations";
 import { currentUser } from "@clerk/nextjs";
+import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { z } from "zod"
 
@@ -19,5 +20,10 @@ export const sendGuestMessage = async (input: z.infer<typeof guestMessageSchema>
     const { limit, success } = await ratelimit.twicePerMinute().limit(user.id)
     if(!success) throw new Error("You have sent a message in the past 30 seconds, please try again later.")
     await db.insert(messages).values(values);
-    revalidatePath("/");    
+    revalidatePath("/guestbook");    
 };
+
+export const deleteMessage = async (id: number) => {
+    await db.delete(messages).where(eq(messages.id, id))
+    revalidatePath("/guestbook");
+}
