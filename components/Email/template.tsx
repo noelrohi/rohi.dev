@@ -6,14 +6,12 @@ import {
   Html,
   Link,
   Preview,
-  Section,
   Tailwind,
-  Text,
+  Text
 } from "@react-email/components"
 import { z } from "zod"
 
 import { me } from "@/config/site"
-import { myEnv } from "@/lib/utils"
 import { emailBodySchema } from "@/lib/validations"
 
 type EmailBodyProps = z.infer<typeof emailBodySchema>
@@ -21,7 +19,7 @@ type EmailBodyProps = z.infer<typeof emailBodySchema>
 export const EmailTemplate = ({
   username = me.name,
 
-  userImage = `${myEnv.NEXT_PUBLIC_APP_URL}/me.png`,
+  // userImage = `${myEnv.NEXT_PUBLIC_APP_URL}/me.png`,
 
   messageBy,
 
@@ -38,15 +36,6 @@ export const EmailTemplate = ({
       <Tailwind>
         <Body className="m-auto bg-white font-sans">
           <Container className="mx-auto my-10 w-[465px] p-5">
-            <Section className="mt-8">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={userImage}
-                alt="Logo Example"
-                className="mx-auto my-0"
-              />
-            </Section>
-
             <Text className="text-sm">Hello {username},</Text>
 
             <Text className="text-sm">
