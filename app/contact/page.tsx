@@ -40,6 +40,7 @@ export default function ContactPage() {
                 key={name}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={capitalize(name)}
               >
                 <IconComponent />
               </Link>
