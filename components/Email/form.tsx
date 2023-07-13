@@ -1,26 +1,26 @@
 "use client"
 
-import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import * as z from "zod"
 
-import { absoluteUrl, cn } from "@/lib/utils"
-import { emailBodySchema } from "@/lib/validations"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { absoluteUrl, cn } from "@/lib/utils"
+import { emailBodySchema } from "@/lib/validations"
 
 import { Icons } from "../icons"
+import { Textarea } from "../ui/textarea"
 
 const formSchema = emailBodySchema
 
@@ -48,7 +48,7 @@ export function MailForm() {
       form.reset()
       if (statusCode === 200)
         return toast.success(
-          `${data.message} You can still send ${data.remaining} emails today.`
+          `${data.message} You can still send ${data.remaining} email(s) today.`
         )
       throw new Error()
     } catch (error) {
@@ -70,9 +70,6 @@ export function MailForm() {
               <FormControl>
                 <Input placeholder="Rohi" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -86,7 +83,6 @@ export function MailForm() {
               <FormControl>
                 <Input placeholder="nrohi@example.com" {...field} />
               </FormControl>
-              <FormDescription>Your Email Address.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -98,21 +94,15 @@ export function MailForm() {
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Textarea {...field} />
               </FormControl>
-              <FormDescription>Message you want to send.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button type="submit" disabled={sending}>
-          <Icons.loader
-            className={cn(
-              "mr-2 hidden h-4 w-4",
-              sending && "block animate-spin"
-            )}
-          />
-          {`${sending ? "Sending" : "Send Mail"}`}
+          {sending && <Icons.loader className={"mr-2 h-4 w-4 animate-spin"} />}
+          {sending ? "Sending" : "Send Mail"}
         </Button>
       </form>
     </Form>
