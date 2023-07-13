@@ -6,7 +6,7 @@ import Balancer from "react-wrap-balancer"
 import { me, siteConfig } from "@/config/site"
 import { Projects } from "@/components/Projects"
 
-// export const runtime = "edge"
+export const runtime = "edge"
 
 export default function IndexPage() {
   return (

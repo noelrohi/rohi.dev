@@ -16,8 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/env": ["./env.mjs"],
-      "@/db/*": ["./drizzle/*"]
+      "@/env": ["./env.mjs"]
     },
     "plugins": [
       {

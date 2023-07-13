@@ -13,7 +13,6 @@ import {
   Twitter,
   X,
   type Icon as LucideIcon,
-  Trash,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -58,5 +57,4 @@ export const Icons = {
   github: Github,
   loader: Loader2,
   close: X,
-  trash: Trash
 }
