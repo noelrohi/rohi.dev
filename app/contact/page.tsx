@@ -1,11 +1,17 @@
 import { Metadata } from "next"
 import Link from "next/link"
-
 import { siteConfig as site } from "@/config/site"
-import { capitalize } from "@/lib/utils"
 import { MailForm } from "@/components/Email/form"
 import Heading from "@/components/Heading"
 import { Icons } from "@/components/icons"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { capitalize } from "@/lib/utils"
+
 
 export const runtime = "edge"
 
@@ -23,33 +29,24 @@ export default function ContactPage() {
           My contact info and social media links.
         </p>
       </div>
-      <ul className="space-y-2 py-4">
-        {Object.entries(site.contacts).map(([name, link]) => (
-          <li className="max-w-sm" key={name}>
-            <Link
-              href={link}
-              key={name}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex gap-4">
-                {name === "email" ? (
-                  <Icons.email />
-                ) : name === "linkedin" ? (
-                  <Icons.linkedin />
-                ) : name === "twitter" ? (
-                  <Icons.twitter />
-                ) : name === "github" ? (
-                  <Icons.github />
-                ) : (
-                  <Icons.calcom />
-                )}
-                {capitalize(name)}
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="flex gap-4 py-4" >
+        {Object.entries(site.contacts).map(([name, link]) => {
+          // @ts-expect-error
+          const IconComponent = Icons[name]
+          return (
+            <IconTooltip key={name} content={capitalize(name)}>
+              <Link
+                href={link}
+                key={name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconComponent />
+              </Link>
+            </IconTooltip>)
+        }
+        )}
+      </div>
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t" />
@@ -61,6 +58,21 @@ export default function ContactPage() {
         </div>
       </div>
       <MailForm />
-    </section>
+    </section >
+  )
+}
+
+
+const IconTooltip = ({ content, children }: { content: string, children: React.ReactNode }) => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipContent>
+          <p>{content}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+
   )
 }

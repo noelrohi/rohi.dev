@@ -1,14 +1,14 @@
 "use client"
 
-import * as React from "react"
 import Link from "next/link"
-import { usePathname, useSelectedLayoutSegment } from "next/navigation"
+import { usePathname } from "next/navigation"
+import * as React from "react"
 
+import { Icons } from "@/components/icons"
+import { MobileNav } from "@/components/mobile-nav"
 import { siteConfig } from "@/config/site"
 import { NavItem } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
 
 interface MainNavProps {
   items?: NavItem[]
@@ -16,7 +16,6 @@ interface MainNavProps {
 }
 
 export function MainNav({ items, children }: MainNavProps) {
-  const segment = useSelectedLayoutSegment()
   const path = usePathname()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 
