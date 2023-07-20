@@ -46,7 +46,7 @@ export const metadata = {
     description: siteConfig.description,
   },
   icons: {
-    icon: "/me.png",
+    icon: "/favicon.ico",
   },
 }
 
