@@ -67,7 +67,7 @@ export async function pinnedRepos(username: string) {
 
 export async function recentlyWatched() {
   const res = await fetch(
-    "https://api.myanimelist.net/v2/users/gneiru/animelist?sort=list_updated_at&fields=list_status&limit=1",
+    "https://api.myanimelist.net/v2/users/gneiru/animelist?sort=list_updated_at&fields=list_status&limit=1&status=watching",
     {
       headers: {
         "X-MAL-CLIENT-ID": myEnv.MAL_CLIENT_ID,
@@ -81,7 +81,7 @@ export async function recentlyWatched() {
 
 export async function recentlyRead() {
   const res = await fetch(
-    "https://api.myanimelist.net/v2/users/gneiru/mangalist?sort=list_updated_at&fields=list_status&limit=1",
+    "https://api.myanimelist.net/v2/users/gneiru/mangalist?sort=list_updated_at&fields=list_status&limit=1&status=reading",
     {
       headers: {
         "X-MAL-CLIENT-ID": myEnv.MAL_CLIENT_ID,
