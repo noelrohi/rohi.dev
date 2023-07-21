@@ -44,10 +44,7 @@ export const metadata = {
     card: "summary_large_image",
     title: me.name,
     description: siteConfig.description,
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  }
 }
 
 interface RootLayoutProps {
