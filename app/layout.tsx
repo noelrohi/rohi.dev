@@ -9,8 +9,9 @@ import { Toaster } from "@/components/ui/toaster"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -26,7 +27,9 @@ export const metadata = {
     "Lastfm",
     "MyAnimeList",
   ],
-  authors: [me.tag],
+  authors: {
+    name: me.tag
+  },
   creator: me.tag,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -44,7 +47,8 @@ export const metadata = {
     card: "summary_large_image",
     title: me.name,
     description: siteConfig.description,
-  }
+  },
+
 }
 
 interface RootLayoutProps {
