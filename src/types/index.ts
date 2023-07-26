@@ -62,24 +62,35 @@ export interface RecentlyReadResponse {
   };
 }
 
-export interface PinnedRepo {
-  topics: string[];
-  website: string;
-  title: string;
-  description: string;
-  link: string;
-  language: string;
-  languageColor: string | undefined;
-  forks: number | string;
-  stars: number | string;
-  owner: string;
-}
+// export interface PinnedRepo {
+//   topics: string[];
+//   website: string;
+//   title: string;
+//   description: string;
+//   link: string;
+//   language: string;
+//   languageColor: string | undefined;
+//   forks: number | string;
+//   stars: number | string;
+//   owner: string;
+// }
 
-export interface PinnedReposResponse {
-  data: PinnedRepo[];
-  baseurl: string;
-  username: string;
-}
+export type Repo = {
+  stargazers_count: number;
+  name: string;
+  description: string;
+  html_url: string;
+  forks_count: number;
+  topics: string[];
+  homepage: string;
+  language: string;
+};
+
+// export interface PinnedReposResponse {
+//   data: PinnedRepo[];
+//   baseurl: string;
+//   username: string;
+// }
 
 export interface RepoDetails {
   website: string;

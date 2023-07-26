@@ -40,7 +40,7 @@ function Stats() {
   return (
     <>
       <DiscordCard />
-      <AgeCard age={getAge()} />
+      <AgeCard />
       <SpotifyPlayCount />
       <CodingCard />
       <AnimeCard />

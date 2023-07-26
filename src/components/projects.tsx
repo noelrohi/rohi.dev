@@ -1,8 +1,5 @@
 import Link from "next/link";
 
-import { me, siteConfig } from "@/config/site";
-import { pinnedRepos } from "@/lib/api";
-import { PinnedRepo } from "@/types";
 import {
   Card,
   CardContent,
@@ -11,13 +8,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { me, siteConfig } from "@/config/site";
+import { getGithubRepoData } from "@/lib/api";
+import { Repo } from "@/types";
 
+import { languageColor } from "@/config/gh";
+import Heading from "./heading";
 import { Icons } from "./icons";
 import { Badge } from "./ui/badge";
-import Heading from "./heading";
+import { getLanguageColor } from "@/lib/utils";
 
 export const Projects = async () => {
-  const { data } = await pinnedRepos(me.tag);
+  const data = await getGithubRepoData();
 
   return (
     <>
@@ -26,11 +28,13 @@ export const Projects = async () => {
           <Link href={siteConfig.links.github}>Projects</Link>
         </Heading>
 
-        <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
-          {data.map((d, idx) => (
-            <ProjectCard key={idx} {...d} />
-          ))}
-        </div>
+        {data && (
+          <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
+            {data.map((d, idx) => (
+              <ProjectCard key={idx} {...d} />
+            ))}
+          </div>
+        )}
       </section>
       <Link
         href={`https://github.com/${me.tag}?tab=repositories`}
@@ -44,15 +48,15 @@ export const Projects = async () => {
 
 function ProjectCard({
   description,
-  title,
+  name: title,
   language,
-  stars,
-  link,
-  website,
-  forks,
+  stargazers_count: stars,
+  html_url: link,
+  homepage: website,
+  forks_count: forks,
   topics,
-  languageColor,
-}: PinnedRepo) {
+}: // languageColor,
+Repo) {
   return (
     <Card>
       <CardHeader>
@@ -84,7 +88,7 @@ function ProjectCard({
         <div className="flex items-center">
           <span
             className="mr-2 h-4 w-4 rounded-full"
-            style={{ backgroundColor: languageColor }}
+            style={{ backgroundColor: getLanguageColor(language) }}
           ></span>
           {language}
         </div>
