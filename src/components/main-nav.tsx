@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import * as React from "react"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as React from "react";
 
-import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
-import { siteConfig } from "@/config/site"
-import { NavItem } from "@/lib/types"
-import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons";
+import { MobileNav } from "@/components/mobile-nav";
+import { siteConfig } from "@/config/site";
+import { NavItem } from "@/types";
+import { cn } from "@/lib/utils";
 
 interface MainNavProps {
-  items?: NavItem[]
-  children?: React.ReactNode
+  items?: NavItem[];
+  children?: React.ReactNode;
 }
 
 export function MainNav({ items, children }: MainNavProps) {
-  const path = usePathname()
-  const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
+  const path = usePathname();
+  const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -55,5 +55,5 @@ export function MainNav({ items, children }: MainNavProps) {
         <MobileNav items={items}>{children}</MobileNav>
       )}
     </div>
-  )
+  );
 }
