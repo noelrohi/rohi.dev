@@ -1,5 +1,4 @@
 import {
-  DiscIcon as Disc,
   SunIcon as Sun,
   MoonIcon as Moon,
   DiscordLogoIcon as Discord,
@@ -12,16 +11,36 @@ import {
   StarIcon as Star,
 } from "@radix-ui/react-icons";
 
+interface IconProps {
+  className?: string;
+}
+
 export const Icons = {
-  disc: Disc,
+  disc: (props: IconProps) => (
+    <>
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 256 256"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+      >
+        <path
+          fill="currentColor"
+          d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm39.2 96a39.77 39.77 0 0 0-5.84-14l34.23-34.24a87.54 87.54 0 0 1 20 48.28Zm-15.2 8a24 24 0 1 1-24-24a24 24 0 0 1 24 24Zm-24 88a88 88 0 1 1 56.28-155.6L150 94.64A40 40 0 1 0 167.2 136h48.43A88.11 88.11 0 0 1 128 216Z"
+        ></path>
+      </svg>
+    </>
+  ),
   sun: Sun,
   discord: Discord,
-  fork: () => (
+  fork: (props: IconProps) => (
     <svg
       width="1em"
       height="1em"
       viewBox="0 0 256 256"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fill="currentColor"
@@ -35,12 +54,13 @@ export const Icons = {
   email: Mail,
   calcom: Calendar,
   linkedin: LinkedIn,
-  logo: () => (
+  logo: (props: IconProps) => (
     <svg
       width="1em"
       height="1em"
       viewBox="0 0 48 48"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fill="currentColor"
@@ -51,29 +71,33 @@ export const Icons = {
     </svg>
   ),
   github: Github,
-  loader: () => (
+  loader: (props: IconProps) => (
     <svg
       width="1em"
       height="1em"
-      viewBox="0 0 24 24"
+      viewBox="0 0 48 48"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
-      <path
+      <g
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
-        d="M12 3a9 9 0 1 0 9 9"
-      ></path>
+        strokeWidth="4"
+      >
+        <path d="M4 24C4 35.0457 12.9543 44 24 44V44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4"></path>
+        <path d="M36 24C36 17.3726 30.6274 12 24 12C17.3726 12 12 17.3726 12 24C12 30.6274 17.3726 36 24 36V36"></path>
+      </g>
     </svg>
   ),
-  close: () => (
+  close: (props: IconProps) => (
     <svg
       width="1em"
       height="1em"
       viewBox="0 0 256 256"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fill="currentColor"

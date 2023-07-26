@@ -1,19 +1,19 @@
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 
-import { siteConfig } from "@/config/site"
-import { NavItem } from "@/lib/types"
-import { cn } from "@/lib/utils"
-import { useLockBody } from "@/hooks/use-lock-body"
-import { Icons } from "@/components/icons"
+import { siteConfig } from "@/config/site";
+import { NavItem } from "@/types";
+import { cn } from "@/lib/utils";
+import { useLockBody } from "@/hooks/use-lock-body";
+import { Icons } from "@/components/icons";
 
 interface MobileNavProps {
-  items: NavItem[]
-  children?: React.ReactNode
+  items: NavItem[];
+  children?: React.ReactNode;
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
-  useLockBody()
+  useLockBody();
 
   return (
     <div
@@ -43,5 +43,5 @@ export function MobileNav({ items, children }: MobileNavProps) {
         {children}
       </div>
     </div>
-  )
+  );
 }
