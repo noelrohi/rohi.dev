@@ -1,14 +1,13 @@
-import { Suspense } from "react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
-import { getAge } from "@/lib/utils";
 import Heading from "@/components/heading";
 import { SkeletonCard } from "@/components/stats";
-import { DiscordCard } from "@/components/stats/discord";
 import AgeCard from "@/components/stats/age";
-import { SpotifyPlayCount } from "@/components/stats/spotify";
-import { CodingCard } from "@/components/stats/coding";
 import { AnimeCard, MangaCard } from "@/components/stats/animanga";
+import { CodingCard } from "@/components/stats/coding";
+import { DiscordCard } from "@/components/stats/discord";
+import { SpotifyPlay } from "@/components/stats/spotify";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export const runtime = "edge";
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default function DashboardPage() {
   return (
@@ -41,7 +40,7 @@ function Stats() {
     <>
       <DiscordCard />
       <AgeCard />
-      <SpotifyPlayCount />
+      <SpotifyPlay />
       <CodingCard />
       <AnimeCard />
       <MangaCard />

@@ -3,7 +3,7 @@ import { ItemCard } from "@/components/stats";
 import { spotify } from "@/lib/api";
 import { cn, relatime } from "@/lib/utils";
 
-export async function SpotifyPlayCount() {
+export async function SpotifyPlay() {
   const tracks = await spotify.recentTracks();
   const plays = await spotify.totalPlays();
   const song = tracks[0].name;
