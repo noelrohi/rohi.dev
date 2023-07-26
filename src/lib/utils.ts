@@ -1,4 +1,5 @@
 import { languageColor } from "@/config/gh";
+import { env } from "@/env.mjs";
 import { clsx, type ClassValue } from "clsx";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -58,9 +59,9 @@ export const relatime = {
   },
 };
 
-// export function absoluteUrl(path: string) {
-//   return `${myEnv.NEXT_PUBLIC_APP_URL}${path}`;
-// }
+export function absoluteUrl(path: string) {
+  return `${env.NEXT_PUBLIC_APP_URL}${path}`;
+}
 
 export function getLanguageColor(lang: string) {
   // check if language is in languageColor keys, if so return the value of that key

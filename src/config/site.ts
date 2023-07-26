@@ -7,6 +7,7 @@ export const me = {
   name: "Noel Rohi Garcia",
   discordID: "666483486735073312",
   host: "rohi.dev",
+  email: "n@rohi.dev",
   job: {
     name: "Cargo Padala Express",
     link: "https://www.capex.com.ph/",
