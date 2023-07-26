@@ -10,14 +10,14 @@ export const me = {
   email: "n@rohi.dev",
   job: {
     name: "Cargo Padala Express",
-    link: "https://www.capex.com.ph/",
+    link: "httpscapex.com.ph/",
     color: "decoration-blue-500",
   },
 };
 
 export const siteConfig = {
   name: "ℝohi",
-  url: "https://www.rohi.dev",
+  url: "https://rohi.dev",
   description: `${parseInt(
     getAge()
   )} y/o Software engineer based in Philippines`,
