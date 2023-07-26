@@ -17,7 +17,7 @@ export const me = {
 
 export const siteConfig = {
   name: "Rohi",
-  url: "https://rohi.dev",
+  url: "https://www.rohi.dev",
   description: `${parseInt(
     getAge()
   )} y/o Software engineer based in Philippines`,
