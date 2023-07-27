@@ -10,7 +10,7 @@ export const me = {
   email: "n@rohi.dev",
   job: {
     name: "Cargo Padala Express",
-    link: "httpscapex.com.ph/",
+    link: "https://www.capex.com.ph/",
     color: "decoration-blue-500",
   },
 };
