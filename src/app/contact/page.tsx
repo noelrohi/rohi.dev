@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig as site } from "@/config/site";
+import { siteConfig as site, siteConfig } from "@/config/site";
 import { MailForm } from "@/components/email/form";
 import Heading from "@/components/heading";
 import { Icons } from "@/components/icons";
@@ -17,6 +17,9 @@ export const runtime = "edge";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact information | Social Media Links",
+  alternates: {
+    canonical: `${siteConfig.url}/contact`,
+  },
 };
 
 export default function ContactPage() {

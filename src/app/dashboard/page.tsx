@@ -8,10 +8,14 @@ import { AnimeCard, MangaCard } from "@/components/stats/animanga";
 import { CodingCard } from "@/components/stats/coding";
 import { DiscordCard } from "@/components/stats/discord";
 import { SpotifyPlay } from "@/components/stats/spotify";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Stuffs related to Noel Rohi Garcia",
+  alternates: {
+    canonical: `${siteConfig.url}/dashboard`,
+  },
 };
 
 export const runtime = "edge";
