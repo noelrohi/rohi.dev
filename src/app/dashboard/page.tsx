@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import {
-  SkeletonCard,
   AnimeCard,
   AgeCard,
   CodingCard,
@@ -11,6 +10,7 @@ import {
   SpotifyPlay,
 } from "./stats";
 import Heading from "@/components/heading";
+import { SkeletonCard } from "@/components/skeleton-card";
 
 export const metadata: Metadata = {
   title: "Dashboard",

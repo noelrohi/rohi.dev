@@ -1,15 +1,8 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
 
 import Heading from "@/components/heading";
-import { SkeletonCard } from "@/app/dashboard/stats";
-import AgeCard from "@/app/dashboard/stats/age";
-import { AnimeCard, MangaCard } from "@/app/dashboard/stats/animanga";
-import { CodingCard } from "@/app/dashboard/stats/coding";
-import { DiscordCard } from "@/app/dashboard/stats/discord";
-import { SpotifyPlay } from "@/app/dashboard/stats/spotify";
-import { queryBuilder } from "@/lib/planetscale";
 import { auth } from "@/lib/auth";
+import { queryBuilder } from "@/lib/planetscale";
 import { SignIn, SignOut } from "./buttons";
 import { GuestbookForm } from "./form";
 
