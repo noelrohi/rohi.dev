@@ -16,14 +16,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { absoluteUrl, cn } from "@/lib/utils";
-import { emailBodySchema } from "@/lib/validations";
+import { contact } from "@/lib/validations";
 
-import { Icons } from "../icons";
-import { Textarea } from "../ui/textarea";
+import { contactMail } from "@/app/_actions";
 import { me } from "@/config/site";
+import { Icons } from "../../components/icons";
+import { Textarea } from "../../components/ui/textarea";
 
-const formSchema = emailBodySchema;
+const formSchema = contact;
 
 export function MailForm() {
   const [sending, setIsSending] = useState(false);
@@ -39,17 +39,10 @@ export function MailForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSending(true);
     try {
-      const res = await fetch(absoluteUrl("/api/send"), {
-        body: JSON.stringify(values),
-        method: "POST",
-      });
-      const statusCode = res.status;
-      const data = await res.json();
-      // console.log(data);
+      const response = await contactMail(values);
       form.reset();
-      if (statusCode === 200)
-        return toast.success("Message sent successfully!");
-      throw new Error();
+      if (typeof response === "string") return toast.error(response);
+      return toast.success("Message sent successfully!");
     } catch (error) {
       toast.error("Uh-oh! Something went wrong.");
     } finally {
@@ -100,8 +93,12 @@ export function MailForm() {
           )}
         />
         <Button type="submit" disabled={sending}>
-          {sending && <Icons.loader className={"mr-2 h-4 w-4 animate-spin"} />}
-          {sending ? "Sending" : "Send Mail"}
+          {sending ? (
+            <Icons.loader className="mr-2 animate-spin" />
+          ) : (
+            <Icons.send className="mr-2" />
+          )}
+          {sending ? "Sending" : "Send"}
         </Button>
       </form>
     </Form>

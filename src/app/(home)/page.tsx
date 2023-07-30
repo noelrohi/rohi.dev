@@ -4,14 +4,14 @@ import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 import { me, siteConfig } from "@/config/site";
-import { Projects } from "@/components/projects";
+import { Projects } from "./projects";
 import { cn } from "@/lib/utils";
 
 export const runtime = "edge";
 
 export default function IndexPage() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <>
       <section className="grid grid-cols-1 items-center gap-4 md:grid-cols-3">
         <Image
           src="/me.png"
@@ -71,6 +71,6 @@ export default function IndexPage() {
       <Suspense fallback={<>Loading projects ...</>}>
         <Projects />
       </Suspense>
-    </section>
+    </>
   );
 }

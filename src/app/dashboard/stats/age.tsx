@@ -3,8 +3,9 @@
 import { useState } from "react";
 
 import { getAge } from "@/lib/utils";
-import { ItemCard, SkeletonCard } from "@/components/stats";
+import { ItemCard } from "@/app/dashboard/stats";
 import { useMounted } from "@/hooks/use-mounted";
+import { SkeletonCard } from "@/components/skeleton-card";
 
 export default function AgeCard() {
   const [age, setAge] = useState(getAge());

@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { ItemCard } from "@/components/stats";
+import { ItemCard } from "@/app/dashboard/stats";
 import { spotify } from "@/lib/api";
 import { cn, relatime } from "@/lib/utils";
 

@@ -5,7 +5,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { ItemCard } from "@/components/stats";
+import { ItemCard } from "@/app/dashboard/stats";
 
 interface Languages {
   name: string;

@@ -12,11 +12,10 @@ import { me, siteConfig } from "@/config/site";
 import { getGithubRepoData } from "@/lib/api";
 import { Repo } from "@/types";
 
-import { languageColor } from "@/config/gh";
-import Heading from "./heading";
-import { Icons } from "./icons";
-import { Badge } from "./ui/badge";
 import { getLanguageColor } from "@/lib/utils";
+import Heading from "../../components/heading";
+import { Icons } from "../../components/icons";
+import { Badge } from "../../components/ui/badge";
 
 export const Projects = async () => {
   const data = await getGithubRepoData();
@@ -55,8 +54,7 @@ function ProjectCard({
   homepage: website,
   forks_count: forks,
   topics,
-}: // languageColor,
-Repo) {
+}: Repo) {
   return (
     <Card>
       <CardHeader>

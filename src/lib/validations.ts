@@ -1,8 +1,6 @@
 import { z } from "zod";
 
-export const emailBodySchema = z.object({
-  username: z.string().optional(),
-  userImage: z.string().optional(),
+export const contact = z.object({
   messageBy: z
     .string()
     .min(2, { message: "Name must be atleast 2 characters." }),
@@ -12,4 +10,8 @@ export const emailBodySchema = z.object({
   message: z
     .string()
     .min(30, { message: "Message must be atleast 30 characters." }),
+});
+
+export const guestBook = z.object({
+  entry: z.string().min(1, { message: "Message must be atleast 1 character." }),
 });
