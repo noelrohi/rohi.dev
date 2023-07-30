@@ -1,6 +1,3 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { siteConfig as site, siteConfig } from "@/config/site";
 import { MailForm } from "@/app/links/form";
 import Heading from "@/components/heading";
 import { Icons } from "@/components/icons";
@@ -10,9 +7,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { siteConfig as site } from "@/config/site";
 import { capitalize } from "@/lib/utils";
+import { Metadata } from "next";
+import Link from "next/link";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Links",

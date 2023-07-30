@@ -6,10 +6,9 @@ import { queryBuilder } from "@/lib/planetscale";
 import { contact } from "@/lib/validations";
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
+import { headers } from "next/headers";
 import { type Session } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { headers } from "next/headers";
-import { Resend } from "resend";
 import {
   CreateEmailOptions,
   CreateEmailResponse,
@@ -76,6 +75,7 @@ export async function contactMail({
   emailAddress,
 }: z.infer<typeof contact>) {
   const ip = headers().get("x-forwarded-for");
+
   const { success } = await ratelimit.limit(ip ?? "anonymous");
   if (!success) {
     return "You have reached your request limit for the day.";
