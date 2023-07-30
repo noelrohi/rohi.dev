@@ -14,9 +14,15 @@ export function SignOut() {
 
 export function SignIn() {
   return (
-    <Button onClick={() => signIn("github")}>
-      <Icons.github className="mr-2 h-4 w-4" />
-      Sign in with Github
-    </Button>
+    <div className="flex space-x-2">
+      <Button onClick={() => signIn("github")}>
+        <Icons.github className="mr-2 h-4 w-4" />
+        Sign in with Github
+      </Button>
+      <Button onClick={() => signIn("google")}>
+        <Icons.google className="mr-2 h-4 w-4" />
+        Sign in with Google
+      </Button>
+    </div>
   );
 }

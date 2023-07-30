@@ -1,6 +1,7 @@
 import { env } from "@/env.mjs";
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 
 export const {
   handlers: { GET, POST },
@@ -9,8 +10,12 @@ export const {
 } = NextAuth({
   providers: [
     GitHub({
-      clientId: env.OAUTH_CLIENT_KEY as string,
-      clientSecret: env.OAUTH_CLIENT_SECRET as string,
+      clientId: env.GITHUB_CLIENT_ID as string,
+      clientSecret: env.GITHUB_CLIENT_SECRET as string,
+    }),
+    Google({
+      clientId: env.GOOGLE_CLIENT_ID as string,
+      clientSecret: env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
   pages: {
