@@ -17,9 +17,6 @@ export const runtime = "edge";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact information | Social Media Links",
-  alternates: {
-    canonical: `${siteConfig.url}/contact`,
-  },
 };
 
 export default function ContactPage() {

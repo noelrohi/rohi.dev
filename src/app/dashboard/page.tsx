@@ -13,9 +13,6 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Stuffs related to Noel Rohi Garcia",
-  alternates: {
-    canonical: `${siteConfig.url}/dashboard`,
-  },
 };
 
 export const runtime = "edge";
