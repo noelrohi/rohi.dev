@@ -31,8 +31,12 @@ export const siteConfig = {
       href: "/dashboard",
     },
     {
-      title: "Contact",
-      href: "/contact",
+      title: "Guestbook",
+      href: "/guestbook",
+    },
+    {
+      title: "Links",
+      href: "/links",
     },
   ],
   links: {
