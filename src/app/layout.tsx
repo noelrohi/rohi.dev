@@ -63,15 +63,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "bg-background font-sans antialiased",
             fontSans.variable
           )}
         >
-          <div className="mx-auto my-4 max-w-[100ch] sm:my-8 md:my-14">
+          <div className="mx-auto mt-4 max-w-[100ch] sm:mt-8 md:mt-14">
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <div className="relative flex min-h-screen flex-col">
+              <div className="relative flex flex-col">
                 <SiteHeader />
-                <div className="flex-1">{children}</div>
+                <div className="flex-1">
+                  <section className="container pb-8 pt-6 md:py-10">
+                    {children}
+                  </section>
+                </div>
               </div>
               <TailwindIndicator />
             </ThemeProvider>

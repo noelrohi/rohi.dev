@@ -1,9 +1,14 @@
-import { ReactNode } from "react"
-import Link from "next/link"
+import { ReactNode } from "react";
+import Link from "next/link";
 
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton";
 
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import AgeCard from "./age";
+import { AnimeCard, MangaCard } from "./animanga";
+import { DiscordCard } from "./discord";
+import { CodingCard } from "./coding";
+import { SpotifyPlay } from "./spotify";
 
 export function ItemCard({
   link,
@@ -11,10 +16,10 @@ export function ItemCard({
   children,
   newtab,
 }: {
-  link: string
-  title: string
-  children: ReactNode
-  newtab?: boolean
+  link: string;
+  title: string;
+  children: ReactNode;
+  newtab?: boolean;
 }) {
   return (
     <Link
@@ -29,9 +34,8 @@ export function ItemCard({
         <CardContent>{children}</CardContent>
       </Card>
     </Link>
-  )
+  );
 }
-
 export function SkeletonCard({ count }: { count?: number }) {
   const skeletons = Array.from({ length: count || 1 }).map((_, i) => (
     <Card
@@ -47,6 +51,8 @@ export function SkeletonCard({ count }: { count?: number }) {
         <Skeleton className="h-4 w-[250px]" />
       </CardContent>
     </Card>
-  ))
-  return <>{skeletons}</>
+  ));
+  return <>{skeletons}</>;
 }
+
+export { AgeCard, AnimeCard, MangaCard, DiscordCard, CodingCard, SpotifyPlay };

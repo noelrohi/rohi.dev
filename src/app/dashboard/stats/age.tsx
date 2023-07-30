@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { getAge } from "@/lib/utils";
-import { ItemCard, SkeletonCard } from "@/components/stats";
+import { ItemCard, SkeletonCard } from "@/app/dashboard/stats";
 import { useMounted } from "@/hooks/use-mounted";
 
 export default function AgeCard() {

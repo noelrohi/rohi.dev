@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig as site, siteConfig } from "@/config/site";
-import { MailForm } from "@/components/email/form";
+import { MailForm } from "@/app/links/form";
 import Heading from "@/components/heading";
 import { Icons } from "@/components/icons";
 import {
@@ -15,18 +15,16 @@ import { capitalize } from "@/lib/utils";
 export const runtime = "edge";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Contact information | Social Media Links",
+  title: "Links",
+  description: "Social Media Links",
 };
 
-export default function ContactPage() {
+export default function LinksPage() {
   return (
-    <section className="container pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <Heading>Contact</Heading>
-        <p className="max-w-[700px] text-muted-foreground">
-          My contact info and social media links.
-        </p>
+    <>
+      <div className="flex flex-col max-w-fit gap-2">
+        <Heading>Links</Heading>
+        <p className="text-muted-foreground">Contact and Social Media Links</p>
       </div>
       <div className="flex gap-4 py-4">
         {Object.entries(site.contacts).map(([name, link]) => {
@@ -53,12 +51,12 @@ export default function ContactPage() {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            Or send mail via form
+            Or contact via form
           </span>
         </div>
       </div>
       <MailForm />
-    </section>
+    </>
   );
 }
 
