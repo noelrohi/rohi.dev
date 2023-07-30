@@ -7,7 +7,7 @@ interface GuestbookTable {
   email: string;
   body: string;
   created_by: string;
-  updated_at?: string;
+  created_at?: string;
 }
 
 interface Database {

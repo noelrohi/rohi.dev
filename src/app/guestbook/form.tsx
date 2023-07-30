@@ -41,6 +41,7 @@ export function GuestbookForm() {
       toast.error("Uh-oh! Something went wrong.");
     } finally {
       setIsSending(false);
+      form.reset();
     }
   }
 

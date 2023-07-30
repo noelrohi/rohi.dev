@@ -16,8 +16,8 @@ import { GuestbookForm } from "./form";
 async function getGuestbook() {
   const data = await queryBuilder
     .selectFrom("guestbook")
-    .select(["id", "body", "created_by", "updated_at"])
-    .orderBy("updated_at", "desc")
+    .select(["id", "body", "created_by", "created_at"])
+    .orderBy("created_at", "desc")
     .limit(100)
     .execute();
 
@@ -70,6 +70,7 @@ export default async function GuestbookPage() {
         <SignIn />
       )}
       <div className="mt-5 flex flex-col space-y-1">
+        {!entries && <>Nothing, try sending one...</>}
         {entries?.map((entry) => (
           <div className="w-full break-words" key={entry.id}>
             <span className="text-muted-foreground mr-1">
