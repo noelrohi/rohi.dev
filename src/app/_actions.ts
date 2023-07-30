@@ -81,9 +81,9 @@ export async function contactMail({
     return "You have reached your request limit for the day.";
   }
   const response = await sendMail({
-    from: `${messageBy} <contact@rohi.dev>`,
+    from: "contact@rohi.dev",
     to: "n@rohi.dev",
-    subject: `Someone has contacted you!`,
+    subject: `${messageBy} has contacted you!`,
     html: `<p>Email: ${emailAddress}</p><p>Message: ${message}</p>`,
   });
   return response;
