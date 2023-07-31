@@ -49,8 +49,9 @@ export async function saveGuestbookEntry(entry: string) {
     limiter: Ratelimit.fixedWindow(2, "1 m"),
   });
   const { success, reset } = await ratelimit.limit(email);
+  const relativeTime = await relatime.date(reset);
   if (!success) {
-    return { ok: false, data: `Try again in ${relatime.date(reset)}` };
+    return { ok: false, data: `Try again in ${relativeTime}` };
   }
   await queryBuilder
     .insertInto("guestbook")
