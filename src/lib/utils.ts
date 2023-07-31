@@ -9,21 +9,7 @@ import { twMerge } from "tailwind-merge";
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
 dayjs.updateLocale("en", {
-  relativeTime: {
-    future: "in %s",
-    past: "%s ago",
-    s: "few seconds",
-    m: "1m",
-    mm: "%dm",
-    h: "1hr",
-    hh: "%dhr",
-    d: "1 day",
-    dd: "%d days",
-    M: "1mo",
-    MM: "%dmo",
-    y: "1y",
-    yy: "%dy",
-  },
+  relativeTime: { ...dayjs.Ls.en.relativeTime },
 });
 
 export function cn(...inputs: ClassValue[]) {
