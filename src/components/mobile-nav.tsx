@@ -6,6 +6,7 @@ import { NavItem } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLockBody } from "@/hooks/use-lock-body";
 import { Icons } from "@/components/icons";
+import { usePathname } from "next/navigation";
 
 interface MobileNavProps {
   items: NavItem[];
@@ -14,6 +15,7 @@ interface MobileNavProps {
 
 export function MobileNav({ items, children }: MobileNavProps) {
   useLockBody();
+  const path = usePathname();
 
   return (
     <div
@@ -32,8 +34,9 @@ export function MobileNav({ items, children }: MobileNavProps) {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",
-                item.disabled && "cursor-not-allowed opacity-60"
+                "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline text-muted-foreground",
+                item.disabled && "cursor-not-allowed opacity-60",
+                path === item.href && "text-foreground"
               )}
             >
               {item.title}

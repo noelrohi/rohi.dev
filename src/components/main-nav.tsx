@@ -34,7 +34,7 @@ export function MainNav({ items, children }: MainNavProps) {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "flex items-center text-sm font-medium text-muted-foreground",
+                "flex items-center text-sm font-medium text-muted-foreground hover:border-b hover:border-foreground",
                 item.disabled && "cursor-not-allowed opacity-80",
                 path === item.href &&
                   "border-b text-foreground border-foreground"
