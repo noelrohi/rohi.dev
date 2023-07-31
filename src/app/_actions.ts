@@ -49,9 +49,10 @@ export async function saveGuestbookEntry(entry: string) {
   });
   const { success, reset } = await ratelimit.limit(email);
   if (!success) {
+    const retryAfterSeconds = Math.ceil((reset - Date.now()) / 1000);
     return {
       ok: false,
-      data: `Try again in ${new Date(reset).toLocaleTimeString()}`,
+      data: `Try again in ${retryAfterSeconds} seconds!`,
     };
   }
   await queryBuilder
