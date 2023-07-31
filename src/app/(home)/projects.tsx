@@ -12,10 +12,11 @@ import { me, siteConfig } from "@/config/site";
 import { getGithubRepoData } from "@/lib/api";
 import { Repo } from "@/types";
 
-import { getLanguageColor } from "@/lib/utils";
+import { cn, getLanguageColor } from "@/lib/utils";
 import Heading from "../../components/heading";
 import { Icons } from "../../components/icons";
 import { Badge } from "../../components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 
 export const Projects = async () => {
   const data = await getGithubRepoData();
@@ -28,7 +29,7 @@ export const Projects = async () => {
         </Heading>
 
         {data && (
-          <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
+          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 ">
             {data.map((d, idx) => (
               <ProjectCard key={idx} {...d} />
             ))}
@@ -37,7 +38,7 @@ export const Projects = async () => {
       </section>
       <Link
         href={`https://github.com/${me.tag}?tab=repositories`}
-        className="mt-1 underline"
+        className={cn(buttonVariants({ variant: "ghost" }), "w-full mt-4")}
       >
         See more ...
       </Link>
