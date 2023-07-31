@@ -14,6 +14,7 @@ import {
   CreateEmailResponse,
 } from "resend/build/src/emails/interfaces";
 import { z } from "zod";
+import { relatime } from "@/lib/utils";
 
 async function sendMail(options: CreateEmailOptions) {
   const data = await fetch("https://api.resend.com/emails", {
@@ -49,7 +50,7 @@ export async function saveGuestbookEntry(entry: string) {
   });
   const { success, reset } = await ratelimit.limit(email);
   if (!success) {
-    return { ok: false, data: `Try again in ${new Date(reset).toUTCString()}` };
+    return { ok: false, data: `Try again in ${relatime.date(reset)}` };
   }
   await queryBuilder
     .insertInto("guestbook")
