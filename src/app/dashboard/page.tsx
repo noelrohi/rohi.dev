@@ -11,6 +11,7 @@ import {
 } from "./stats";
 import Heading from "@/components/heading";
 import { SkeletonCard } from "@/components/skeleton-card";
+import ReloadButton from "./reload";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -24,7 +25,10 @@ export default function DashboardPage() {
   return (
     <>
       <div className="flex flex-col max-w-fit gap-2">
-        <Heading>Dashboard</Heading>
+        <div className="flex space-x-4 items-center justify-center">
+          <Heading>Dashboard</Heading>
+          <ReloadButton />
+        </div>
         <p className="text-muted-foreground">Random stuffs </p>
       </div>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">

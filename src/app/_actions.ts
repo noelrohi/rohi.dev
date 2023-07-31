@@ -8,7 +8,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
 import { headers } from "next/headers";
 import { type Session } from "next-auth";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import {
   CreateEmailOptions,
   CreateEmailResponse,
@@ -87,4 +87,10 @@ export async function contactMail({
     html: `<p>Email: ${emailAddress}</p><p>Message: ${message}</p>`,
   });
   return response;
+}
+
+export async function revalidate(toRevalidate: string) {
+  toRevalidate.startsWith("/")
+    ? revalidatePath(toRevalidate)
+    : revalidateTag(toRevalidate);
 }
