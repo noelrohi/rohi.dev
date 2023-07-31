@@ -36,7 +36,9 @@ export function GuestbookForm() {
   async function onSubmit(values: Inputs) {
     setIsSending(true);
     try {
-      await saveGuestbookEntry(values.entry);
+      const response = await saveGuestbookEntry(values.entry);
+      if (!response.ok) return toast.error(response.data);
+      toast.success(response.data);
     } catch (error) {
       toast.error("Uh-oh! Something went wrong.");
     } finally {

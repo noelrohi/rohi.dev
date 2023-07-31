@@ -15,11 +15,6 @@ import {
 } from "resend/build/src/emails/interfaces";
 import { z } from "zod";
 
-const ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.fixedWindow(2, "1 d"),
-});
-
 async function sendMail(options: CreateEmailOptions) {
   const data = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -48,7 +43,14 @@ export async function saveGuestbookEntry(entry: string) {
   const email = session.user?.email as string;
   const created_by = session.user?.name as string;
   const body = entry.slice(0, 500);
-
+  const ratelimit = new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.fixedWindow(2, "1 m"),
+  });
+  const { success, reset } = await ratelimit.limit(email);
+  if (!success) {
+    return { ok: false, data: `Try again in ${new Date(reset).toUTCString()}` };
+  }
   await queryBuilder
     .insertInto("guestbook")
     .values({ email, body, created_by })
@@ -57,16 +59,16 @@ export async function saveGuestbookEntry(entry: string) {
   revalidatePath("/guestbook");
 
   if (process.env.NODE_ENV === "production") {
-    const response = await sendMail({
+    const res = await sendMail({
       from: "guestbook@rohi.dev",
       to: "n@rohi.dev",
       subject: "New Guestbook Entry",
       html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
     });
 
-    console.log("Email sent", response);
-    return response;
+    console.log("Email sent", res.id);
   }
+  return { ok: true, data: "Thank you for your message!" };
 }
 
 export async function contactMail({
@@ -75,7 +77,10 @@ export async function contactMail({
   emailAddress,
 }: z.infer<typeof contact>) {
   const ip = headers().get("x-forwarded-for");
-
+  const ratelimit = new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.fixedWindow(2, "1 d"),
+  });
   const { success } = await ratelimit.limit(ip ?? "anonymous");
   if (!success) {
     return "You have reached your request limit for the day.";
