@@ -6,15 +6,14 @@ import { queryBuilder } from "@/lib/planetscale";
 import { contact } from "@/lib/validations";
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
-import { headers } from "next/headers";
 import { type Session } from "next-auth";
 import { revalidatePath, revalidateTag } from "next/cache";
+import { headers } from "next/headers";
 import {
   CreateEmailOptions,
   CreateEmailResponse,
 } from "resend/build/src/emails/interfaces";
 import { z } from "zod";
-import { relatime } from "@/lib/utils";
 
 async function sendMail(options: CreateEmailOptions) {
   const data = await fetch("https://api.resend.com/emails", {
@@ -49,9 +48,11 @@ export async function saveGuestbookEntry(entry: string) {
     limiter: Ratelimit.fixedWindow(2, "1 m"),
   });
   const { success, reset } = await ratelimit.limit(email);
-  const relativeTime = await relatime.date(reset);
   if (!success) {
-    return { ok: false, data: `Try again in ${relativeTime}` };
+    return {
+      ok: false,
+      data: `Try again in ${new Date(reset).toLocaleTimeString()}`,
+    };
   }
   await queryBuilder
     .insertInto("guestbook")
