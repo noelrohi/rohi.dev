@@ -6,9 +6,9 @@ import { queryBuilder } from "@/lib/planetscale";
 import { contact } from "@/lib/validations";
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
-import { headers } from "next/headers";
 import { type Session } from "next-auth";
 import { revalidatePath, revalidateTag } from "next/cache";
+import { headers } from "next/headers";
 import {
   CreateEmailOptions,
   CreateEmailResponse,
@@ -49,7 +49,11 @@ export async function saveGuestbookEntry(entry: string) {
   });
   const { success, reset } = await ratelimit.limit(email);
   if (!success) {
-    return { ok: false, data: `Try again in ${new Date(reset).toUTCString()}` };
+    const retryAfterSeconds = Math.ceil((reset - Date.now()) / 1000);
+    return {
+      ok: false,
+      data: `Try again in ${retryAfterSeconds} seconds!`,
+    };
   }
   await queryBuilder
     .insertInto("guestbook")
