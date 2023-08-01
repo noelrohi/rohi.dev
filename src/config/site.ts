@@ -46,7 +46,7 @@ export const siteConfig = {
   },
   contacts: {
     email: "mailto:n@rohi.dev",
-    twitter: "https://twitter.com/gneiru",
+    twitter: "https://x.com/gneiru",
     linkedin: "https://linkedin.com/in/gneiru",
     calcom: "https://cal.com/gneiru",
     github: "https://github.com/gneiru",
