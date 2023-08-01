@@ -14,15 +14,19 @@ export function SignOut() {
 
 export function SignIn() {
   return (
-    <div className="flex space-x-2">
-      <Button onClick={() => signIn("github")}>
-        <Icons.github className="mr-2 h-4 w-4" />
-        Sign in with Github
-      </Button>
-      <Button onClick={() => signIn("google")}>
-        <Icons.google className="mr-2 h-4 w-4" />
-        Sign in with Google
-      </Button>
-    </div>
+    <>
+      <div className="text-sm">Sign in with: </div>
+      <div className="flex space-x-2">
+        <Button onClick={() => signIn("github")} size="icon">
+          <Icons.github className="w-6 h-6" />
+        </Button>
+        <Button onClick={() => signIn("discord")} size="icon">
+          <Icons.discord className="w-6 h-6" />
+        </Button>
+        <Button onClick={() => signIn("google")} size="icon">
+          <Icons.google className="w-6 h-6" />
+        </Button>
+      </div>
+    </>
   );
 }
