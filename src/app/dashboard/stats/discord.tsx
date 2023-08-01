@@ -21,7 +21,7 @@ export async function DiscordCard() {
               status === "offline" && "text-gray-500"
             )}
           >
-            <Icons.discord className="w-8 h-8" />
+            <Icons.discord className="w-6 h-6" />
             {status !== "dnd" ? capitalize(status) : "Do Not Disturb"}
           </div>
         </div>
