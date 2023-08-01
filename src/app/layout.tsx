@@ -17,9 +17,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: siteConfig.url,
-  },
   description: siteConfig.description,
   keywords: [
     "Next.js",
