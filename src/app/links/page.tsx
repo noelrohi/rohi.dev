@@ -28,8 +28,7 @@ export default function LinksPage() {
       </div>
       <div className="flex gap-4 py-4">
         {Object.entries(site.contacts).map(([name, link]) => {
-          // @ts-expect-error
-          const IconComponent = Icons[name];
+          const IconComponent = Icons[name as unknown as keyof typeof Icons];
           return (
             <IconTooltip key={name} content={capitalize(name)}>
               <Link

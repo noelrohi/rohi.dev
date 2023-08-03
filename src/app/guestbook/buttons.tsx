@@ -17,14 +17,29 @@ export function SignIn() {
     <>
       <div className="text-sm">Sign in with: </div>
       <div className="flex space-x-2">
-        <Button onClick={() => signIn("github")} size="icon">
-          <Icons.github className="w-6 h-6" />
+        <Button
+          onClick={() => signIn("github")}
+          aria-label="github"
+          className="inline-flex gap-2"
+        >
+          <Icons.github />
+          Github
         </Button>
-        <Button onClick={() => signIn("discord")} size="icon">
-          <Icons.discord className="w-6 h-6" />
+        <Button
+          onClick={() => signIn("discord")}
+          aria-label="discord"
+          className="inline-flex gap-2"
+        >
+          <Icons.discord />
+          Discord
         </Button>
-        <Button onClick={() => signIn("google")} size="icon">
-          <Icons.google className="w-6 h-6" />
+        <Button
+          onClick={() => signIn("google")}
+          aria-label="google"
+          className="inline-flex gap-2"
+        >
+          <Icons.google />
+          Google
         </Button>
       </div>
     </>
