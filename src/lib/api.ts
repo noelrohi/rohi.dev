@@ -4,13 +4,12 @@ import { me } from "@/config/site";
 import {
   LanyardResponse,
   LastFmUserResponse,
-  RecentlyReadResponse,
-  RecentlyWatchedResponse,
   Repo,
   Track,
   WakatimeResponse,
 } from "@/types";
 import { pinnedRepos } from "@/config/gh";
+import { Main } from "@/types/anilist";
 
 export async function getGithubRepoData() {
   try {
@@ -36,32 +35,48 @@ export async function getGithubRepoData() {
   }
 }
 
-export async function recentlyWatched() {
-  const res = await fetch(
-    "https://api.myanimelist.net/v2/users/gneiru/animelist?sort=list_updated_at&fields=list_status&limit=1&status=watching",
-    {
-      headers: {
-        "X-MAL-CLIENT-ID": env.MAL_CLIENT_ID,
-      },
-      next: { revalidate: 15, tags: ["mal"] },
-    }
-  );
-  const data: RecentlyWatchedResponse = await res.json();
-  return data.data[0];
+function getAnilistQuery(type: "MANGA" | "ANIME") {
+  return `query($username: String) {
+            MediaListCollection(userName: $username, forceSingleCompletedList: true, 
+              type: ${type}, status: CURRENT, sort: UPDATED_TIME_DESC) {
+              lists {
+                entries {
+                  updatedAt,
+                  id
+                  progress
+                  media {
+                    coverImage {
+                      extraLarge
+                    }
+                    title {
+                      userPreferred
+                    }
+                  }
+                }
+              }
+            }
+          }`;
 }
 
-export async function recentlyRead() {
-  const res = await fetch(
-    "https://api.myanimelist.net/v2/users/gneiru/mangalist?sort=list_updated_at&fields=list_status&limit=1&status=reading",
-    {
-      headers: {
-        "X-MAL-CLIENT-ID": env.MAL_CLIENT_ID,
-      },
-      next: { revalidate: 15, tags: ["mal"] },
-    }
-  );
-  const data: RecentlyReadResponse = await res.json();
-  return data.data[0];
+export async function recentActivity(type: "MANGA" | "ANIME") {
+  const variables = {
+    username: "nrohi",
+  };
+  const res = await fetch("https://graphql.anilist.co", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      query: getAnilistQuery(type),
+      variables,
+    }),
+    next: { revalidate: 15, tags: ["mal"] },
+  });
+  if (!res.ok) return null;
+  const { data }: Main = await res.json();
+  return data.MediaListCollection.lists[0].entries[0];
 }
 
 export async function lanyard() {

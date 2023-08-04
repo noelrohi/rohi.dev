@@ -50,5 +50,6 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/gneiru",
     calcom: "https://cal.com/gneiru",
     github: "https://github.com/gneiru",
+    anilist: "https://anilist.co/user/nrohi/",
   },
 };

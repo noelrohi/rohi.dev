@@ -1,93 +1,97 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
-import { me } from "@/config/site"
-import { recentlyRead, recentlyWatched } from "@/lib/api"
-import { cn, relatime } from "@/lib/utils"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn, fromNow } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { recentActivity } from "@/lib/api";
 
 const MediaCard = ({
   imageSrc,
   number,
   link,
-  mediaType,
-  action,
+  type,
   title,
   updated_at,
 }: {
-  imageSrc: string
-  number: number
-  link: string
-  mediaType: "Chapter" | "Episode"
-  action: "Read" | "Watched"
-  title: string
-  updated_at: string
-}) => (
-  <Link href={link} target="_blank" rel="noopener noreferrer">
-    <div>
-      <Card
-        className={cn(
-          "hover:border-2 hover:border-black dark:hover:border-white",
-          imageSrc && "flex justify-between"
-        )}
-      >
-        <div>
-          <CardHeader>
-            <CardTitle className="h-10">{title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-sm ">
-              {`${mediaType} ${number}`}
-              <div className="opacity-50">
-                {action} {relatime.date(updated_at)}
+  imageSrc: string;
+  number: number;
+  link: string;
+  type: "MANGA" | "ANIME";
+  title: string;
+  updated_at: number;
+}) => {
+  const mediaType = type === "MANGA" ? "Chapter" : "Episode";
+  const action = type === "MANGA" ? "Read" : "Watched";
+
+  return (
+    <Link href={link} target="_blank" rel="noopener noreferrer">
+      <div>
+        <Card
+          className={cn(
+            "hover:border-2 hover:border-black dark:hover:border-white",
+            imageSrc && "flex justify-between"
+          )}
+        >
+          <div>
+            <CardHeader>
+              <CardTitle className="h-10">{title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-sm ">
+                {`${mediaType} ${number}`}
+                <div className="text-muted-foreground">
+                  {action} {fromNow(updated_at, true)}
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </div>
-        <div className="p-4">
-          <Image
-            src={imageSrc}
-            alt={title}
-            width={64}
-            height={64}
-            className="rounded-lg object-contain"
-          />
-        </div>
-      </Card>
-    </div>
-  </Link>
-)
+            </CardContent>
+          </div>
+          <div className="p-4">
+            <Image
+              src={imageSrc}
+              alt={title}
+              width={64}
+              height={64}
+              className="rounded-lg object-contain"
+            />
+          </div>
+        </Card>
+      </div>
+    </Link>
+  );
+};
 
 export async function AnimeCard() {
-  const { node, list_status } = await recentlyWatched()
-  const link = `https://myanimelist.net/history/${me.tag}/anime`
+  const data = await recentActivity("ANIME");
+  if (!data) return null;
+  const { media, updatedAt, progress } = data;
+  const link = `https://anilist.co/user/nrohi/animelist`;
 
   return (
     <MediaCard
-      title={node.title}
-      number={list_status.num_episodes_watched}
-      imageSrc={node.main_picture.medium}
-      updated_at={list_status.updated_at}
+      title={media.title.userPreferred}
+      number={progress}
+      imageSrc={media.coverImage.extraLarge}
+      updated_at={updatedAt}
       link={link}
-      mediaType="Episode"
-      action="Watched"
+      type="ANIME"
     />
-  )
+  );
 }
 
 export async function MangaCard() {
-  const { node, list_status } = await recentlyRead()
-  const link = `https://myanimelist.net/history/${me.tag}/manga`
+  const data = await recentActivity("MANGA");
+  if (!data) return null;
+  const { media, updatedAt, progress } = data;
+  const link = `https://anilist.co/user/nrohi/mangalist`;
 
   return (
     <MediaCard
-      title={node.title}
-      number={list_status.num_chapters_read}
-      imageSrc={node.main_picture.medium}
-      updated_at={list_status.updated_at}
+      title={media.title.userPreferred}
+      number={progress}
+      imageSrc={media.coverImage.extraLarge}
+      updated_at={updatedAt}
       link={link}
-      mediaType="Chapter"
-      action="Read"
+      type="MANGA"
     />
-  )
+  );
 }
