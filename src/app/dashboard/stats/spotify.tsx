@@ -1,7 +1,7 @@
-import { Icons } from "@/components/icons";
 import { ItemCard } from "@/app/dashboard/stats";
+import { Icons } from "@/components/icons";
 import { spotify } from "@/lib/api";
-import { cn, relatime } from "@/lib/utils";
+import { cn, fromNow } from "@/lib/utils";
 
 export async function SpotifyPlay() {
   const tracks = await spotify.recentTracks();
@@ -27,7 +27,7 @@ export async function SpotifyPlay() {
               <p>
                 Listened to {song} by {artist}{" "}
                 <span className="text-muted-foreground">
-                  {relatime.unix(tracks[0].date.uts)}
+                  {fromNow(tracks[0].date.uts)}
                 </span>
               </p>
             </>
