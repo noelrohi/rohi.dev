@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getAge } from "@/lib/utils";
 import { ItemCard } from "@/app/dashboard/stats";
@@ -10,9 +10,11 @@ import { SkeletonCard } from "@/components/skeleton-card";
 export default function AgeCard() {
   const [age, setAge] = useState(getAge());
   const mounted = useMounted();
-  setInterval(() => {
-    setAge(getAge());
-  }, 10);
+  useEffect(() => {
+    setInterval(() => {
+      setAge(getAge());
+    }, 10);
+  }, [age]);
 
   return mounted ? (
     <ItemCard title="My Age" link="/" newtab={false}>
