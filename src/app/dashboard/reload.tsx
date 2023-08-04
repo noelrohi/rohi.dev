@@ -12,7 +12,7 @@ export default function ReloadButton() {
   return (
     <>
       <Button
-        className={cn("w-6 h-6", isPending && "animate-spin")}
+        className={cn("w-6 h-6 rounded-full", isPending && "animate-spin")}
         onClick={() =>
           startTransition(async () => await revalidate("/dashboard"))
         }
