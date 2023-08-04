@@ -14,6 +14,6 @@ My personal website
 
 - Wakatime
 - Lastfm
-- MyAnmeList
+- Anilist GraphQL
 - Github API scraped using cheerio package
 - Discord API ft. Lanyard
