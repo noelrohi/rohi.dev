@@ -12,7 +12,7 @@ export const runtime = "edge";
 export default function IndexPage() {
   return (
     <>
-      <section className="grid grid-cols-1 items-center gap-4 md:grid-cols-3">
+      <section className="grid grid-cols-1 items-center gap-4 md:grid-cols-3 mb-5">
         <Image
           src="/me.png"
           alt={siteConfig.name}

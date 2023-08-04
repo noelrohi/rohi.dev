@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn, fromNow } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { recentActivity } from "@/lib/api";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const MediaCard = ({
   imageSrc,
@@ -29,12 +30,12 @@ const MediaCard = ({
         <Card
           className={cn(
             "hover:border-2 hover:border-black dark:hover:border-white",
-            imageSrc && "flex justify-between"
+            imageSrc && "flex"
           )}
         >
-          <div>
+          <div className="w-[320px]">
             <CardHeader>
-              <CardTitle className="h-10">{title}</CardTitle>
+              <CardTitle className="h-10 ">{title}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-sm ">
@@ -45,14 +46,16 @@ const MediaCard = ({
               </div>
             </CardContent>
           </div>
-          <div className="p-4">
-            <Image
-              src={imageSrc}
-              alt={title}
-              width={64}
-              height={64}
-              className="rounded-lg object-contain"
-            />
+          <div className="w-[120px] p-4">
+            <AspectRatio ratio={3 / 4}>
+              <Image
+                src={imageSrc}
+                alt={title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="rounded-lg "
+              />
+            </AspectRatio>
           </div>
         </Card>
       </div>
