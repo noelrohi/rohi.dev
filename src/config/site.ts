@@ -42,7 +42,6 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/gneiru",
     github: "https://github.com/gneiru",
-    docs: "https://ui.shadcn.com",
   },
   contacts: {
     email: "mailto:n@rohi.dev",
