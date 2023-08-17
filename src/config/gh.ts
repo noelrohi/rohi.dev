@@ -1,7 +1,7 @@
 export const pinnedRepos = [
   "gneiru/rohi.dev",
   "gneiru/thr",
-  "gneiru/dramx",
+  "gneiru/ani",
   "gneiru/chatnr",
   "multusaqw/api",
   "gneiru/hero-search",
