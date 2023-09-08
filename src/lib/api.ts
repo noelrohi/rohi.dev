@@ -72,7 +72,7 @@ export async function recentActivity(type: "MANGA" | "ANIME") {
       query: getAnilistQuery(type),
       variables,
     }),
-    next: { revalidate: 15, tags: ["mal"] },
+    cache: "no-cache",
   });
   if (!res.ok) return null;
   const { data }: Main = await res.json();
@@ -126,7 +126,7 @@ export const spotify = {
   totalPlays: async function () {
     const res = await fetch(
       `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${me.tag}&api_key=${env.LAST_FM_API_KEY}&format=json`,
-      { next: { revalidate: 0 } }
+      { cache: "no-cache" }
     );
     const data = await res.json();
     const user: LastFmUserResponse = data.user;
@@ -135,7 +135,7 @@ export const spotify = {
   recentTracks: async function () {
     const res = await fetch(
       `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${me.tag}&api_key=${env.LAST_FM_API_KEY}&format=json`,
-      { next: { revalidate: 0 } }
+      { cache: "no-cache" }
     );
     const data = await res.json();
     const trakcs: Track[] = data.recenttracks.track;
