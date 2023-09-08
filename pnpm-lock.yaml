@@ -49,6 +49,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.12
     version: 13.4.12(eslint@8.45.0)(typescript@5.1.6)
+  framer-motion:
+    specifier: ^10.16.4
+    version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
   kysely:
     specifier: ^0.26.1
     version: 0.26.1
@@ -126,8 +129,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  /@auth/core@0.0.0-manual.8fcd46b0:
-    resolution: {integrity: sha512-KuhvZ0hHz6NvMAgAi+su0dJOD0YAiOWGaLswyfGK5RsG/cdhqyyiII9HOTaZbWZAKir0UGYb8SlN+owhV30JXg==}
+  /@auth/core@0.0.0-manual.e9863699:
+    resolution: {integrity: sha512-/hVzGuFw7nAZimliD8kpuKnNjvkRu+jpaVhYB/FaIXLNJFNwhbO2MgXBnr5tvLIHgRJnR5C9UN5RNpQXiFHuSA==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
@@ -148,6 +151,19 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
     dev: false
+
+  /@emotion/is-prop-valid@0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize@0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    dev: false
+    optional: true
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.45.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -2036,6 +2052,24 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
+  /framer-motion@10.16.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-p9V9nGomS3m6/CALXqv6nFGMuFOxbWsmaOrdmhyQimMIlLl3LC7h7l86wge/Js/8cRu5ktutS/zlzgR7eBOtFA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
@@ -2720,7 +2754,7 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@auth/core': 0.0.0-manual.8fcd46b0
+      '@auth/core': 0.0.0-manual.e9863699
       next: 13.4.12(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
