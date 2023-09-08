@@ -9,12 +9,12 @@ export async function DiscordCard() {
   const { discord_user: user, discord_status: status } = await lanyard();
   return (
     <Card className="hover:border-2 hover:border-black dark:hover:border-white h-full">
-      <CardContent className="flex justify-between py-4">
-        <div className="flex flex-col space-y-2">
+      <div className="flex flex-row justify-between items-center py-4 px-6">
+        <div className="flex flex-col justify-between gap-4">
           <div>{user.username}</div>
           <div
             className={cn(
-              "flex items-center gap-2",
+              "flex justify-start gap-2",
               status === "dnd" && "text-red-500",
               status === "online" && "text-[#23A55A]",
               status === "idle" && "text-yellow-500",
@@ -32,7 +32,7 @@ export async function DiscordCard() {
           height={64}
           className="rounded-full"
         />
-      </CardContent>
+      </div>
     </Card>
   );
 }
