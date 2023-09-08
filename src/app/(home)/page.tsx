@@ -20,6 +20,7 @@ export default function IndexPage() {
           height={400}
           className="hidden aspect-auto h-auto w-auto animate-fade-up object-cover transition-all hover:scale-105 md:block"
           unoptimized
+          priority
           style={{ animationDelay: "0.20s", animationFillMode: "backwards" }}
         />
         <div className="md:col-span-2">
