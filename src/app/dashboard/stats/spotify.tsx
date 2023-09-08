@@ -1,4 +1,5 @@
 import { ItemCard } from "@/app/dashboard/stats";
+import AnimatedNumber from "@/components/animated-number";
 import { Icons } from "@/components/icons";
 import { spotify } from "@/lib/api";
 import { cn, fromNow } from "@/lib/utils";
@@ -19,7 +20,9 @@ export async function SpotifyPlay() {
             isListening ? "justify-evenly" : "justify-between"
           )}
         >
-          <div>{plays.playcount}</div>
+          <div>
+            <AnimatedNumber value={plays.playcount} />
+          </div>
           {isListening ? (
             <Listening song={song} artist={artist} />
           ) : (

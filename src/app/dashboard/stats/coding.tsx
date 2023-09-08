@@ -6,6 +6,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { ItemCard } from "@/app/dashboard/stats";
+import AnimatedNumber from "@/components/animated-number";
 
 interface Languages {
   name: string;
@@ -27,7 +28,8 @@ export async function CodingCard() {
     <HoverCard>
       <HoverCardTrigger asChild>
         <ItemCard link={`https://wakatime.com/@${me.tag}`} title="Coding Hours">
-          {`${Math.round(total_seconds / 60 / 60)} hrs `} {startDate}
+          <AnimatedNumber value={Math.round(total_seconds / 60 / 60)} /> hrs{" "}
+          {startDate}
         </ItemCard>
       </HoverCardTrigger>
       <HoverCardContent>
