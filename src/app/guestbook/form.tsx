@@ -19,7 +19,7 @@ import { guestBook as formSchema } from "@/lib/validations";
 
 import { Icons } from "@/components/icons";
 import { me } from "@/config/site";
-import { saveGuestbookEntry } from "../_actions";
+import { saveGuestbookEntry } from "@/app/_actions";
 
 type Inputs = z.infer<typeof formSchema>;
 

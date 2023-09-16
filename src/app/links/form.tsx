@@ -20,8 +20,8 @@ import { contact } from "@/lib/validations";
 
 import { contactMail } from "@/app/_actions";
 import { me } from "@/config/site";
-import { Icons } from "../../components/icons";
-import { Textarea } from "../../components/ui/textarea";
+import { Icons } from "@/components/icons";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = contact;
 

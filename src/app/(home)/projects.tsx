@@ -13,9 +13,9 @@ import { getGithubRepoData } from "@/lib/api";
 import { Repo } from "@/types";
 
 import { cn, getLanguageColor } from "@/lib/utils";
-import Heading from "../../components/heading";
-import { Icons } from "../../components/icons";
-import { Badge } from "../../components/ui/badge";
+import Heading from "@/components/heading";
+import { Icons } from "@/components/icons";
+import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 
 export const Projects = async () => {
@@ -83,7 +83,7 @@ function ProjectCard({
           </Badge>
         ))}
       </CardContent>
-      <CardFooter className="flex justify-between  text-sm text-muted-foreground">
+      <CardFooter className="flex justify-between text-sm text-muted-foreground">
         <div className="flex items-center">
           <span
             className="mr-2 h-4 w-4 rounded-full"

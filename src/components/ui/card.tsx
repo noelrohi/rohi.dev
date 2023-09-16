@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import Spotlight from "../spotlight";
+import Spotlight from "@/components/spotlight";
 
 const Card = React.forwardRef<
   HTMLDivElement,
