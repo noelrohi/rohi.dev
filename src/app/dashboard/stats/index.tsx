@@ -25,7 +25,7 @@ export function ItemCard({
       target={newtab == false ? "" : "_blank"}
       rel="noopener noreferrer"
     >
-      <Card className="hover:border-2 hover:border-black dark:hover:border-white">
+      <Card>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
         </CardHeader>

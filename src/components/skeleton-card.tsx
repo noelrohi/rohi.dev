@@ -4,10 +4,7 @@ import { Skeleton } from "./ui/skeleton";
 
 export function SkeletonCard({ count }: { count?: number }) {
   const skeletons = Array.from({ length: count || 1 }).map((_, i) => (
-    <Card
-      className="hover:border-2 hover:border-black dark:hover:border-white"
-      key={i}
-    >
+    <Card key={i}>
       <CardHeader>
         <CardTitle>
           <Skeleton className="h-4 w-[100px]" />

@@ -8,7 +8,7 @@ import { Icons } from "@/components/icons";
 export async function DiscordCard() {
   const { discord_user: user, discord_status: status } = await lanyard();
   return (
-    <Card className="hover:border-2 hover:border-black dark:hover:border-white h-full">
+    <Card className="h-full">
       <div className="flex flex-row justify-between items-center py-4 px-6">
         <div className="flex flex-col justify-between gap-4">
           <div>{user.username}</div>

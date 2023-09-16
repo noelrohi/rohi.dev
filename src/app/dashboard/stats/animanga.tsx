@@ -27,12 +27,7 @@ const MediaCard = ({
   return (
     <Link href={link} target="_blank" rel="noopener noreferrer">
       <div>
-        <Card
-          className={cn(
-            "hover:border-2 hover:border-black dark:hover:border-white",
-            imageSrc && "flex"
-          )}
-        >
+        <Card className={cn(imageSrc && "flex")}>
           <div className="w-[320px]">
             <CardHeader>
               <CardTitle className="h-10 ">{title}</CardTitle>
