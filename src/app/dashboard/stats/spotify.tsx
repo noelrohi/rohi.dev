@@ -1,6 +1,7 @@
 import { ItemCard } from "@/app/dashboard/stats";
 import AnimatedNumber from "@/components/animated-number";
 import { Icons } from "@/components/icons";
+import { me } from "@/config/site";
 import { spotify } from "@/lib/api";
 import { cn, fromNow } from "@/lib/utils";
 
@@ -13,7 +14,7 @@ export async function SpotifyPlay() {
 
   return (
     <>
-      <ItemCard link={plays.url} title="Spotify Plays">
+      <ItemCard link={`https://volt.fm/${me.tag}`} title="Spotify Plays">
         <div
           className={cn(
             "flex items-center gap-4",
