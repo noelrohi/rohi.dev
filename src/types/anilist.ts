@@ -32,4 +32,5 @@ export interface CoverImage {
 
 export interface Title {
   userPreferred: string;
+  english: string;
 }

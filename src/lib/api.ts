@@ -50,6 +50,7 @@ function getAnilistQuery(type: "MANGA" | "ANIME") {
                     }
                     title {
                       userPreferred
+                      english
                     }
                   }
                 }

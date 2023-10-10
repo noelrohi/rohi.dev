@@ -66,7 +66,7 @@ export async function AnimeCard() {
 
   return (
     <MediaCard
-      title={media.title.userPreferred}
+      title={media.title.english ?? media.title.userPreferred}
       number={progress}
       imageSrc={media.coverImage.extraLarge}
       updated_at={updatedAt}
@@ -84,7 +84,7 @@ export async function MangaCard() {
 
   return (
     <MediaCard
-      title={media.title.userPreferred}
+      title={media.title.english ?? media.title.userPreferred}
       number={progress}
       imageSrc={media.coverImage.extraLarge}
       updated_at={updatedAt}
