@@ -2,26 +2,31 @@
 import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import { site } from "@/consts";
+import { author, site } from "@/consts";
+import { GridPattern } from "@/components/magicui/grid-pattern";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { title, description } = Astro.props;
+const { description } = Astro.props;
+
+const title = `${author.handle} - ${Astro.props.title ?? site.title}`
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <BaseHead
-      title={title ?? site.title}
+      title={title}
       description={description ?? site.description}
     />
   </head>
-  <body>
+  <body
+    class="flex flex-col mx-auto max-w-[80ch] py-4 lg:py-8 min-h-screen"
+  >
     <Header title={site.title} />
-    <main>
+    <main class="flex-1 py-4 lg:py-8">
       <slot />
     </main>
     <Footer />

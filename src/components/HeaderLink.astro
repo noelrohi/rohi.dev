@@ -13,13 +13,16 @@ const isActive =
     : pathname === "/";
 ---
 
-<a
-  href={href}
-  class:list={[className, { active: isActive }]}
-  {...props}
-  transition:name={isActive ? "active-page" : ""}
->
+<a href={href} class:list={[className, "relative"]} {...props}>
   <slot />
+  {
+    isActive && (
+      <span
+        class="absolute -bottom-1 left-0 w-full h-1 bg-blue-200"
+        transition:name={isActive ? "active-page" : ""}
+      />
+    )
+  }
 </a>
 <style>
   a {
