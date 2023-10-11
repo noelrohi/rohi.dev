@@ -13,7 +13,7 @@ const isActive =
     : pathname === "/";
 ---
 
-<a href={href} class:list={[className, "relative"]} {...props}>
+<a href={href} class:list={[className, "relative font-semibold"]} {...props}>
   <slot />
   {
     isActive && (
