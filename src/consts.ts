@@ -1,5 +1,5 @@
 export const site = {
-  title: "Noel Rohi",
+  title: "Rohi",
   description:
     "a weeb, swe based in Philippines",
   url: "https://rohi.dev",

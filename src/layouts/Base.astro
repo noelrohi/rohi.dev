@@ -7,6 +7,7 @@ import { site } from "@/consts";
 interface Props {
   title?: string;
   description?: string;
+  isBlogPost?: boolean
 }
 
 const { description } = Astro.props;
@@ -20,9 +21,9 @@ const title = Astro.props.title
   <head>
     <BaseHead title={title} description={description ?? site.description} />
   </head>
-  <body class="flex flex-col mx-auto max-w-3xl py-4 lg:py-8 min-h-screen font-inter">
+  <body class="flex flex-col max-w-3xl container py-4 lg:py-8 min-h-screen font-inter">
     <Header title={site.title} />
-    <main class="flex-1 py-4 lg:py-8 prose px-2 md:px-0">
+    <main class="flex-1 py-4 lg:py-8 prose">
       <slot />
     </main>
     <Footer />

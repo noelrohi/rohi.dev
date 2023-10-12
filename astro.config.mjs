@@ -15,6 +15,13 @@ const config = {
   build: {incremental: true},
   output: 'server',
   adapter: vercel(),
+  markdown: {
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: 'rose-pine-moon',
+      wrap: true
+    }
+  }
 }
 
 // https://astro.build/config

@@ -3,22 +3,26 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import Base from "@/layouts/Base.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const blogCollection = await getCollection("blog");
+
+const posts = blogCollection
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .filter((post) => !post.data.isDraft);
 ---
 
 <Base title="Blog">
   <section>
-    <ul>
+    <ul class="space-y-2">
       {
         posts.map((post) => (
           <li>
-            <a href={`/blog/${post.slug}/`}>
-              <img width={720} height={360} src={post.data.heroImage} alt="" />
-              <h4 class="title">{post.data.title}</h4>
-              <p class="date">
-                <FormattedDate date={post.data.pubDate} />
+            <a
+              href={`/blog/${post.slug}/`}
+              class="inline-flex justify-between w-full"
+            >
+              <h4 class="font-semibold text-lg">{post.data.title}</h4>
+              <p class="text-muted-foreground" transition:name="date">
+                <FormattedDate date={post.data.date} />
               </p>
             </a>
           </li>

@@ -1,25 +1,29 @@
 ---
+import { author } from "@/consts";
 import { getGithubRepoData } from "@/lib/fetcher";
 import { StarIcon } from "@radix-ui/react-icons";
 const repos = await getGithubRepoData();
 ---
 
-<div class="flex flex-col gap-4 mt-8">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-2">
   {
     repos?.map((repo) => (
       <a
         href={repo.link}
         target="_blank"
-        class="p-4 flex flex-col gap-4 border border-muted-foreground hover:shadow-md hover:shadow-blue-500 dark:hover:shadow-yellow-500"
+        class="p-4 flex flex-col gap-4 border border-muted-foreground hover:shadow-md hover:shadow-muted-foreground"
       >
-        <div class="flex justify-between">
-          {repo.owner}/{repo.repo}
+        <div class="flex justify-between items-start">
+          <div class="font-semibold max-w-[95px] break-words">
+            {repo.owner !== author.handle.slice(1) && `${repo.owner}/`}
+            {repo.repo}
+          </div>
           <div class="inline-flex items-center gap-2">
             {repo.stars}
             <StarIcon />
           </div>
         </div>
-        <div class="text-sm text-muted-foreground break-words max-w-lg">
+        <div class="text-sm text-muted-foreground break-words max-w-lg line-clamp-2">
           {repo.description}
         </div>
       </a>

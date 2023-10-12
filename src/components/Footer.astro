@@ -5,13 +5,20 @@ import {
   InstagramLogoIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-const today = new Date();
 ---
 
-<footer class="flex justify-between">
-  Noel Rohi &copy; {today.getFullYear()}
+<footer class="flex justify-between items-center">
+  <span>
+    Powered by
+    <a
+      href="https://astro.build"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline underline-offset-4">Astro 3.0</a
+    >
+  </span>
   <div class="flex flex-row gap-4">
-    <a href="https://instagram.com/gneiru" target="_blank">
+    <a href="https://instagram.com/nelrohg" target="_blank">
       <span class="sr-only">Instagram</span>
       <InstagramLogoIcon />
     </a>
