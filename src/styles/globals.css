@@ -75,8 +75,8 @@
   }
 }
 
-a {
-  @apply hover:bg-gradient-to-r hover:from-red-500 hover:via-blue-500 hover:to-blue-900 hover:bg-[length:200%] hover:bg-clip-text hover:text-transparent;
+#about a, nav a {
+  @apply hover:bg-gradient-to-r hover:from-destructive hover:via-blue-500 hover:to-green-600 hover:bg-clip-text hover:text-transparent;
 }
 
 

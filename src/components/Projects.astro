@@ -1,0 +1,28 @@
+---
+import { getGithubRepoData } from "@/lib/fetcher";
+import { StarIcon } from "@radix-ui/react-icons";
+const repos = await getGithubRepoData();
+---
+
+<div class="flex flex-col gap-4 mt-8">
+  {
+    repos?.map((repo) => (
+      <a
+        href={repo.link}
+        target="_blank"
+        class="p-4 flex flex-col gap-4 border border-muted-foreground hover:shadow-md hover:shadow-blue-500 dark:hover:shadow-yellow-500"
+      >
+        <div class="flex justify-between">
+          {repo.owner}/{repo.repo}
+          <div class="inline-flex items-center gap-2">
+            {repo.stars}
+            <StarIcon />
+          </div>
+        </div>
+        <div class="text-sm text-muted-foreground break-words max-w-lg">
+          {repo.description}
+        </div>
+      </a>
+    ))
+  }
+</div>

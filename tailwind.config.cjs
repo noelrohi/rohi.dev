@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -8,6 +10,10 @@ module.exports = {
     './src/**/*.{ts,tsx,astro}',
 	],
   theme: {
+    fontFamily: {
+      inter: ["Inter", "Inter"],
+      poppins: ["Poppins", "Poppins"],
+    },
     container: {
       center: true,
       padding: "2rem",

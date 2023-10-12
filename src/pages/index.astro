@@ -1,13 +1,13 @@
 ---
+import Projects from "@/components/Projects.astro";
 import Base from "@/layouts/Base.astro";
-import { Image } from "astro:assets";
 ---
 
 <Base>
-  <div class="space-y-4">
-    <section class="inline-block">
+  <div class="space-y-8">
+    <section class="inline-block" id="about">
       <img
-        class="rounded-full float-left mr-6"
+        class="rounded-full float-left mr-6 w-32 md:w-52"
         alt="Rohi's github profile picture"
         src="https://avatars.githubusercontent.com/u/105811202?v=4"
         decoding="async"
@@ -19,13 +19,30 @@ import { Image } from "astro:assets";
         </div>
         <p>
           I&rsquo;m a Software Engineer based in Philippines, building
-          full-stack web applications with <strong
-            >React, Node.js, TypeScript, and MySQL</strong
-          >. I like playing games, building things, watching anime series and
+          full-stack web applications with
+          <strong>
+            <a
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >React, Node.js, TypeScript,
+            </a>
+          </strong>
+           and
+          <strong>
+            <a
+              href="https://planetscale.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MySQL
+            </a>
+          </strong>
+           . I like playing games, building things, watching anime series and
           watching korean drama series.
         </p>
         <p>
-          Currently, I work as <strong>Full-Stack Developer at</strong>{" "}
+          Currently, I work as <i>Full-Stack Developer</i> at
           <strong>
             <a href="http://capex.com.ph" target="_blank">CaPEx</a>
           </strong>
@@ -39,11 +56,12 @@ import { Image } from "astro:assets";
             <a href="https://jquery.com/" target="_blank"> Jquery.</a>
           </strong>
         </p>
-        <p>You&rsquo;ll find me on Discord</p>
+        <!-- <p>You&rsquo;ll find me on Discord</p> -->
       </div>
     </section>
     <section>
       <div class="font-bold text-lg">Featured Repositories:</div>
+      <Projects />
     </section>
   </div>
 </Base>

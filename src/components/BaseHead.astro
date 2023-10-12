@@ -4,6 +4,7 @@
 import '@/styles/globals.css';
 import { ViewTransitions } from 'astro:transitions';
 import '@fontsource/inter'
+import '@fontsource/poppins'
 
 interface Props {
 	title: string;
@@ -45,3 +46,5 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<!-- CDN -->
+<script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>

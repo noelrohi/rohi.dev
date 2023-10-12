@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+import ThemeToggle from "./ThemeToggle";
 ---
 
 <header class="px-2 lg:px-0">
@@ -11,8 +11,8 @@ import ThemeToggle from "./ThemeToggle.astro";
       </h2>
       <div class="flex flex-1 flex-row justify-end gap-8 items-center">
         <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/dashboard">Activity</HeaderLink>
-        <ThemeToggle/>
+        <HeaderLink href="/activity">Activity</HeaderLink>
+        <ThemeToggle client:only />
       </div>
     </div>
   </nav>
