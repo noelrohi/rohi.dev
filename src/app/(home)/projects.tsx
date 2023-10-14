@@ -71,7 +71,7 @@ function ProjectCard({
             </div>
           </Link>
         </CardTitle>
-        <CardDescription className="line-clamp-2 flex h-10 items-center">
+        <CardDescription className="line-clamp-2 flex min-h-10 items-center">
           {description}
         </CardDescription>
       </CardHeader>
