@@ -1,0 +1,22 @@
+---
+import { recentTrack } from "@/lib/fetcher";
+import { dayjs } from "@/lib/utils";
+
+const data = await recentTrack();
+const song = data?.name;
+const artist = data?.artist["#text"];
+const isListening = data?.["@attr"]?.nowplaying;
+const updatedAt = data?.date?.uts;
+---
+
+{isListening ? "Listening to " : "Listened to "}
+<a
+  href="https://volt.fm/gneiru"
+  class="underline underline-offset-4"
+  target="_blank">{song}</a
+> by {artist}
+{" "}
+<span class="text-muted-foreground text-sm">
+  {!isListening && !!updatedAt && <>{dayjs.unix(updatedAt).fromNow()}</>}
+  {isListening && "right now"}
+</span>

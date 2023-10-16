@@ -1,0 +1,28 @@
+---
+import { recentActivity } from "@/lib/fetcher";
+import { dayjs } from "@/lib/utils";
+
+type Props = {
+  type: "MANGA" | "ANIME";
+};
+
+const { type } = Astro.props;
+
+const data = await recentActivity(type);
+const updatedAt = data?.updatedAt;
+const title =
+  (data?.media.title.english ?? data?.media.title.userPreferred) || "~";
+---
+
+<a
+  href=`https://anilist.co/${type.toLowerCase()}/${data?.id}`
+  class="underline underline-offset-4"
+  target="_blank">{title}</a
+>{" "}
+{
+  updatedAt ? (
+    <span class="text-muted-foreground text-sm">
+      {dayjs.unix(updatedAt).fromNow()}
+    </span>
+  ) : null
+}
