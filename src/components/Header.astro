@@ -12,7 +12,9 @@ import ThemeToggle from "./ThemeToggle";
       <div class="flex flex-1 flex-row justify-end gap-4 lg:gap-6 items-center">
         <HeaderLink href="/blog">Blog</HeaderLink>
         <HeaderLink href="/activity">Activity</HeaderLink>
-        <ThemeToggle client:only />
+        <div transition:name="asdasd" transition:animate="fade">
+          <ThemeToggle client:only />
+        </div>
       </div>
     </div>
   </nav>
