@@ -80,7 +80,7 @@
 }
 
 
-.prose strong {
+#about strong {
   @apply dark:text-yellow-500 text-blue-500 text-sm;
 }
 
