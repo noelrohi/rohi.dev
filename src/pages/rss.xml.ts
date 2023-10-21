@@ -12,7 +12,6 @@ export async function GET(context: APIContext) {
     title: "rohi's blog",
     description: "Articles related to tech and programming.",
     site: String(context.site),
-    stylesheet: "/rss/styles.xsl",
     items: posts
       .filter((post) => !post.data.isDraft)
       ?.map((post) => ({
