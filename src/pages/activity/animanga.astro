@@ -18,11 +18,13 @@ const title =
   href=`https://anilist.co/${type.toLowerCase()}/${data?.id}`
   class="underline underline-offset-4"
   target="_blank">{title}</a
->{" "}
-{
-  updatedAt ? (
-    <span class="text-muted-foreground text-sm">
-      {dayjs.unix(updatedAt).fromNow()}
-    </span>
-  ) : null
-}
+>
+<div>
+  {
+    updatedAt ? (
+      <span class="text-muted-foreground text-sm">
+        {dayjs.unix(updatedAt).fromNow()}
+      </span>
+    ) : null
+  }
+</div>

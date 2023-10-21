@@ -16,7 +16,7 @@ const updatedAt = data?.date?.uts;
   target="_blank">{song}</a
 > by {artist}
 {" "}
-<span class="text-muted-foreground text-sm">
+<div class="text-muted-foreground text-sm">
   {!isListening && !!updatedAt && <>{dayjs.unix(updatedAt).fromNow()}</>}
   {isListening && "right now"}
-</span>
+</div>
