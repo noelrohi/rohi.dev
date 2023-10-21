@@ -1,16 +1,28 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Base from "./Base.astro";
+import BaseHead from "@/components/BaseHead.astro";
+import { site } from "@/consts";
+import ArrowLeft from "@/components/icons/ArrowLeft.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description } = Astro.props;
 ---
 
-<Base title={title} description={description}>
-  <article>
-    <div class="prose">
-      <slot />
-    </div>
-  </article>
-</Base>
+<html lang="en" class="dark">
+  <head>
+    <BaseHead title={title} description={description ?? site.description} />
+  </head>
+  <body
+    class="flex flex-col max-w-3xl container py-4 lg:py-8 min-h-screen font-inter"
+  >
+    <a class="flex gap-2 items-center text-muted-foreground" href="/blog">
+      <ArrowLeft class="w-4 h-4" /> Back
+    </a>
+    <main class="flex-1 py-4 lg:py-8">
+      <article class="prose space-y-8">
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>
