@@ -76,12 +76,12 @@
 }
 
 #about a, nav a {
-  @apply hover:bg-gradient-to-r hover:from-destructive hover:via-blue-500 hover:to-green-600 hover:bg-clip-text hover:text-transparent;
+  @apply hover:bg-gradient-to-r hover:from-destructive hover:via-blue-700 hover:to-green-600 hover:bg-clip-text hover:text-transparent;
 }
 
 
 #about strong {
-  @apply dark:text-yellow-500 text-blue-500 text-sm;
+  @apply dark:text-yellow-500 text-blue-700 text-sm;
 }
 
 pre {
