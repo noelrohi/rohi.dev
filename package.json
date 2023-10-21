@@ -26,16 +26,18 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
+    "markdown-it": "^13.0.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "sanitize-html": "^2.11.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7",
-    "markdown-it": "^13.0.2",
-    "sanitize-html": "^2.11.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/markdown-it": "^13.0.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/sanitize-html": "^2.9.3",
     "tailwindcss": "^3.3.3"
   }
 }
