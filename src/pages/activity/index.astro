@@ -1,0 +1,21 @@
+---
+import Base from "@/layouts/Base.astro";
+import Animanga from "./animanga.astro";
+import Spotify from "./spotify.astro";
+---
+
+<Base title="Activities">
+  <ul class="my-6 ml-6 list-disc [&>li]:mt-2">
+    <li>
+      <Spotify />
+    </li>
+    <li>
+      Read{" "}
+      <Animanga type="MANGA" />
+    </li>
+    <li>
+      Watched{" "}
+      <Animanga type="ANIME" />
+    </li>
+  </ul>
+</Base>

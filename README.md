@@ -1,19 +1,9 @@
-# rohi.dev
+## rohi's personal website
 
-My personal website
+### built using the following: 
 
-## Built using
-
-- [nextjs 13 ](https://nextjs.org/) with server actions
-- [shadcn-ui](https://ui.shadcn.com/)
-- [resend](https://resend.com)
-- [vercel](https://vercel.com/home) for deployement and [KV](https://vercel.com/storage/kv) db
-- [upstash](https://upstash.com/)
-
-## API used
-
-- Wakatime
-- Lastfm
-- Anilist GraphQL
-- Github API scraped using cheerio package
-- Discord API ft. Lanyard
+- astro 3.3
+- shadcn-ui
+- mdx
+- some react
+- APIs from lastfm, anilist

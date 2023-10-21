@@ -1,0 +1,19 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import ThemeToggle from "./ThemeToggle";
+---
+
+<header class="px-2 lg:px-0">
+  <nav class="mx-auto">
+    <div class="flex justify-between items-center" transition:name="header">
+      <h2 class="font-bold text-lg">
+        <a href="/"> ./rohi.dev</a>
+      </h2>
+      <div class="flex flex-1 flex-row justify-end gap-4 lg:gap-6 items-center">
+        <HeaderLink href="/blog">Blog</HeaderLink>
+        <HeaderLink href="/activity">Activity</HeaderLink>
+        <ThemeToggle client:only />
+      </div>
+    </div>
+  </nav>
+</header>

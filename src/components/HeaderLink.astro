@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { href, class: className, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+const isActive =
+  href?.toString().length !== 1
+    ? href === pathname ||
+      pathname.replace(/\/$/, "").startsWith(href?.toString()!)
+    : pathname === "/";
+---
+
+<a href={href} class:list={[className, "relative font-semibold"]} {...props}>
+  <slot />
+  {
+    isActive && (
+      <span
+        class="absolute -bottom-1 left-0 w-full h-1 bg-blue-200"
+        transition:name={isActive ? "active-page" : ""}
+      />
+    )
+  }
+</a>
+<style>
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  a.active {
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+</style>

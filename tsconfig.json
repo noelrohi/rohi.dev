@@ -1,28 +1,32 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    // Report an error when a variable is declared but never used.
+    "noUnusedLocals": true,
+    // Report an error when a parameter is declared but never used.
+    "noUnusedParameters": true,
+    // Force the usage of the indexed syntax to access fields declared using an index signature.
+    "noUncheckedIndexedAccess": true,
+    // Report an error when the value `undefined` is given to an optional property that doesn't specify `undefined` as a valid value.
+    "exactOptionalPropertyTypes": true,
+    // Report an error for unreachable code instead of just a warning.
+    "allowUnreachableCode": false,
+    // Report an error for unused labels instead of just a warning.
+    "allowUnusedLabels": false,
+    // Disallow JavaScript files from being imported
+    "allowJs": false,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "strictNullChecks": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }
