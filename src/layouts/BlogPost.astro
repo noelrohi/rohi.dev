@@ -3,15 +3,20 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "@/components/BaseHead.astro";
 import { site } from "@/consts";
 import ArrowLeft from "@/components/icons/ArrowLeft.astro";
+import { generateImage } from "@/lib/utils";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description } = Astro.props;
+const { title, description, date } = Astro.props;
 ---
 
 <html lang="en" class="dark">
   <head>
-    <BaseHead title={title} description={description ?? site.description} />
+    <BaseHead
+      title={title}
+      description={description ?? site.description}
+      image={generateImage({ title, date })}
+    />
   </head>
   <body
     class="flex flex-col max-w-3xl container py-4 lg:py-8 min-h-screen font-inter"
