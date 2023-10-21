@@ -8,7 +8,7 @@ import vercel from '@astrojs/vercel/serverless';
 import tailwind from "@astrojs/tailwind";
 
 const config = {
-  site: 'https://rohi.dev',
+  site: 'https://www.rohi.dev',
   integrations: [mdx(), sitemap(), react(), tailwind({
     applyBaseStyles: false,
   })],
