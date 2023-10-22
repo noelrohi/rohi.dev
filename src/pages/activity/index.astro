@@ -1,11 +1,11 @@
 ---
 import Base from "@/layouts/Base.astro";
-import Animanga from "./animanga.astro";
-import Spotify from "./spotify.astro";
+import Animanga from "@/components/activities/Animanga.astro";
+import Spotify from "@/components/activities/Spotify.astro";
 ---
 
 <Base title="Activities">
-  <ul class="my-6 ml-6 list-disc [&>li]:mt-2">
+  <ul class="list-disc [&>li]:mt-2 my-6 ml-4">
     <li>
       <Spotify />
     </li>
