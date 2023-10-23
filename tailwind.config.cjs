@@ -11,8 +11,7 @@ module.exports = {
 	],
   theme: {
     fontFamily: {
-      inter: ["Inter", "Inter"],
-      poppins: ["Poppins", "Poppins"],
+      rajdhani: ["Rajdhani", "Rajdhani"],
     },
     container: {
       center: true,

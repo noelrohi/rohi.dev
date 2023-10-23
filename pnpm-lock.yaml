@@ -26,11 +26,8 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^5.0.2
     version: 5.0.2(astro@3.3.2)
-  '@fontsource/inter':
-    specifier: ^5.0.14
-    version: 5.0.14
-  '@fontsource/poppins':
-    specifier: latest
+  '@fontsource/rajdhani':
+    specifier: ^5.0.8
     version: 5.0.8
   '@radix-ui/react-avatar':
     specifier: ^1.0.4
@@ -912,12 +909,8 @@ packages:
     dev: false
     optional: true
 
-  /@fontsource/inter@5.0.14:
-    resolution: {integrity: sha512-5H+rWUemTnUrtF5Dov2zDq+RWDIoXCmSrupNIfI5x7udZnoUTNhr+k9sYxtNS22mIngUQHZUPexTMj0/7P0Ucg==}
-    dev: false
-
-  /@fontsource/poppins@5.0.8:
-    resolution: {integrity: sha512-P8owfYWluoUY5Nyzk4gT/L6LmLmseP6ezFWhj6VBUa5pRIdnCvNJpoQ6i/vhekjtJOfqX6nKlB+LCttoUl2GQQ==}
+  /@fontsource/rajdhani@5.0.8:
+    resolution: {integrity: sha512-icfbeazLFF6HjUPxiZo0/LZ1t3eY3eec8JASKffssLP2pQJXMgDr/7sLXrRbctcUy64sK064ibJ1zplXNTei0g==}
     dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
