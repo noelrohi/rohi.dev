@@ -14,7 +14,7 @@ const repos = await getGithubRepoData();
         class="p-4 flex flex-col gap-4 border border-muted-foreground hover:shadow-md hover:shadow-muted-foreground rounded-md"
       >
         <div class="flex justify-between items-start overflow-hidden">
-          <div class="font-semibold max-w-[95px] break-words">
+          <div class="font-semibold max-w-[6.5rem] break-words">
             {repo.owner !== author.handle.slice(1) && `${repo.owner}`}
             {repo.repo}
           </div>
