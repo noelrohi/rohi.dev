@@ -3,6 +3,7 @@ export type Track = {
     "#text": string;
   };
   name: string;
+  url: string;
   "@attr"?: {
     nowplaying: "true";
   };

@@ -10,11 +10,9 @@ const updatedAt = data?.date?.uts;
 ---
 
 {isListening ? "Listening to " : "Listened to "}
-<a
-  href="https://volt.fm/gneiru"
-  class="underline underline-offset-4"
-  target="_blank">{song}</a
-> by {artist}
+<a href={data?.url ?? "#"} class="underline underline-offset-4" target="_blank">
+  {song}
+</a> by {artist}
 {" "}
 <div class="text-muted-foreground text-sm">
   {!isListening && !!updatedAt && <>{dayjs.unix(updatedAt).fromNow()}</>}
