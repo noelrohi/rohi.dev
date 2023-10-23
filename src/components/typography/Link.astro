@@ -1,9 +1,14 @@
 ---
 interface Props extends HTMLAnchorElement {}
 
-const { href, target, className } = Astro.props;
+const { href, className } = Astro.props;
+const target = href.startsWith("http") ? "_blank" : "_self";
 ---
 
-<a href={href} target={target} class:list={["text-blue-700 dark:text-blue-400", className]}>
+<a
+  href={href}
+  target={target}
+  class:list={["bg-muted underline underline-offset-4 px-1", className]}
+>
   <slot />
 </a>
