@@ -24,6 +24,7 @@ function getAnilistQuery(type: "MANGA" | "ANIME") {
                   id
                   progress
                   media {
+                    id
                     coverImage {
                       extraLarge
                     }

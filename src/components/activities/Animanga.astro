@@ -15,10 +15,12 @@ const title =
 ---
 
 <a
-  href=`https://anilist.co/${type.toLowerCase()}/${data?.id}`
+  href=`https://anilist.co/${type.toLowerCase()}/${data?.media.id}`
   class="underline underline-offset-4"
   target="_blank">{title}</a
 >
+{type === "ANIME" ? " episode " : " chapter "}
+{data?.progress ?? "?"}
 <div>
   {
     updatedAt ? (

@@ -24,6 +24,7 @@ export interface Entry {
 export interface Media {
   coverImage: CoverImage;
   title: Title;
+  id: number
 }
 
 export interface CoverImage {
