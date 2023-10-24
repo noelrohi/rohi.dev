@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 const blogCollection = await getCollection("blog");
 
 const posts = blogCollection
-  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .sort((a, b) => a.data.date.valueOf() + b.data.date.valueOf())
   .filter((post) => !post.data.isDraft);
 ---
 
