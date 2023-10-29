@@ -14,7 +14,11 @@ const config = {
   })],
   build: {incremental: true},
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {
