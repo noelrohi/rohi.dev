@@ -7,24 +7,24 @@ const repos = await getGithubRepoData();
 
 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
   {
-    repos?.map((repo) => (
+    repos?.map(({ repoUrl, description, name, stars, ...repo }) => (
       <a
-        href={repo.link}
+        href={repoUrl}
         target="_blank"
         class="p-4 grid grid-rows-1 gap-4 border border-muted-foreground hover:shadow-md hover:shadow-muted-foreground rounded-md"
       >
         <div class="flex justify-between items-start overflow-hidden">
           <div class="font-semibold max-w-[6.5rem] break-words">
-            {repo.owner !== author.handle.slice(1) && `${repo.owner}`}
-            {repo.repo}
+            {author.handle.slice(1) !== repo.author && repo.author + "/"}
+            {name}
           </div>
           <div class="inline-flex items-center gap-2">
-            {repo.stars}
+            {stars ? stars : 0}
             <StarIcon />
           </div>
         </div>
         <div class="text-sm text-muted-foreground break-words max-w-lg line-clamp-2">
-          {repo.description}
+          {description}
         </div>
       </a>
     ))

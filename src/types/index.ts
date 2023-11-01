@@ -1,12 +1,12 @@
 export type Repo = {
-  owner: string;
-  repo: string;
-  link: string;
+  name: string;
   description: string;
-  image: string;
-  website: string;
-  language: string;
-  languageColor: string;
   stars: string;
-  forks: number;
-};
+  forks: string;
+  repoUrl: string;
+  author: string | undefined;
+  language: {
+      text: string;
+      color: string | undefined;
+  };
+}

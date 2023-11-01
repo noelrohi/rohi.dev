@@ -5,7 +5,7 @@ import type { Track } from "@/types/spotify";
 export async function getGithubRepoData() {
   try {
     const res = await fetch(
-      "https://gh-pinned-repos.egoist.dev/?username=gneiru"
+      "https://gh.rohi.dev/api/pinned?username=gneiru"
     );
     const repos: Repo[] = await res.json();
     return repos;
