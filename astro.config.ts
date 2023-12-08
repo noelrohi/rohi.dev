@@ -7,7 +7,7 @@ import vercel from "@astrojs/vercel/serverless";
 import tailwind from "@astrojs/tailwind";
 
 const config: AstroUserConfig = {
-  site: "https://www.rohi.dev",
+  site: "https://rohi.dev",
   integrations: [
     mdx(),
     sitemap(),
@@ -18,7 +18,6 @@ const config: AstroUserConfig = {
   ],
   experimental: {
     contentCollectionCache: true,
-    devOverlay: true,
     optimizeHoistedScript: true,
   },
   output: "server",
