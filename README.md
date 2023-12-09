@@ -2,7 +2,7 @@
 
 ### built using the following: 
 
-- astro 3.3
+- astro v4
 - shadcn-ui
 - mdx
 - some react
