@@ -71,7 +71,7 @@ export async function recentTrack() {
 export async function getKdramaActivity() {
   const res = await fetch("https://kd.rohi.dev/api/user/activity", {
     headers: {
-      Authorization: `Bearer ${import.meta.env.UNKEY_API_KEY}`,
+      Authorization: `Bearer ${import.meta.env.KNEXT_API_KEY}`,
     },
   });
   if (!res.ok) return null;
