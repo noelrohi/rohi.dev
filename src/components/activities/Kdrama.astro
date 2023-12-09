@@ -1,0 +1,20 @@
+---
+import { getKdramaActivity } from "@/lib/fetcher";
+import { dayjs } from "@/lib/utils";
+
+const activities = await getKdramaActivity();
+if (!activities || !activities[0]) return null;
+const { date, episode, status, title, url } = activities[0];
+---
+
+<span class="capitalize">{status === "watching" ? "Watched" : status}{" "}</span
+>
+<a href={url} class="underline underline-offset-4" target="_blank">{title}</a>
+ episode {episode}
+<div>
+  {
+    date ? (
+      <span class="text-muted-foreground text-sm">{dayjs(date).fromNow()}</span>
+    ) : null
+  }
+</div>

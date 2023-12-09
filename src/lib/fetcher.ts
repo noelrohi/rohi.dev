@@ -4,9 +4,7 @@ import type { Track } from "@/types/spotify";
 
 export async function getGithubRepoData() {
   try {
-    const res = await fetch(
-      "https://gh.rohi.dev/api/pinned?username=gneiru"
-    );
+    const res = await fetch("https://gh.rohi.dev/api/pinned?username=gneiru");
     const repos: Repo[] = await res.json();
     return repos;
   } catch (error) {
@@ -59,11 +57,30 @@ export async function recentActivity(type: "MANGA" | "ANIME") {
   return data.data.MediaListCollection.lists[0]?.entries[0];
 }
 
-export async function recentTrack(){
+export async function recentTrack() {
   const res = await fetch(
-    `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=gneiru&api_key=${import.meta.env.LAST_FM_API_KEY}&format=json`,
+    `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=gneiru&api_key=${
+      import.meta.env.LAST_FM_API_KEY
+    }&format=json`
   );
   const data = await res.json();
   const trakcs: Track[] = data.recenttracks.track;
   return trakcs[0];
+}
+
+export async function getKdramaActivity() {
+  const res = await fetch("https://kd.rohi.dev/api/user/activity", {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.UNKEY_API_KEY}`,
+    },
+  });
+  if (!res.ok) return null;
+  const data: {
+    title: string;
+    date: string;
+    episode: number;
+    status: "finished" | "watching";
+    url: string;
+  }[] = await res.json();
+  return data;
 }

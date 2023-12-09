@@ -2,9 +2,13 @@
 import Base from "@/layouts/Base.astro";
 import Animanga from "@/components/activities/Animanga.astro";
 import Spotify from "@/components/activities/Spotify.astro";
+import Kdrama from "@/components/activities/Kdrama.astro";
 ---
 
-<Base title="Activities" description="I am reading, listening, watching these ...">
+<Base
+  title="Activities"
+  description="I am reading, listening, watching these ..."
+>
   <ul class="list-disc [&>li]:mt-2 my-6 ml-4">
     <li>
       <Spotify />
@@ -16,6 +20,9 @@ import Spotify from "@/components/activities/Spotify.astro";
     <li>
       Watched{" "}
       <Animanga type="ANIME" />
+    </li>
+    <li>
+      <Kdrama type="ANIME" />
     </li>
   </ul>
 </Base>
