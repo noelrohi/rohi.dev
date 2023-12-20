@@ -35,9 +35,9 @@ export default function ThemeToggle() {
     <Button role="button" onClick={toggleTheme} variant={"ghost"} size={"icon"} >
       <span className="sr-only">Toggle theme mode</span>
       {theme !== "dark" ? (
-        <SunIcon className="w-[1.2rem] h-[1.2rem]" />
+        <SunIcon className="size-[1.2rem]" />
       ) : (
-        <MoonIcon className="w-[1.2rem] h-[1.2rem]" />
+        <MoonIcon className="size-[1.2rem]" />
       )}
     </Button>
   ) : (
