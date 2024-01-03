@@ -1,0 +1,28 @@
+{
+    "redirects": [
+        {
+            "source": "/github",
+            "destination": "https://github.com/gneiru"
+        },
+        {
+            "source": "/gh",
+            "destination": "https://github.com/gneiru"
+        },
+        {
+            "source": "/github/:slug*",
+            "destination": "https://github.com/gneiru/:slug*"
+        },
+        {
+            "source": "/gh/:slug*",
+            "destination": "https://github.com/gneiru/:slug*"
+        },
+        {
+            "source": "/linkedin",
+            "destination": "https://www.linkedin.com/in/gneiru/"
+        },
+        {
+            "source": "/cv",
+            "destination": "https://cv.rohi.dev"
+        }
+    ]
+}
