@@ -45,7 +45,7 @@ export default function Page() {
 function ActivityFallback() {
   return (
     <div className="space-y-1">
-      <Skeleton className="h-[1.5rem] w-[24rem]" />
+      <Skeleton className="h-[1.5rem] w-full lg:w-1/2" />
       <Skeleton className="h-[17px] w-[4.5rem]" />
     </div>
   );
