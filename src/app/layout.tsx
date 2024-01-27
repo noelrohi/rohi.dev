@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { fontMono, fontSans } from "@/lib/fonts";
+import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rohi.dev"),
@@ -46,9 +47,10 @@ export default function RootLayout({
         className={cn(
           fontSans.variable,
           fontMono.variable,
-          "min-h-screen bg-background font-sans antialiased",
+          "mx-4 min-h-screen max-w-2xl space-y-16 bg-background pt-8 font-sans antialiased lg:mx-auto",
         )}
       >
+        <Navbar />
         {children}
       </body>
     </html>
