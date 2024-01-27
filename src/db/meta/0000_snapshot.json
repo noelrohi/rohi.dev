@@ -88,9 +88,7 @@
       "indexes": {
         "userId_idx": {
           "name": "userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -98,10 +96,7 @@
       "compositePrimaryKeys": {
         "rohi.dev_account_provider_providerAccountId_pk": {
           "name": "rohi.dev_account_provider_providerAccountId_pk",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {}
@@ -134,9 +129,7 @@
       "indexes": {
         "userId_idx": {
           "name": "userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -144,9 +137,7 @@
       "compositePrimaryKeys": {
         "rohi.dev_session_sessionToken": {
           "name": "rohi.dev_session_sessionToken",
-          "columns": [
-            "sessionToken"
-          ]
+          "columns": ["sessionToken"]
         }
       },
       "uniqueConstraints": {}
@@ -194,9 +185,7 @@
       "indexes": {
         "email_idx": {
           "name": "email_idx",
-          "columns": [
-            "email"
-          ],
+          "columns": ["email"],
           "isUnique": false
         }
       },
@@ -204,9 +193,7 @@
       "compositePrimaryKeys": {
         "rohi.dev_user_id": {
           "name": "rohi.dev_user_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -241,10 +228,7 @@
       "compositePrimaryKeys": {
         "rohi.dev_verificationToken_identifier_token_pk": {
           "name": "rohi.dev_verificationToken_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}
@@ -293,9 +277,7 @@
       "indexes": {
         "createdByIdx": {
           "name": "createdByIdx",
-          "columns": [
-            "created_by"
-          ],
+          "columns": ["created_by"],
           "isUnique": false
         }
       },
@@ -303,9 +285,7 @@
       "compositePrimaryKeys": {
         "rohi.dev_guestbook_id": {
           "name": "rohi.dev_guestbook_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -356,9 +336,7 @@
       "compositePrimaryKeys": {
         "rohi.dev_blog_views_id": {
           "name": "rohi.dev_blog_views_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}

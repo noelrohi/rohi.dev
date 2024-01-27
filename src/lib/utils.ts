@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 import djs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { twMerge } from "tailwind-merge";
 
 djs.extend(relativeTime);
 
