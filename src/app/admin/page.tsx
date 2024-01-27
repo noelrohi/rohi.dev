@@ -55,7 +55,7 @@ async function Entries() {
               revalidatePath("/guestbook");
             }}
           >
-            <SubmitButton variant="destructive" size="icon" className="size-6">
+            <SubmitButton variant="destructive">
               <TrashIcon />
             </SubmitButton>
           </form>
