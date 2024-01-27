@@ -1,0 +1,2 @@
+ALTER TABLE `rohi.dev_guestbook` MODIFY COLUMN `created_at` timestamp DEFAULT CURRENT_TIMESTAMP;--> statement-breakpoint
+ALTER TABLE `rohi.dev_blog_views` MODIFY COLUMN `created_at` timestamp DEFAULT CURRENT_TIMESTAMP;
