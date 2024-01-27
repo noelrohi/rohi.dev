@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { Navbar } from "@/components/navbar";
+import { ThemeProvider } from "@/components/providers/theme";
+import { ModeToggle } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rohi.dev"),
@@ -47,11 +49,16 @@ export default function RootLayout({
         className={cn(
           fontSans.variable,
           fontMono.variable,
-          "mx-4 min-h-screen max-w-2xl space-y-16 bg-background pt-8 font-sans antialiased lg:mx-auto",
+          "relative min-h-screen bg-background font-sans antialiased",
         )}
       >
-        <Navbar />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="relative mx-4 min-h-screen max-w-3xl lg:mx-auto">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+          </div>
+          <ModeToggle className="absolute right-4 bottom-4" />
+        </ThemeProvider>
       </body>
     </html>
   );

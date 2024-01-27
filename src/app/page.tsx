@@ -16,20 +16,16 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <>
-      <section>
-        <div className="space-y-4">
-          <div className="text-muted-foreground text-sm">
-            Noel Rohi (he/him)
-          </div>
-          <Intro />
-        </div>
-        <div className="my-8 font-bold text-lg">Featured Repositories:</div>
-        <Suspense>
-          <Projects />
-        </Suspense>
-      </section>
-    </>
+    <section className="">
+      <div className="space-y-4">
+        <div className="text-muted-foreground text-sm">Noel Rohi (he/him)</div>
+        <Intro />
+      </div>
+      <div className="my-8 font-bold text-lg">Featured Repositories:</div>
+      <Suspense>
+        <Projects />
+      </Suspense>
+    </section>
   );
 }
 
@@ -39,7 +35,7 @@ async function Projects() {
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
       {repos?.map(({ repoUrl, description, name, stars, ...repo }) => (
         <Link key={name} href={repoUrl} target="_blank">
-          <Card>
+          <Card className="h-full">
             <CardHeader className="flex flex-row items-center justify-between font-medium">
               <div>
                 {author.handle.slice(1) !== repo.author && `${repo.author}/`}
@@ -52,7 +48,7 @@ async function Projects() {
             </CardHeader>
 
             <CardContent>
-              <div className="line-clamp-2 max-w-lg break-words text-muted-foreground text-sm">
+              <div className="line-clamp-3 max-w-lg break-words text-muted-foreground text-sm">
                 {description}
               </div>
             </CardContent>
