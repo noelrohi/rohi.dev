@@ -1,6 +1,6 @@
+import { sql } from "drizzle-orm";
 import { index, int, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 import { idCreator, projectTable } from "./_table";
-import { sql } from "drizzle-orm";
 
 export const guestbook = projectTable(
   "guestbook",
