@@ -102,8 +102,8 @@ function Intro() {
         <Badge href="http://capex.com.ph" className="inline-fle">
           <img src="/capex-logo.png" width={16} height={16} alt="capex-logo" />
           CaPEx
-        </Badge>{" "}
-        , where I develop an app for Accounting department. We use{" "}
+        </Badge>
+        {". "}I am developing an app for Accounting department with{" "}
         <Badge href="https://nextjs.org/">
           <NextIcon className="size-4" />
           Nextjs
