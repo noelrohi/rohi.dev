@@ -1,13 +1,14 @@
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/providers/theme";
 import { ModeToggle } from "@/components/theme-toggle";
+import { projectURL } from "@/lib/consts";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rohi.dev"),
+  metadataBase: new URL(projectURL),
   title: {
     default: "Noel Rohi",
     template: "%s | Noel Rohi",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Noel Rohi",
     description: "a developer, weeb, and k-drama enthusiast.",
-    url: "https://leerob.io",
+    url: projectURL,
     siteName: "Noel Rohi",
     locale: "en_US",
     type: "website",
