@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import { getKdramaActivity, recentActivity, recentTrack } from "@/lib/helpers";
 import { dayjs } from "@/lib/utils";
 import { unstable_noStore as noStore } from "next/cache";
@@ -12,25 +13,23 @@ export default function Page() {
       </div>
       <ul className="my-6 ml-4 list-disc *:mt-2">
         <li>
-          <Suspense fallback="-">
-            <SpotifyCard />
+          <Suspense fallback={<ActivityFallback />}>
+            <Spotify />
           </Suspense>
         </li>
         <li>
-          Read{" "}
-          <Suspense fallback="-">
-            <AnimangaCard type="MANGA" />
+          <Suspense fallback={<ActivityFallback />}>
+            Read <Animanga type="MANGA" />
           </Suspense>
         </li>
         <li>
-          Watched{" "}
-          <Suspense fallback="-">
-            <AnimangaCard type="ANIME" />
+          <Suspense fallback={<ActivityFallback />}>
+            Watched <Animanga type="ANIME" />
           </Suspense>
         </li>
         <li>
-          <Suspense fallback="-">
-            <KdramaCard />
+          <Suspense fallback={<ActivityFallback />}>
+            <Kdrama />
           </Suspense>
         </li>
       </ul>
@@ -38,7 +37,16 @@ export default function Page() {
   );
 }
 
-async function AnimangaCard({ type }: { type: "ANIME" | "MANGA" }) {
+function ActivityFallback() {
+  return (
+    <div className="space-y-1">
+      <Skeleton className="h-[1.5rem] w-[24rem]" />
+      <Skeleton className="h-[17px] w-[4.5rem]" />
+    </div>
+  );
+}
+
+async function Animanga({ type }: { type: "ANIME" | "MANGA" }) {
   noStore();
   const data = await recentActivity(type);
   const updatedAt = data?.updatedAt;
@@ -66,24 +74,26 @@ async function AnimangaCard({ type }: { type: "ANIME" | "MANGA" }) {
   );
 }
 
-async function KdramaCard() {
+async function Kdrama() {
   noStore();
   const activities = await getKdramaActivity();
   if (!activities || !activities[0]) return null;
   const { date, episode, status, title, url } = activities[0];
   return (
     <>
-      <span className="capitalize">
-        {status === "watching" ? "Watched" : status}{" "}
-      </span>
-      <Link
-        href={url}
-        className="underline decoration-gray-400 underline-offset-4"
-        target="_blank"
-      >
-        {title}
-      </Link>{" "}
-      episode {episode}
+      <div className="w-[24rem]">
+        <span className="capitalize">
+          {status === "watching" ? "Watched" : status}{" "}
+        </span>
+        <Link
+          href={url}
+          className="underline decoration-gray-400 underline-offset-4"
+          target="_blank"
+        >
+          {title}
+        </Link>{" "}
+        episode {episode}
+      </div>
       <div>
         {date ? (
           <span className="text-muted-foreground text-sm">
@@ -95,7 +105,7 @@ async function KdramaCard() {
   );
 }
 
-async function SpotifyCard() {
+async function Spotify() {
   noStore();
   const data = await recentTrack();
   const song = data?.name;

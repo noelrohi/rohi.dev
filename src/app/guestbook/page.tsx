@@ -1,8 +1,10 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 import { db } from "@/db";
 import { guestbook } from "@/db/schema/main";
-import { auth, signIn, signOut } from "@/lib/auth";
+import { auth, signOut } from "@/lib/auth";
+import { cn, getRandomInt } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -13,13 +15,34 @@ export default function Page() {
       <div className="font-mono text-muted-foreground text-sm">
         sign my guestbook
       </div>
-      <Suspense>
+      <Suspense fallback={<Skeleton className="h-10 w-[28rem]" />}>
         <GuestBookForm />
       </Suspense>
-      <Suspense>
+      <Suspense fallback={<EntriesFallback />}>
         <Entries />
       </Suspense>
     </section>
+  );
+}
+
+function EntriesFallback() {
+  return (
+    <>
+      {Array.from({ length: 100 }).map((_, index) => {
+        const rand = getRandomInt({ min: 1, max: 100 });
+        return (
+          <div className="flex gap-2" key={index}>
+            <Skeleton className="h-[20px] w-12" />
+            <Skeleton
+              className={cn(
+                "h-[20px]",
+                rand > 49 || index === 0 ? "w-full" : "w-1/2",
+              )}
+            />
+          </div>
+        );
+      })}
+    </>
   );
 }
 

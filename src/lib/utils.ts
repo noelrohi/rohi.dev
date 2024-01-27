@@ -21,3 +21,9 @@ export function generateImage({ title, date }: { date?: Date; title: string }) {
     : "";
   return `https://og.rohi.dev/blog?date=${postDate}&title=${title}`;
 }
+
+export function getRandomInt(param: { min: number; max: number }) {
+  const min = Math.ceil(param.min);
+  const max = Math.floor(param.max);
+  return Math.floor(Math.random() * (max - min) + min);
+}

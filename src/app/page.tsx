@@ -7,6 +7,7 @@ import {
 } from "@/components/icons";
 import { badgeVariants } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { author } from "@/lib/consts";
 import { getGithubRepoData } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
@@ -23,10 +24,22 @@ export default function Page() {
         <Intro />
       </div>
       <div className="my-8 font-bold text-lg">Featured Repositories:</div>
-      <Suspense>
+      <Suspense fallback={<ProjectsFallback />}>
         <Projects />
       </Suspense>
     </section>
+  );
+}
+
+function ProjectsFallback() {
+  return (
+    <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+      {Array.from({ length: 6 }).map((_, index) => {
+        return (
+          <Skeleton className="h-[127.6px] w-[250.66px] rounded" key={index} />
+        );
+      })}
+    </div>
   );
 }
 
