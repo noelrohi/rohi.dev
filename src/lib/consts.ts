@@ -2,6 +2,8 @@ export const author = {
   handle: "@gneiru",
 };
 
+export const projectURL = "https://rohi.dev";
+
 export const links: Array<{ path: `/${string}`; label: string }> = [
   {
     path: "/",
