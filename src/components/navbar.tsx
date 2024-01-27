@@ -1,13 +1,5 @@
+import { links } from "@/lib/consts";
 import Link from "next/link";
-
-const links: Array<{ path: string; label: string }> = [
-  {
-    path: "/",
-    label: "home",
-  },
-  { path: "/blog", label: "blog" },
-  { path: "/guestbook", label: "guestbook" },
-];
 
 export function Navbar() {
   return (
