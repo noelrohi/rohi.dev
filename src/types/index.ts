@@ -6,7 +6,7 @@ export type Repo = {
   repoUrl: string;
   author: string | undefined;
   language: {
-      text: string;
-      color: string | undefined;
+    text: string;
+    color: string | undefined;
   };
-}
+};
