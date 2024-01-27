@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1706324554403,
+      "tag": "0000_workable_wolverine",
+      "breakpoints": true
+    }
+  ]
+}
