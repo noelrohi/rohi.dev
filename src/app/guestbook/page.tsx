@@ -24,7 +24,7 @@ export default function Page() {
       <div className="font-mono text-muted-foreground text-sm">
         sign my guestbook
       </div>
-      <Suspense fallback={<Skeleton className="h-10 w-[28rem]" />}>
+      <Suspense fallback={<Skeleton className="h-10 w-20" />}>
         <GuestBookForm />
       </Suspense>
       <Suspense fallback={<EntriesFallback />}>
@@ -41,7 +41,7 @@ function EntriesFallback() {
         const rand = getRandomInt({ min: 1, max: 100 });
         return (
           <div className="flex gap-2" key={index}>
-            <Skeleton className="h-[20px] w-12" />
+            <Skeleton className="h-[20px] w-1/2" />
             <Skeleton
               className={cn(
                 "h-[20px]",

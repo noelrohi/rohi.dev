@@ -35,9 +35,7 @@ function ProjectsFallback() {
   return (
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
       {Array.from({ length: 6 }).map((_, index) => {
-        return (
-          <Skeleton className="h-[127.6px] w-[250.66px] rounded" key={index} />
-        );
+        return <Skeleton className="h-[127.6px] w-full rounded" key={index} />;
       })}
     </div>
   );
