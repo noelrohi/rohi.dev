@@ -14,7 +14,7 @@ import { StarIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export default function Home() {
+export default function Page() {
   return (
     <section>
       <div className="space-y-4">

@@ -6,7 +6,7 @@ import { auth, signIn, signOut } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
-export default function Home() {
+export default function Page() {
   return (
     <section className="space-y-4">
       <div className="font-mono text-muted-foreground text-sm">
