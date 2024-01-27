@@ -1,30 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { signIn } from "@/lib/auth";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { SignIn } from "./form";
 
-export default function SignIn() {
+export default function Page() {
   return (
-    <form className="w-full space-y-4">
-      <div className="font-bold text-xl">Sign In Below</div>
-      <div className="flex gap-4">
-        <Button
-          className="w-full"
-          formAction={async () => {
-            "use server";
-            await signIn("google");
-          }}
-        >
-          Google
-        </Button>
-        <Button
-          className="w-full"
-          formAction={async () => {
-            "use server";
-            await signIn("google");
-          }}
-        >
-          Discord
-        </Button>
-      </div>
-    </form>
+    <div className="flex flex-col gap-4">
+      <SignIn />
+      <Link
+        href="/guestbook"
+        className={cn(buttonVariants(), "flex w-fit items-center gap-2")}
+      >
+        <ArrowLeftIcon /> Go back to view entries
+      </Link>
+    </div>
   );
 }
