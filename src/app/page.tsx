@@ -16,7 +16,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <section className="">
+    <section>
       <div className="space-y-4">
         <div className="text-muted-foreground text-sm">Noel Rohi (he/him)</div>
         <Intro />
