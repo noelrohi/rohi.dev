@@ -5,6 +5,7 @@ import { guestbook } from "@/db/schema/main";
 import { auth, signIn, signOut } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default function Page() {
   return (
@@ -12,8 +13,12 @@ export default function Page() {
       <div className="font-mono text-muted-foreground text-sm">
         sign my guestbook
       </div>
-      <GuestBookForm />
-      <Entries />
+      <Suspense>
+        <GuestBookForm />
+      </Suspense>
+      <Suspense>
+        <Entries />
+      </Suspense>
     </section>
   );
 }
