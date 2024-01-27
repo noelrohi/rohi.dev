@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { StarIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Suspense } from "react";
+import { badgeVariants } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -36,25 +38,25 @@ async function Projects() {
   return (
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
       {repos?.map(({ repoUrl, description, name, stars, ...repo }) => (
-        <Link
-          key={name}
-          href={repoUrl}
-          target="_blank"
-          className="grid grid-rows-1 gap-4 rounded-md border border-muted-foreground p-4 hover:shadow-md hover:shadow-muted-foreground"
-        >
-          <div className="flex items-start justify-between overflow-hidden">
-            <div className="max-w-[6.5rem] break-words font-semibold">
-              {author.handle.slice(1) !== repo.author && `${repo.author}/`}
-              {name}
-            </div>
-            <div className="inline-flex items-center gap-2">
-              {stars ? stars : 0}
-              <StarIcon />
-            </div>
-          </div>
-          <div className="line-clamp-2 max-w-lg break-words text-muted-foreground text-sm">
-            {description}
-          </div>
+        <Link key={name} href={repoUrl} target="_blank">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between font-medium">
+              <div>
+                {author.handle.slice(1) !== repo.author && `${repo.author}/`}
+                {name}
+              </div>
+              <div className="inline-flex items-center gap-2">
+                {stars ? stars : 0}
+                <StarIcon />
+              </div>
+            </CardHeader>
+
+            <CardContent>
+              <div className="line-clamp-2 max-w-lg break-words text-muted-foreground text-sm">
+                {description}
+              </div>
+            </CardContent>
+          </Card>
         </Link>
       ))}
     </div>
@@ -123,9 +125,13 @@ function Badge({
     <Link
       {...props}
       className={cn(
+        badgeVariants({
+          variant: "secondary",
+          className: "border border-border",
+        }),
+        "gap-2",
         className,
         underlined && "underline decoration-border underline-offset-4",
-        "inline-flex items-center justify-center gap-1 rounded border border-border bg-muted p-1 text-foreground text-sm leading-4",
       )}
       href={href}
       rel={rel}
