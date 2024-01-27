@@ -5,9 +5,14 @@ import { db } from "@/db";
 import { guestbook } from "@/db/schema/main";
 import { auth, signOut } from "@/lib/auth";
 import { cn, getRandomInt } from "@/lib/utils";
+import { Metadata } from "next/types";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Guestbook",
+};
 
 export default function Page() {
   return (

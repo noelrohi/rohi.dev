@@ -1,3 +1,9 @@
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Blog",
+};
+
 export default function Page() {
   return (
     <section className="space-y-4">
