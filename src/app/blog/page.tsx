@@ -4,6 +4,7 @@ export default function Page() {
       <div className="font-mono text-muted-foreground text-sm">
         read my blog
       </div>
+      <i>wip</i>
     </section>
   );
 }
