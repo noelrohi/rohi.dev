@@ -11,6 +11,7 @@ import { author } from "@/lib/consts";
 import { getGithubRepoData } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
 import { StarIcon } from "@radix-ui/react-icons";
+import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -30,10 +31,11 @@ export default function Page() {
 }
 
 async function Projects() {
+  noStore();
   const repos = await getGithubRepoData();
   return (
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-      {repos?.map(({ repoUrl, description, name, stars, ...repo }) => (
+      {repos.map(({ repoUrl, description, name, stars, ...repo }) => (
         <Link key={name} href={repoUrl} target="_blank">
           <Card className="h-full border bg-secondary text-secondary-foreground">
             <CardHeader className="flex flex-row items-center justify-between font-medium">

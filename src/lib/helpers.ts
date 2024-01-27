@@ -9,7 +9,7 @@ export async function getGithubRepoData() {
     const repos: Repo[] = await res.json();
     return repos;
   } catch (error) {
-    return null;
+    return [];
   }
 }
 
