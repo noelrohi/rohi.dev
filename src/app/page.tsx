@@ -5,14 +5,14 @@ import {
   ReactIcon,
   TypeScriptIcon,
 } from "@/components/icons";
+import { badgeVariants } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { author } from "@/lib/consts";
 import { getGithubRepoData } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
 import { StarIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Suspense } from "react";
-import { badgeVariants } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -35,7 +35,7 @@ async function Projects() {
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
       {repos?.map(({ repoUrl, description, name, stars, ...repo }) => (
         <Link key={name} href={repoUrl} target="_blank">
-          <Card className="h-full">
+          <Card className="h-full border bg-secondary text-secondary-foreground">
             <CardHeader className="flex flex-row items-center justify-between font-medium">
               <div>
                 {author.handle.slice(1) !== repo.author && `${repo.author}/`}
@@ -48,7 +48,7 @@ async function Projects() {
             </CardHeader>
 
             <CardContent>
-              <div className="line-clamp-3 max-w-lg break-words text-muted-foreground text-sm">
+              <div className="line-clamp-3 max-w-lg break-words text-muted-foreground text-xs">
                 {description}
               </div>
             </CardContent>
