@@ -1,9 +1,9 @@
-import SignIn from "../../signin/page";
+import { SignIn } from "../../signin/form";
 import { ModalDialog } from "../dialog";
 
 export default function Modal() {
   return (
-    <ModalDialog>
+    <ModalDialog className="max-w-sm">
       <SignIn />
     </ModalDialog>
   );
