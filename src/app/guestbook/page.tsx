@@ -1,3 +1,4 @@
+import { SubmitButton } from "@/components/buttons/submit";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -5,9 +6,10 @@ import { db } from "@/db";
 import { guestbook } from "@/db/schema/main";
 import { auth, signOut } from "@/lib/auth";
 import { cn, getRandomInt } from "@/lib/utils";
-import { Metadata } from "next/types";
+import { notify } from "@/lib/webhooks/slack";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
+import { Metadata } from "next/types";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -61,40 +63,45 @@ async function GuestBookForm() {
     );
 
   return (
-    <form
-      key={Math.random()}
-      className="space-y-2"
-      action={async (formData: FormData) => {
-        "use server";
-        const message = formData.get("message") as string;
-        const createdBy = session.user.name || "Anonymous";
-        await db.insert(guestbook).values({
-          createdBy,
-          message,
-        });
-        revalidatePath("/guestbook");
-      }}
-    >
-      <div className="flex gap-2">
+    <div key={Math.random()} className="space-y-2">
+      <form className="flex gap-2">
         <Input
           name="message"
           className="max-w-sm"
           placeholder="your message ..."
         />
-        <Button>Sign</Button>
-      </div>
-      <Button
-        variant={"ghost"}
-        size={"sm"}
-        className="text-muted-foreground text-xs"
-        formAction={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
-        Sign Out
-      </Button>
-    </form>
+        <SubmitButton
+          formAction={async (formData: FormData) => {
+            "use server";
+            const message = formData.get("message") as string;
+            const createdBy = session.user.name || "Anonymous";
+            await db.insert(guestbook).values({
+              createdBy,
+              message,
+            });
+            await notify(
+              `${createdBy} has sent you a guestbook message. Message: ${message}`,
+            );
+            revalidatePath("/guestbook");
+          }}
+        >
+          Sign
+        </SubmitButton>
+      </form>
+      <form>
+        <SubmitButton
+          variant={"ghost"}
+          size={"sm"}
+          className="text-muted-foreground text-xs"
+          formAction={async () => {
+            "use server";
+            await signOut();
+          }}
+        >
+          Sign Out
+        </SubmitButton>
+      </form>
+    </div>
   );
 }
 
