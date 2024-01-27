@@ -36,8 +36,8 @@ export function NextIcon(props: IconProps) {
           y2="89.167"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#fff" />
-          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+          <stop stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="c"
@@ -47,8 +47,8 @@ export function NextIcon(props: IconProps) {
           y2="59.375"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#fff" />
-          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+          <stop stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
