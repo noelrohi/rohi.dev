@@ -1,5 +1,6 @@
 import { SubmitButton } from "@/components/buttons/submit";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { db } from "@/db";
@@ -11,6 +12,7 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { Metadata } from "next/types";
 import { Suspense } from "react";
+import { SignIn } from "./form";
 
 export const metadata: Metadata = {
   title: "Guestbook",
@@ -57,9 +59,14 @@ async function GuestBookForm() {
   const session = await auth();
   if (!session)
     return (
-      <Link href={"/guestbook/signin"} className={buttonVariants()}>
-        Sign In
-      </Link>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button>Sign In</Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-sm">
+          <SignIn />
+        </DialogContent>
+      </Dialog>
     );
 
   return (
