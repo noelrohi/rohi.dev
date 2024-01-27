@@ -5,7 +5,6 @@ const links: Array<{ path: string; label: string }> = [
     path: "/",
     label: "home",
   },
-  { path: "/work", label: "work" },
   { path: "/blog", label: "blog" },
   { path: "/guestbook", label: "guestbook" },
 ];
