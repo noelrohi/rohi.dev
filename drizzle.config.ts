@@ -8,7 +8,7 @@ export default defineConfig({
   dbCredentials: {
     uri: env.DATABASE_URL,
   },
-  tablesFilter: ["rohi.dev_*"],
+  tablesFilter: ["rohidev_*"],
   verbose: true,
   strict: true,
 });

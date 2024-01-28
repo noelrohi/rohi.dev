@@ -7,7 +7,7 @@ import { mysqlTableCreator, varchar } from "drizzle-orm/mysql-core";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const projectTable = mysqlTableCreator((name) => `rohi.dev_${name}`);
+export const projectTable = mysqlTableCreator((name) => `rohidev_${name}`);
 
 export const idCreator = varchar("id", { length: 128 })
   .$defaultFn(() => createId())
