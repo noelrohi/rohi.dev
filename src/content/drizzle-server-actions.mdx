@@ -1,0 +1,115 @@
+---
+title: "Server actions with Drizzle"
+summary: "Easily create typesafe insertion of data with Drizzle in Nextjs 13 and Server Actions"
+publishedAt: "2023-10-24"
+---
+
+[Drizzle](https://orm.drizzle.team) is now my favorite ORM. I tried using it way before they introduced relational queries, I thought it's good but now it is even better and it keeps getting better. With their release in [0.28.2](https://github.com/drizzle-team/drizzle-orm/releases/tag/0.28.3), it is so simple to create typesafe mutations with inferring insert of a model.
+
+[Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions) is still experimental in Nextjs 13 but is now in [React](https://react.dev/) Canary. This let you call async function inside client components without exposing any secrets in network tab nor using an api route in the same codebase.
+
+In this example, I'll be using shadcn-ui to create form component, as followed in the [docs](https://ui.shadcn.com/docs/components/form).
+
+After modifying `onSubmit` function a bit, the code looks like this ...
+
+```tsx
+// /commponents/create-form.tsx
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useTransition } from "react";
+import { useForm } from "react-hook-form";
+
+import { createPost } from "@/actions/post";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import z from "zod";
+
+const schema = z.object({
+  name: z.string().min(3),
+});
+
+type Inputs = z.infer<typeof schema>;
+
+export function CreatePost() {
+  const [isCreating, startCreating] = useTransition();
+  const form = useForm<Inputs>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+    },
+  });
+
+  function onSubmit(postData: Inputs) {
+    startCreating(async () => {
+      const response = await createPost(postData);
+      console.log(response);
+      form.reset();
+    });
+  }
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="relative max-w-sm space-y-4"
+      >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Post text</FormLabel>
+              <FormControl>
+                <Input placeholder={"Good morning"} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="flex justify-end">
+          <Button type="submit" disabled={isCreating}>
+            {isCreating ? "Creating" : "Submit"}
+          </Button>
+        </div>
+      </form>
+    </Form>
+  );
+}
+```
+
+This already includes accessibility and client & server validations. Notice that we're importing a `createPost` action which is the server action.
+
+```ts
+// /actions/post.ts
+"use server";
+
+import { db } from "@/server/db";
+import { posts } from "@/server/db/schema";
+import { revalidatePath } from "next/cache";
+
+export async function createPost(data: typeof posts.$inferInsert) {
+  try {
+    await db.insert(posts).values(data);
+  } catch (error) {
+    if (error instanceof Error) {
+      return { status: "error", message: error.message };
+    }
+    return { status: "error", message: "Something went wrong!" };
+  }
+  return { status: "ok", message: "Successfully created!" };
+  revalidatePath("/");
+}
+```
+
+In the server action function, it takes a parameter of the expected object value of a post to be inserted so I just need to pass it as an argument of values. Code looks cleaner this way right?
+
+That's pretty much it. Thank you for stopping by!
