@@ -2,6 +2,7 @@ import { getBlogPosts } from "@/lib/blog";
 import Link from "next/link";
 import { Metadata } from "next/types";
 import { getNumberOfViews } from "./queries";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -9,12 +10,20 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const allBlogs = getBlogPosts();
   return (
     <section className="space-y-4">
       <div className="font-mono text-muted-foreground text-sm">
         read my blog
       </div>
+      <BlogPosts />
+    </section>
+  );
+}
+
+function BlogPosts() {
+  const allBlogs = getBlogPosts();
+  return (
+    <>
       {allBlogs
         .sort((a, b) => {
           if (
@@ -34,20 +43,23 @@ export default function Page() {
               <p className="text-foreground tracking-tight">
                 {post.metadata.title}
               </p>
-              <Views slug={post.slug} />
+              <p className="text-muted-foreground">
+                <Suspense fallback="- views">
+                  <Views slug={post.slug} />
+                </Suspense>
+              </p>
             </div>
           </Link>
         ))}
-    </section>
+    </>
   );
 }
 
 async function Views({ slug }: { slug: string }) {
   const views = await getNumberOfViews(slug);
-
   return (
-    <p className="text-muted-foreground">
+    <>
       {views.toLocaleString()} view{views > 1 && "s"}
-    </p>
+    </>
   );
 }
