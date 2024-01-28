@@ -56,7 +56,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="relative mx-4 min-h-screen max-w-3xl lg:mx-auto">
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 pb-4 lg:pb-12">{children}</main>
           </div>
           <ModeToggle className="fixed right-4 bottom-4" />
         </ThemeProvider>
