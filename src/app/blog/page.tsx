@@ -1,8 +1,8 @@
 import { getBlogPosts } from "@/lib/blog";
 import Link from "next/link";
 import { Metadata } from "next/types";
-import { getNumberOfViews } from "./queries";
 import { Suspense } from "react";
+import { getNumberOfViews } from "./queries";
 
 export const metadata: Metadata = {
   title: "Blog",

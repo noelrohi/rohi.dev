@@ -3,13 +3,13 @@ import { db } from "@/db";
 import { views } from "@/db/schema/main";
 import { getBlogPosts } from "@/lib/blog";
 import { projectURL } from "@/lib/consts";
+import { dayjs } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import type { Metadata } from "next";
 import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { Suspense, cache } from "react";
 import { getNumberOfViews } from "../queries";
-import { dayjs } from "@/lib/utils";
 
 interface PageProps {
   params: {
