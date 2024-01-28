@@ -58,7 +58,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
           </div>
-          <ModeToggle className="absolute right-4 bottom-4" />
+          <ModeToggle className="fixed right-4 bottom-4" />
         </ThemeProvider>
       </body>
     </html>
