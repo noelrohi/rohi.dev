@@ -6,7 +6,7 @@ import { projectURL } from "@/lib/consts";
 import { dayjs } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import type { Metadata } from "next";
-import { unstable_noStore as noStore } from "next/cache";
+import { unstable_noStore as noStore, revalidatePath } from "next/cache";
 import { notFound } from "next/navigation";
 import { Suspense, cache } from "react";
 import { getNumberOfViews } from "../queries";
@@ -132,10 +132,12 @@ export default function Blog({ params }: PageProps) {
 }
 
 const incrementViews = cache(async (slug: string) => {
-  return await db
+  await db
     .insert(views)
     .values({ slug, count: 1 })
     .onDuplicateKeyUpdate({ set: { count: sql<number>`${views.count} + 1` } });
+  revalidatePath("/blog");
+  revalidatePath(`/blog/${slug}`);
 });
 
 async function Views({ slug }: { slug: string }) {
