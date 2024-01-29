@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next/types";
 import { Suspense } from "react";
 import { getNumberOfViews } from "./queries";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -56,6 +57,7 @@ function BlogPosts() {
 }
 
 async function Views({ slug }: { slug: string }) {
+  noStore();
   const views = await getNumberOfViews(slug);
   return (
     <>
