@@ -106,7 +106,7 @@ export default function Blog({ params }: PageProps) {
             url: `${projectURL}/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: "Lee Robinson",
+              name: "Noel Rohi",
             },
           }),
         }}
