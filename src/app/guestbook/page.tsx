@@ -1,15 +1,14 @@
 import { SubmitButton } from "@/components/buttons/submit";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { db } from "@/db";
 import { guestbook } from "@/db/schema/main";
 import { auth, signOut } from "@/lib/auth";
+import { sendEmail } from "@/lib/resend";
 import { cn, getRandomInt } from "@/lib/utils";
-import { notify } from "@/lib/webhooks/slack";
 import { revalidatePath } from "next/cache";
-import Link from "next/link";
 import { Metadata } from "next/types";
 import { Suspense } from "react";
 import { SignIn } from "./form";
@@ -86,7 +85,7 @@ async function GuestBookForm() {
               createdBy,
               message,
             });
-            await notify(
+            await sendEmail(
               `${createdBy} has sent you a guestbook message. Message: ${message}`,
             );
             revalidatePath("/guestbook");
