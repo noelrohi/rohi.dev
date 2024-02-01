@@ -5,6 +5,7 @@ import { projectURL } from "@/lib/consts";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function RootLayout({
           </div>
           <ModeToggle className="fixed right-4 bottom-4" />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
