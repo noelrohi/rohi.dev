@@ -9,9 +9,9 @@ export const env = createEnv({
     DISCORD_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
     GOOGLE_CLIENT_ID: z.string().min(1),
-    SLACK_WEBHOOK_URL: z.string().url().optional(),
     KNEXT_API_KEY: z.string(),
     LAST_FM_API_KEY: z.string(),
+    RESEND_API_KEY: z.string(),
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
@@ -24,8 +24,8 @@ export const env = createEnv({
     DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    SLACK_WEBHOOK_URL: process.env.SLACK_WEBHOOK_URL,
     KNEXT_API_KEY: process.env.KNEXT_API_KEY,
     LAST_FM_API_KEY: process.env.LAST_FM_API_KEY,
+    RESEND_API_KEY: z.string(),
   },
 });

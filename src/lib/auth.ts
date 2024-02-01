@@ -7,7 +7,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { db, tableCreator } from "@/db";
 
 import { env } from "@/env.mjs";
-import { notify } from "./webhooks/slack";
+import { sendEmail } from "./resend";
 
 export type { Session } from "next-auth";
 
@@ -54,7 +54,9 @@ export const {
   events: {
     signIn: async ({ isNewUser, user }) => {
       if (isNewUser) {
-        notify(`User ${user.name}(${user.email}) has signed up in rohi.dev.`);
+        await sendEmail(
+          `User ${user.name}(${user.email}) has signed up in rohi.dev.`,
+        );
       }
     },
   },
