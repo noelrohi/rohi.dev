@@ -1,9 +1,9 @@
 import { getBlogPosts } from "@/lib/blog";
+import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import { Metadata } from "next/types";
 import { Suspense } from "react";
 import { getNumberOfViews } from "./queries";
-import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Blog",
