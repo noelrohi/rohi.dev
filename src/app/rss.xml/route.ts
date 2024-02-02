@@ -25,7 +25,6 @@ function generateRSS() {
                 <content:encoded>${convertToContentEncoded(blog.content)}</content:encoded>
               </item>`,
   );
-  console.log(items);
 
   return `<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
             <channel>
