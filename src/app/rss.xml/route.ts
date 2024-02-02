@@ -17,7 +17,7 @@ function generateRSS() {
 
   const items: string[] = allBlogs.map(
     (blog) => `<item>
-                <title>First post</title>
+                <title>${blog.metadata.title}</title>
                 <link>${projectURL}/blog/${blog.slug}/</link>
                 <guid isPermaLink="true">${projectURL}/blog/${blog.slug}/</guid>
                 <description>${blog.metadata.summary}</description>
