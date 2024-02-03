@@ -59,7 +59,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1 pb-4 lg:pb-12">{children}</main>
           </div>
-          <ModeToggle className="fixed right-4 bottom-4" />
+          <ModeToggle className="fixed right-4 bottom-4 rounded-lg bg-transparent" />
         </ThemeProvider>
         <Analytics />
       </body>
