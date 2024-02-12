@@ -3,11 +3,12 @@
 ## Heavily inspired by [https://leerob.io](https://github.com/leerob/leerob.io)
 
 ## Techstack
-- Nextjs14
-- Shadcn-UI
-- TailwindCSS
-- Drizzle ORM
-- PlanetScale MySQL
+- [Nextjs14](https://nextjs.org/)
+- [Shadcn-UI](https://ui.shadcn.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Drizzle ORM](https://orm.drizzle.team/)
+- [PlanetScale MySQL](https://planetscale.com/)
+- [Biome](https://biomejs.dev/)
 
 
 ## Run Locally
