@@ -61,7 +61,7 @@ async function Projects() {
             </CardHeader>
 
             <CardContent>
-              <div className="line-clamp-3 max-w-lg break-words text-muted-foreground text-xs">
+              <div className="line-clamp-3 max-w-lg break-words text-foreground/80 text-xs">
                 {description}
               </div>
             </CardContent>
