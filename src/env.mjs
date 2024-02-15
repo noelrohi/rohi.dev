@@ -26,6 +26,6 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     KNEXT_API_KEY: process.env.KNEXT_API_KEY,
     LAST_FM_API_KEY: process.env.LAST_FM_API_KEY,
-    RESEND_API_KEY: process.env.LAST_FM_API_KEY,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
   },
 });
