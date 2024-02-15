@@ -1,4 +1,6 @@
 import { Metadata } from "next/types";
+import { Fragment } from "react";
+import { setups } from "./setup";
 
 export const metadata: Metadata = {
   title: "Uses",
@@ -11,20 +13,18 @@ export default function Page() {
       <div className="font-mono text-muted-foreground text-sm">
         here's my setup
       </div>
-      <div className="font-medium text-lg tracking-tighter">
-        Computer / Office
-      </div>
-      <ul className="list-disc pl-6 text-foreground/80">
-        <li>Asus TUF Gaming F15 FX506LHB</li>
-        <li>27" Samsung CR50</li>
-        <li>Garuda Falcon1</li>
-        <li>Dark Alien K710 Keyboard</li>
-      </ul>
-      <div className="font-medium text-lg tracking-tighter">Coding</div>
-      <ul className="list-disc pl-6 text-foreground/80">
-        <li>Editor: VSCode</li>
-        <li>Theme: GitHub Dark Colorblind (Beta)</li>
-      </ul>
+      {setups.map(({ items, setupName }) => (
+        <Fragment key={setupName}>
+          <div className="font-medium text-lg tracking-tighter">
+            {setupName}
+          </div>
+          <ul className="list-disc pl-6 text-foreground/80">
+            {items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Fragment>
+      ))}
     </section>
   );
 }
