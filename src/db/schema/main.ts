@@ -16,16 +16,10 @@ export const guestbook = projectTable(
   }),
 );
 
-export const views = projectTable(
-  "blog_views",
-  {
-    id: idCreator,
-    slug: varchar("slug", { length: 255 }).notNull().unique(),
-    count: int("count").notNull(),
-    createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
-    updatedAt: timestamp("updated_at").onUpdateNow(),
-  },
-  (table) => ({
-    slugIdx: index("slug_idx").on(table.slug),
-  }),
-);
+export const views = projectTable("blog_views", {
+  id: idCreator,
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  count: int("count").notNull(),
+  createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: timestamp("updated_at").onUpdateNow(),
+});
