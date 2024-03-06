@@ -69,7 +69,7 @@ async function Projects() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="flex space-x-4 text-muted-foreground text-sm">
+                <div className="flex space-x-4 text-foreground/80 text-sm">
                   <div className="flex items-center">
                     <div
                       className="mr-1 size-3 rounded-full bg-sky-400"
