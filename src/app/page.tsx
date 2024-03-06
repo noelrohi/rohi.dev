@@ -116,7 +116,7 @@ function Intro() {
       </p>
       <p className="leading-relaxed">
         Currently, I work as Full-Stack Developer at{" "}
-        <Badge href="http://capex.com.ph" className="inline-fle">
+        <Badge href="http://capex.com.ph">
           <img src="/capex-logo.png" width={16} height={16} alt="capex-logo" />
           CaPEx
         </Badge>
