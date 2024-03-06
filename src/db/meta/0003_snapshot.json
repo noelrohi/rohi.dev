@@ -88,9 +88,7 @@
       "indexes": {
         "userId_idx": {
           "name": "userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -98,10 +96,7 @@
       "compositePrimaryKeys": {
         "rohidev_account_provider_providerAccountId_pk": {
           "name": "rohidev_account_provider_providerAccountId_pk",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {}
@@ -134,9 +129,7 @@
       "indexes": {
         "userId_idx": {
           "name": "userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -144,9 +137,7 @@
       "compositePrimaryKeys": {
         "rohidev_session_sessionToken": {
           "name": "rohidev_session_sessionToken",
-          "columns": [
-            "sessionToken"
-          ]
+          "columns": ["sessionToken"]
         }
       },
       "uniqueConstraints": {}
@@ -194,9 +185,7 @@
       "indexes": {
         "email_idx": {
           "name": "email_idx",
-          "columns": [
-            "email"
-          ],
+          "columns": ["email"],
           "isUnique": false
         }
       },
@@ -204,9 +193,7 @@
       "compositePrimaryKeys": {
         "rohidev_user_id": {
           "name": "rohidev_user_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -241,10 +228,7 @@
       "compositePrimaryKeys": {
         "rohidev_verificationToken_identifier_token_pk": {
           "name": "rohidev_verificationToken_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}
@@ -293,9 +277,7 @@
       "indexes": {
         "createdByIdx": {
           "name": "createdByIdx",
-          "columns": [
-            "created_by"
-          ],
+          "columns": ["created_by"],
           "isUnique": false
         }
       },
@@ -303,9 +285,7 @@
       "compositePrimaryKeys": {
         "rohidev_guestbook_id": {
           "name": "rohidev_guestbook_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -356,17 +336,13 @@
       "compositePrimaryKeys": {
         "rohidev_blog_views_id": {
           "name": "rohidev_blog_views_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {
         "rohidev_blog_views_slug_unique": {
           "name": "rohidev_blog_views_slug_unique",
-          "columns": [
-            "slug"
-          ]
+          "columns": ["slug"]
         }
       }
     }
