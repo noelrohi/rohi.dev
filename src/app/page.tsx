@@ -6,9 +6,14 @@ import {
   TypeScriptIcon,
 } from "@/components/icons";
 import { badgeVariants } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { author } from "@/lib/consts";
 import { getGithubRepoData } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
 import { StarIcon } from "@radix-ui/react-icons";
@@ -46,28 +51,42 @@ async function Projects() {
   const repos = await getGithubRepoData();
   return (
     <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-      {repos.map(({ repoUrl, description, name, stars, ...repo }) => (
-        <Link key={name} href={repoUrl} target="_blank">
-          <Card className="h-full border bg-secondary text-secondary-foreground">
-            <CardHeader className="flex flex-row items-center justify-between font-medium">
-              <div>
-                {author.handle.slice(1) !== repo.author && `${repo.author}/`}
-                {name}
-              </div>
-              <div className="inline-flex items-center gap-2">
-                {stars ? stars : 0}
-                <StarIcon />
-              </div>
-            </CardHeader>
-
-            <CardContent>
-              <div className="line-clamp-3 max-w-lg break-words text-foreground/80 text-xs">
-                {description}
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
+      {repos.map(
+        ({ repoUrl, description, name, stars, homePage, ...project }) => (
+          <Link
+            key={name}
+            href={homePage || repoUrl || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Card className="h-full border bg-secondary text-secondary-foreground">
+              <CardHeader className="flex-1">
+                <div className="space-y-1">
+                  <CardTitle className="line-clamp-1">{name}</CardTitle>
+                  <CardDescription className="line-clamp-2 min-h-[32px] text-foreground/80 text-xs">
+                    {description ?? "No description provided"}
+                  </CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="flex space-x-4 text-muted-foreground text-sm">
+                  <div className="flex items-center">
+                    <div
+                      className="mr-1 size-3 rounded-full bg-sky-400"
+                      aria-hidden
+                    />
+                    {project.language ?? "Unknown"}
+                  </div>
+                  <div className="flex items-center">
+                    <StarIcon className="mr-1 size-3" aria-hidden="true" />
+                    {stars}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        ),
+      )}
     </div>
   );
 }

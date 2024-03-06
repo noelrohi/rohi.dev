@@ -1,14 +1,42 @@
 import { env } from "@/env.mjs";
-import type { Repo } from "@/types";
 import type { Main } from "@/types/anilist";
 import type { Track } from "@/types/spotify";
+import { z } from "zod";
+
+const projectSchema = z.array(
+  z.object({
+    name: z.string().optional().nullable(),
+    html_url: z.string().optional().nullable(),
+    description: z.string().optional().nullable(),
+    homepage: z.string().optional().nullable(),
+    language: z.string().optional().nullable(),
+    stargazers_count: z.union([z.string(), z.number()]),
+    forks_count: z.number(),
+    private: z.boolean(),
+  }),
+);
 
 export async function getGithubRepoData() {
   try {
-    const res = await fetch("https://gh.rohi.dev/api/pinned?username=gneiru");
-    const repos: Repo[] = await res.json();
-    return repos;
+    const url = new URL("https://api.github.com/users/gneiru/repos");
+    url.searchParams.set("type", "owner");
+    url.searchParams.set("sort", "pushed");
+    url.searchParams.set("per_page", "6");
+    const res = await fetch(url);
+    const repos = projectSchema.parse(await res.json());
+    return repos
+      .filter((repo) => repo.private === false)
+      .map((repo) => ({
+        repoUrl: repo.html_url,
+        homePage: repo.homepage,
+        description: repo.description,
+        name: repo.name,
+        stars: repo.stargazers_count,
+        forks: repo.forks_count,
+        language: repo.language,
+      }));
   } catch (error) {
+    console.error(error);
     return [];
   }
 }
