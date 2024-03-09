@@ -107,7 +107,7 @@ function Intro() {
           TypeScript
         </Badge>{" "}
         {"and "}
-        <Badge href="https://supabase.com">
+        <Badge href="https://neon.tech">
           <PostGreSQLIcon className="size-4" />
           PostgreSQL
         </Badge>

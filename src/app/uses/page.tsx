@@ -47,7 +47,7 @@ const itemList = [
       "Editor: VSCode",
       "Theme: Github Dark Colorblind (Beta)",
       "Framework: Next.js",
-      "Database: PlanetScale MySQL",
+      "Database: Neon PostgreSQL",
       "Styling: Tailwind CSS",
       "UI: Shadcn-UI",
       "ORM: Drizzle",
