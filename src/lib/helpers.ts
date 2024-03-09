@@ -26,6 +26,7 @@ export async function getGithubRepoData() {
     const repos = projectSchema.parse(await res.json());
     return repos
       .filter((repo) => repo.private === false)
+      .sort((a, b) => Number(b.stargazers_count) - Number(a.stargazers_count))
       .map((repo) => ({
         repoUrl: repo.html_url,
         homePage: repo.homepage,

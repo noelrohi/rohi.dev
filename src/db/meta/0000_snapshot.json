@@ -1,129 +1,117 @@
 {
-  "version": "5",
-  "dialect": "mysql",
-  "id": "a4cd30c9-8521-495f-acb6-624567e9d69b",
+  "id": "4e5c0c91-a1ec-4d72-845d-e1c19699971b",
   "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
   "tables": {
-    "rohi.dev_account": {
-      "name": "rohi.dev_account",
+    "rohidev_account": {
+      "name": "rohidev_account",
+      "schema": "",
       "columns": {
         "userId": {
           "name": "userId",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "type": {
           "name": "type",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "provider": {
           "name": "provider",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "providerAccountId": {
           "name": "providerAccountId",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "refresh_token": {
           "name": "refresh_token",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "access_token": {
           "name": "access_token",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "expires_at": {
           "name": "expires_at",
-          "type": "int",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "token_type": {
           "name": "token_type",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "scope": {
           "name": "scope",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "id_token": {
           "name": "id_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "session_state": {
           "name": "session_state",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         }
       },
       "indexes": {
-        "userId_idx": {
-          "name": "userId_idx",
+        "user_id_idx": {
+          "name": "user_id_idx",
           "columns": ["userId"],
           "isUnique": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "rohi.dev_account_provider_providerAccountId_pk": {
-          "name": "rohi.dev_account_provider_providerAccountId_pk",
+        "rohidev_account_provider_providerAccountId_pk": {
+          "name": "rohidev_account_provider_providerAccountId_pk",
           "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {}
     },
-    "rohi.dev_session": {
-      "name": "rohi.dev_session",
+    "rohidev_session": {
+      "name": "rohidev_session",
+      "schema": "",
       "columns": {
         "sessionToken": {
           "name": "sessionToken",
           "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "primaryKey": true,
+          "notNull": true
         },
         "userId": {
           "name": "userId",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "expires": {
           "name": "expires",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         }
       },
       "indexes": {
@@ -134,52 +122,43 @@
         }
       },
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "rohi.dev_session_sessionToken": {
-          "name": "rohi.dev_session_sessionToken",
-          "columns": ["sessionToken"]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "rohi.dev_user": {
-      "name": "rohi.dev_user",
+    "rohidev_user": {
+      "name": "rohidev_user",
+      "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "primaryKey": true,
+          "notNull": true
         },
         "name": {
           "name": "name",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "email": {
           "name": "email",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "emailVerified": {
           "name": "emailVerified",
-          "type": "timestamp(3)",
+          "type": "timestamp (3)",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
           "default": "CURRENT_TIMESTAMP(3)"
         },
         "image": {
           "name": "image",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         }
       },
       "indexes": {
@@ -190,88 +169,76 @@
         }
       },
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "rohi.dev_user_id": {
-          "name": "rohi.dev_user_id",
-          "columns": ["id"]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "rohi.dev_verificationToken": {
-      "name": "rohi.dev_verificationToken",
+    "rohidev_verificationToken": {
+      "name": "rohidev_verificationToken",
+      "schema": "",
       "columns": {
         "identifier": {
           "name": "identifier",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "token": {
           "name": "token",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "expires": {
           "name": "expires",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "rohi.dev_verificationToken_identifier_token_pk": {
-          "name": "rohi.dev_verificationToken_identifier_token_pk",
+        "rohidev_verificationToken_identifier_token_pk": {
+          "name": "rohidev_verificationToken_identifier_token_pk",
           "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}
     },
-    "rohi.dev_guestbook": {
-      "name": "rohi.dev_guestbook",
+    "rohidev_guestbook": {
+      "name": "rohidev_guestbook",
+      "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "varchar(128)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "primaryKey": true,
+          "notNull": true
         },
         "message": {
           "name": "message",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "created_by": {
           "name": "created_by",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
-          "default": "(now())"
+          "default": "CURRENT_TIMESTAMP"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "onUpdate": true
+          "notNull": false
         }
       },
       "indexes": {
@@ -282,70 +249,62 @@
         }
       },
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "rohi.dev_guestbook_id": {
-          "name": "rohi.dev_guestbook_id",
-          "columns": ["id"]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "rohi.dev_blog_views": {
-      "name": "rohi.dev_blog_views",
+    "rohidev_blog_views": {
+      "name": "rohidev_blog_views",
+      "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "varchar(128)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "primaryKey": true,
+          "notNull": true
         },
         "slug": {
           "name": "slug",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "count": {
           "name": "count",
-          "type": "int",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
-          "default": "(now())"
+          "default": "CURRENT_TIMESTAMP"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "onUpdate": true
+          "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "rohi.dev_blog_views_id": {
-          "name": "rohi.dev_blog_views_id",
-          "columns": ["id"]
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "rohidev_blog_views_slug_unique": {
+          "name": "rohidev_blog_views_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": ["slug"]
         }
-      },
-      "uniqueConstraints": {}
+      }
     }
   },
+  "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
+    "tables": {}
   }
 }

@@ -7,7 +7,7 @@
 - [Shadcn-UI](https://ui.shadcn.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Drizzle ORM](https://orm.drizzle.team/)
-- [PlanetScale MySQL](https://planetscale.com/)
+- [Supabase PostgreSQL](https://supabase.com/)
 - [Biome](https://biomejs.dev/)
 
 

@@ -1,1 +1,0 @@
-DROP INDEX `slug_idx` ON `rohidev_blog_views`;
