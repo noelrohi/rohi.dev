@@ -1,7 +1,7 @@
 import {
   LaravelIcon,
-  MySqlIcon,
   NextIcon,
+  PostGreSQLIcon,
   ReactIcon,
   TypeScriptIcon,
 } from "@/components/icons";
@@ -107,9 +107,9 @@ function Intro() {
           TypeScript
         </Badge>{" "}
         {"and "}
-        <Badge href="https://planetscale.com">
-          <MySqlIcon className="size-4" />
-          MySQL
+        <Badge href="https://supabase.com">
+          <PostGreSQLIcon className="size-4" />
+          PostgreSQL
         </Badge>
         {`. I like playing games, building things, watching anime series and
         watching korean drama series. `}
