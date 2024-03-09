@@ -1,33 +1,12 @@
 {
   "version": "5",
-  "dialect": "mysql",
+  "dialect": "pg",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1706324554403,
-      "tag": "0000_workable_wolverine",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1706366960474,
-      "tag": "0001_moaning_black_widow",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1706446994549,
-      "tag": "0002_blushing_vengeance",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1709704256874,
-      "tag": "0003_icy_santa_claus",
+      "when": 1709951867416,
+      "tag": "0000_sparkling_moonstone",
       "breakpoints": true
     }
   ]
