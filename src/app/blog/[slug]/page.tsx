@@ -135,7 +135,10 @@ const incrementViews = cache(async (slug: string) => {
   await db
     .insert(views)
     .values({ slug, count: 1 })
-    .onDuplicateKeyUpdate({ set: { count: sql<number>`${views.count} + 1` } });
+    .onConflictDoUpdate({
+      target: views.count,
+      set: { count: sql<number>`${views.count} + 1` },
+    });
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
 });
