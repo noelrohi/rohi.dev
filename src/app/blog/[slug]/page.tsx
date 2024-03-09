@@ -136,7 +136,7 @@ const incrementViews = cache(async (slug: string) => {
     .insert(views)
     .values({ slug, count: 1 })
     .onConflictDoUpdate({
-      target: views.count,
+      target: views.slug,
       set: { count: sql<number>`${views.count} + 1` },
     });
   revalidatePath("/blog");
