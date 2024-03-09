@@ -1,9 +1,9 @@
-import postgres from "postgres";
+import { env } from "@/env.mjs";
 import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 import * as auth from "./schema/auth";
 import * as main from "./schema/main";
 import * as relations from "./schema/relations";
-import { env } from "@/env.mjs";
 
 export const schema = { ...auth, ...main, ...relations };
 
