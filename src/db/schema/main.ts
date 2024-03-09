@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { index, int, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { index, integer, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { idCreator, projectTable } from "./_table";
 
 export const guestbook = projectTable(
@@ -9,7 +9,7 @@ export const guestbook = projectTable(
     message: text("message").notNull(),
     createdBy: varchar("created_by", { length: 255 }).notNull(),
     createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
-    updatedAt: timestamp("updated_at").onUpdateNow(),
+    updatedAt: timestamp("updated_at"),
   },
   (table) => ({
     createdByIdx: index("createdByIdx").on(table.createdBy),
@@ -19,7 +19,7 @@ export const guestbook = projectTable(
 export const views = projectTable("blog_views", {
   id: idCreator,
   slug: varchar("slug", { length: 255 }).notNull().unique(),
-  count: int("count").notNull(),
+  count: integer("count").notNull(),
   createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: timestamp("updated_at").onUpdateNow(),
+  updatedAt: timestamp("updated_at"),
 });

@@ -2,12 +2,12 @@ import type { AdapterAccount } from "@auth/core/adapters";
 import { sql } from "drizzle-orm";
 import {
   index,
-  int,
+  integer as int,
   primaryKey,
   text,
   timestamp,
   varchar,
-} from "drizzle-orm/mysql-core";
+} from "drizzle-orm/pg-core";
 
 import { projectTable } from "./_table";
 
@@ -19,7 +19,7 @@ export const users = projectTable(
     email: varchar("email", { length: 255 }).notNull(),
     emailVerified: timestamp("emailVerified", {
       mode: "date",
-      fsp: 3,
+      precision: 3,
     }).default(sql`CURRENT_TIMESTAMP(3)`),
     image: varchar("image", { length: 255 }),
   },
@@ -49,7 +49,7 @@ export const accounts = projectTable(
     compoundKey: primaryKey({
       columns: [account.provider, account.providerAccountId],
     }),
-    userIdIdx: index("userId_idx").on(account.userId),
+    userIdIdx: index("user_id_idx").on(account.userId),
   }),
 );
 
