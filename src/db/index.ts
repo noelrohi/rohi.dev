@@ -11,4 +11,4 @@ export { projectTable as tableCreator } from "./schema/_table";
 
 // Create the connection
 const sql: NeonQueryFunction<boolean, boolean> = neon(env.DATABASE_URL);
-export const db = drizzle(sql);
+export const db = drizzle(sql, { schema });
