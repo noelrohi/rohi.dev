@@ -3,7 +3,7 @@ import { getKdramaActivity, recentActivity, recentTrack } from "@/lib/helpers";
 import { dayjs } from "@/lib/utils";
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
-import { Metadata } from "next/types";
+import type { Metadata } from "next/types";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

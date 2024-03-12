@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import { NeonQueryFunction, neon } from "@neondatabase/serverless";
+import { type NeonQueryFunction, neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import * as auth from "./schema/auth";
 import * as main from "./schema/main";

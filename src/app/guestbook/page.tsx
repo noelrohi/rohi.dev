@@ -9,7 +9,7 @@ import { auth, signOut } from "@/lib/auth";
 import { sendEmail } from "@/lib/resend";
 import { cn, getRandomInt } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
-import { Metadata } from "next/types";
+import type { Metadata } from "next/types";
 import { Suspense } from "react";
 import { SignIn } from "./form";
 

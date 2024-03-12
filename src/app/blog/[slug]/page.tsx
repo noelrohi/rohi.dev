@@ -6,7 +6,7 @@ import { projectURL } from "@/lib/consts";
 import { dayjs } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import type { Metadata } from "next";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
+import { unstable_noStore as noStore, revalidatePath } from "next/cache";
 import { notFound } from "next/navigation";
 import { Suspense, cache } from "react";
 import { getNumberOfViews } from "../queries";
