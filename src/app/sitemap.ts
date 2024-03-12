@@ -1,6 +1,6 @@
 import { getBlogPosts } from "@/lib/blog";
 import { links, projectURL } from "@/lib/consts";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allBlogs = getBlogPosts();

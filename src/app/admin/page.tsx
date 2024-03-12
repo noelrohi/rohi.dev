@@ -6,7 +6,7 @@ import { TrashIcon } from "@radix-ui/react-icons";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { notFound } from "next/navigation";
-import { Metadata } from "next/types";
+import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
   title: "Admin",
