@@ -1,5 +1,7 @@
 import {
+  GmailIcon,
   LaravelIcon,
+  LinkedInIcon,
   NextIcon,
   PostGreSQLIcon,
   ReactIcon,
@@ -120,7 +122,7 @@ function Intro() {
           <img src="/capex-logo.png" width={16} height={16} alt="capex-logo" />
           CaPEx
         </Badge>
-        {". "}I am developing an app for Accounting department with{" "}
+        {". "}We are developing a Finance App using{" "}
         <Badge href="https://nextjs.org/">
           <NextIcon className="size-4" />
           Nextjs
@@ -129,6 +131,14 @@ function Intro() {
         <Badge href="https://laravel.com/">
           <LaravelIcon className="size-4" />
           Laravel
+        </Badge>
+        . Please feel free to reach out to me via{" "}
+        <Badge href={"mailto:n@rohi.dev"}>
+          <GmailIcon className="size-4" /> Email
+        </Badge>
+        {" or "}
+        <Badge href="https://www.linkedin.com/in/gneiru/">
+          <LinkedInIcon className="size-4" /> LinkedIn
         </Badge>
         .
       </p>
