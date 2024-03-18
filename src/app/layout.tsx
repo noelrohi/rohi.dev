@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/navbar";
-import { ThemeProvider } from "@/components/providers/theme";
 import { ModeToggle } from "@/components/theme-toggle";
 import { projectURL } from "@/lib/consts";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -7,6 +6,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   metadataBase: new URL(projectURL),
