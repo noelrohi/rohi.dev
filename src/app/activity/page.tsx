@@ -24,12 +24,12 @@ export default function Page() {
         </li>
         <li>
           <Suspense fallback={<ActivityFallback />}>
-            Read <Animanga type="MANGA" />
+            <Animanga type="MANGA" />
           </Suspense>
         </li>
         <li>
           <Suspense fallback={<ActivityFallback />}>
-            Watched <Animanga type="ANIME" />
+            <Animanga type="ANIME" />
           </Suspense>
         </li>
         <li>
@@ -57,8 +57,14 @@ async function Animanga({ type }: { type: "ANIME" | "MANGA" }) {
   const updatedAt = data?.updatedAt;
   const title =
     (data?.media.title.english ?? data?.media.title.userPreferred) || "~";
+  const status = data?.status;
   return (
     <>
+      {status === "COMPLETED"
+        ? "Completed"
+        : type === "ANIME"
+        ? "Watched"
+        : "Read"}{" "}
       <Link
         href={`https://anilist.co/${type.toLowerCase()}/${data?.media.id}`}
         className="underline decoration-gray-400 underline-offset-4"
