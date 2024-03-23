@@ -1,5 +1,8 @@
 {
   "editor.defaultFormatter": "biomejs.biome",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[plaintext]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

@@ -16,6 +16,7 @@ export interface List {
 
 export interface Entry {
   updatedAt: number;
+  status: "COMPLETED" | "REPEATING" | "CURRENT";
   id: number;
   progress: number;
   media: Media;

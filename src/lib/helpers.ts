@@ -44,11 +44,12 @@ export async function getGithubRepoData() {
 
 function getAnilistQuery(type: "MANGA" | "ANIME") {
   return `query($username: String) {
-            MediaListCollection(userName: $username, forceSingleCompletedList: true, 
-              type: ${type}, status: CURRENT, sort: UPDATED_TIME_DESC) {
+            MediaListCollection(userName: $username, type: ${type}, 
+              status_in: [CURRENT, COMPLETED], sort: UPDATED_TIME_DESC) {
               lists {
                 entries {
-                  updatedAt,
+                  updatedAt
+                  status
                   id
                   progress
                   media {
@@ -84,7 +85,11 @@ export async function recentActivity(type: "MANGA" | "ANIME") {
   });
   if (!res.ok) return null;
   const data: Main = await res.json();
-  return data.data.MediaListCollection.lists[0]?.entries[0];
+  const entry = data.data.MediaListCollection.lists
+    ?.flatMap((list) => list.entries)
+    .sort((a, b) => b.updatedAt - a.updatedAt)[0];
+
+  return entry;
 }
 
 export async function recentTrack() {
