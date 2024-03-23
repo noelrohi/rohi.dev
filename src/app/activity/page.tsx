@@ -63,8 +63,8 @@ async function Animanga({ type }: { type: "ANIME" | "MANGA" }) {
       {status === "COMPLETED"
         ? "Completed"
         : type === "ANIME"
-        ? "Watched"
-        : "Read"}{" "}
+          ? "Watched"
+          : "Read"}{" "}
       <Link
         href={`https://anilist.co/${type.toLowerCase()}/${data?.media.id}`}
         className="underline decoration-gray-400 underline-offset-4"
