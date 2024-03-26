@@ -21,12 +21,13 @@ export async function getGithubRepoData() {
     const url = new URL("https://api.github.com/users/gneiru/repos");
     url.searchParams.set("type", "owner");
     url.searchParams.set("sort", "pushed");
-    url.searchParams.set("per_page", "6");
+    url.searchParams.set("per_page", "10");
     const res = await fetch(url);
     const repos = projectSchema.parse(await res.json());
     return repos
       .filter((repo) => repo.private === false)
       .sort((a, b) => Number(b.stargazers_count) - Number(a.stargazers_count))
+      .slice(0, 6)
       .map((repo) => ({
         repoUrl: repo.html_url,
         homePage: repo.homepage,
