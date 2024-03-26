@@ -28,7 +28,7 @@
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
     "drizzle-orm": "^0.30.4",
-    "next": "14.2.0-canary.43",
+    "next": "14.2.0-canary.2",
     "next-auth": "5.0.0-beta.16",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
