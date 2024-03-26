@@ -14,8 +14,8 @@
     "fmt": "pnpm biome format ./src --write && pnpm biome check ./src --apply-unsafe"
   },
   "dependencies": {
-    "@auth/core": "^0.28.0",
-    "@auth/drizzle-adapter": "^0.8.0",
+    "@auth/core": "^0.28.1",
+    "@auth/drizzle-adapter": "^0.8.1",
     "@neondatabase/serverless": "^0.9.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -29,7 +29,7 @@
     "dayjs": "^1.11.10",
     "drizzle-orm": "^0.30.4",
     "next": "14.2.0-canary.2",
-    "next-auth": "5.0.0-beta.15",
+    "next-auth": "5.0.0-beta.16",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
@@ -42,10 +42,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.6.2",
-    "@tailwindcss/typography": "^0.5.10",
+    "@biomejs/biome": "1.6.3",
+    "@tailwindcss/typography": "^0.5.11",
     "@types/node": "^20.11.30",
-    "@types/react": "^18.2.69",
+    "@types/react": "^18.2.72",
     "@types/react-dom": "^18.2.22",
     "autoprefixer": "^10.4.19",
     "drizzle-kit": "^0.20.14",
