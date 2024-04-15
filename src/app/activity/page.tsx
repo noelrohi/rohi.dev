@@ -1,8 +1,8 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { getKdramaActivity, recentActivity, recentTrack } from "@/lib/helpers";
 import { dayjs } from "@/lib/utils";
+import { Link } from "next-view-transitions";
 import { unstable_noStore as noStore } from "next/cache";
-import Link from "next/link";
 import type { Metadata } from "next/types";
 import { Suspense } from "react";
 

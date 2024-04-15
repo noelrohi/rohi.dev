@@ -2,11 +2,12 @@ import { Navbar } from "@/components/navbar";
 import { ModeToggle } from "@/components/theme-toggle";
 import { projectURL } from "@/lib/consts";
 import { fontMono, fontSans } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata: Metadata = {
   metadataBase: new URL(projectURL),
@@ -46,23 +47,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          fontSans.variable,
-          fontMono.variable,
-          "relative min-h-screen bg-background font-sans antialiased",
-        )}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative mx-4 min-h-screen max-w-3xl lg:mx-auto">
-            <Navbar />
-            <main className="flex-1 pb-4 lg:pb-12">{children}</main>
-          </div>
-          <ModeToggle className="fixed right-4 bottom-4 rounded-lg bg-transparent" />
-        </ThemeProvider>
-        <Analytics />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body
+          className={clsx(
+            fontSans.variable,
+            fontMono.variable,
+            "relative min-h-screen bg-background font-sans antialiased",
+          )}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="relative mx-4 min-h-screen max-w-3xl lg:mx-auto">
+              <Navbar />
+              <main className="flex-1 pb-4 lg:pb-12">{children}</main>
+            </div>
+            <ModeToggle className="fixed right-4 bottom-4 rounded-lg bg-transparent" />
+          </ThemeProvider>
+          <Analytics />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

@@ -19,8 +19,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getGithubRepoData } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
 import { StarIcon } from "@radix-ui/react-icons";
+import { Link } from "next-view-transitions";
 import { unstable_noStore as noStore } from "next/cache";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export default function Page() {

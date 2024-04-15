@@ -1,5 +1,5 @@
 import { links } from "@/lib/consts";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 export function Navbar() {
   return (
