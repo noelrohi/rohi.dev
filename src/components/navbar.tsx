@@ -1,5 +1,5 @@
 import { links } from "@/lib/consts";
-import { Link } from "next-view-transitions";
+import { ActiveLink } from "@/components/active-link";
 
 export function Navbar() {
   return (
@@ -7,9 +7,9 @@ export function Navbar() {
       {links
         .filter((l) => !l.hidden)
         .map(({ path, label }) => (
-          <Link href={path} key={label}>
+          <ActiveLink href={path} key={label}>
             {label}
-          </Link>
+          </ActiveLink>
         ))}
     </nav>
   );
