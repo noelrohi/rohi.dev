@@ -1,5 +1,5 @@
-import { links } from "@/lib/consts";
 import { ActiveLink } from "@/components/active-link";
+import { links } from "@/lib/consts";
 
 export function Navbar() {
   return (
