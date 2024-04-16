@@ -41,7 +41,12 @@ function BlogPosts() {
             href={`/blog/${post.slug}`}
           >
             <div className="flex w-full flex-col">
-              <p className="text-foreground tracking-tight">
+              <p
+                className="text-foreground tracking-tight"
+                style={{
+                  viewTransitionName: `blog-${post.slug}`,
+                }}
+              >
                 {post.metadata.title}
               </p>
               <p className="text-muted-foreground">

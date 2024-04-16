@@ -111,7 +111,12 @@ export default function Blog({ params }: PageProps) {
           }),
         }}
       />
-      <h1 className="title max-w-[650px] font-medium text-2xl tracking-tighter">
+      <h1
+        className="title max-w-[650px] font-medium text-2xl tracking-tighter"
+        style={{
+          viewTransitionName: `blog-${post.slug}`,
+        }}
+      >
         {post.metadata.title}
       </h1>
       <div className="mt-2 mb-8 flex max-w-[650px] items-center justify-between text-sm">
