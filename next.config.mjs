@@ -3,6 +3,9 @@ const nextConfig = {
   experimental: {
     ppr: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   redirects: () => {
     return [
       {

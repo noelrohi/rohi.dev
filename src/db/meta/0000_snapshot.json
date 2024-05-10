@@ -1,10 +1,8 @@
 {
-  "id": "4e5c0c91-a1ec-4d72-845d-e1c19699971b",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "6",
+  "dialect": "postgresql",
   "tables": {
-    "rohidev_account": {
+    "public.rohidev_account": {
       "name": "rohidev_account",
       "schema": "",
       "columns": {
@@ -91,7 +89,7 @@
       },
       "uniqueConstraints": {}
     },
-    "rohidev_session": {
+    "public.rohidev_session": {
       "name": "rohidev_session",
       "schema": "",
       "columns": {
@@ -125,7 +123,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "rohidev_user": {
+    "public.rohidev_user": {
       "name": "rohidev_user",
       "schema": "",
       "columns": {
@@ -172,7 +170,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "rohidev_verificationToken": {
+    "public.rohidev_verificationToken": {
       "name": "rohidev_verificationToken",
       "schema": "",
       "columns": {
@@ -205,7 +203,7 @@
       },
       "uniqueConstraints": {}
     },
-    "rohidev_guestbook": {
+    "public.rohidev_guestbook": {
       "name": "rohidev_guestbook",
       "schema": "",
       "columns": {
@@ -252,7 +250,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "rohidev_blog_views": {
+    "public.rohidev_blog_views": {
       "name": "rohidev_blog_views",
       "schema": "",
       "columns": {
@@ -294,8 +292,8 @@
       "uniqueConstraints": {
         "rohidev_blog_views_slug_unique": {
           "name": "rohidev_blog_views_slug_unique",
-          "nullsNotDistinct": false,
-          "columns": ["slug"]
+          "columns": ["slug"],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -303,8 +301,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "4e5c0c91-a1ec-4d72-845d-e1c19699971b",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }
