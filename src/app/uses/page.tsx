@@ -1,5 +1,6 @@
 import type { Metadata } from "next/types";
 import { Fragment } from "react";
+import { itemList } from "./items";
 
 export const metadata: Metadata = {
   title: "Uses",
@@ -26,56 +27,3 @@ export default function Page() {
   );
 }
 
-interface Item {
-  category: string;
-  items: Array<string>;
-}
-
-const itemList = [
-  {
-    category: "What's on my office desk",
-    items: [
-      "Asus TUF Gaming F15 FX506LHB",
-      '27" Samsung CR50',
-      "Garuda Falcon1",
-      "Dark Alien K710 Keyboard",
-    ],
-  },
-  {
-    category: "Development",
-    items: [
-      "Editor: VSCode",
-      "Theme: Github Dark Colorblind (Beta)",
-      "Framework: Next.js",
-      "Styling: Tailwind CSS",
-      "UI: Shadcn-UI",
-      "Database: Neon PostgreSQL",
-      "ORM: Drizzle",
-      "Linter and Formatter: Biome",
-      "Copilot: Supermaven",
-      "Hosting: Vercel",
-    ],
-  },
-  {
-    category: "Software",
-    items: [
-      "Messenger",
-      "Discord",
-      "Spotify",
-      "Grammarly",
-      "Arc Search",
-      "Dime: Budget & Expense Tracker",
-    ],
-  },
-  {
-    category: "Apparel and Accessories",
-    items: [
-      "Nike Air Force 1",
-      "Casio F-91W",
-      "Uniqlo drawstring bag",
-      "Shien dazy pants",
-      "Made in MNL polo shirts",
-      "Conceit t-shirts",
-    ],
-  },
-] satisfies Array<Item>;
