@@ -15,6 +15,6 @@ export const links: Array<{
   },
   { path: "/blog", label: "blog" },
   { path: "/guestbook", label: "guestbook" },
-  { path: "/activity", label: "activity" },
-  { path: "/uses", label: "uses", hidden: true },
+  { path: "/activity", label: "activity", hidden: true },
+  { path: "/uses", label: "uses" },
 ];
