@@ -19,7 +19,7 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: z.string().min(1),
     KNEXT_API_KEY: z.string(),
     LAST_FM_API_KEY: z.string(),
-    RESEND_API_KEY: z.string(),
+    RESEND_API_KEY: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
