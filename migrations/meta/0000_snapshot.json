@@ -1,4 +1,6 @@
 {
+  "id": "d3ca4812-0cfc-4bfa-9e95-882a921c8915",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "6",
   "dialect": "postgresql",
   "tables": {
@@ -76,7 +78,9 @@
       "indexes": {
         "user_id_idx": {
           "name": "user_id_idx",
-          "columns": ["userId"],
+          "columns": [
+            "userId"
+          ],
           "isUnique": false
         }
       },
@@ -84,7 +88,10 @@
       "compositePrimaryKeys": {
         "rohidev_account_provider_providerAccountId_pk": {
           "name": "rohidev_account_provider_providerAccountId_pk",
-          "columns": ["provider", "providerAccountId"]
+          "columns": [
+            "provider",
+            "providerAccountId"
+          ]
         }
       },
       "uniqueConstraints": {}
@@ -115,7 +122,9 @@
       "indexes": {
         "userId_idx": {
           "name": "userId_idx",
-          "columns": ["userId"],
+          "columns": [
+            "userId"
+          ],
           "isUnique": false
         }
       },
@@ -162,7 +171,9 @@
       "indexes": {
         "email_idx": {
           "name": "email_idx",
-          "columns": ["email"],
+          "columns": [
+            "email"
+          ],
           "isUnique": false
         }
       },
@@ -198,7 +209,10 @@
       "compositePrimaryKeys": {
         "rohidev_verificationToken_identifier_token_pk": {
           "name": "rohidev_verificationToken_identifier_token_pk",
-          "columns": ["identifier", "token"]
+          "columns": [
+            "identifier",
+            "token"
+          ]
         }
       },
       "uniqueConstraints": {}
@@ -242,7 +256,9 @@
       "indexes": {
         "createdByIdx": {
           "name": "createdByIdx",
-          "columns": ["created_by"],
+          "columns": [
+            "created_by"
+          ],
           "isUnique": false
         }
       },
@@ -292,8 +308,10 @@
       "uniqueConstraints": {
         "rohidev_blog_views_slug_unique": {
           "name": "rohidev_blog_views_slug_unique",
-          "columns": ["slug"],
-          "nullsNotDistinct": false
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
         }
       }
     }
@@ -301,10 +319,8 @@
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "4e5c0c91-a1ec-4d72-845d-e1c19699971b",
-  "prevId": "00000000-0000-0000-0000-000000000000"
+    "tables": {}
+  }
 }
