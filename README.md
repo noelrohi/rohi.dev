@@ -31,6 +31,12 @@ Install dependencies
   npm install
 ```
 
+Migrate the database
+
+```bash
+  npm run db migrate
+```
+
 Start the server
 
 ```bash
