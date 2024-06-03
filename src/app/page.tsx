@@ -1,10 +1,10 @@
 import {
   GmailIcon,
-  LaravelIcon,
   LinkedInIcon,
   NextIcon,
   PostGreSQLIcon,
   ReactIcon,
+  SvelteIcon,
   TypeScriptIcon,
 } from "@/components/icons";
 import { badgeVariants } from "@/components/ui/badge";
@@ -96,7 +96,7 @@ async function Projects() {
 function Intro() {
   return (
     <>
-      <p className="leading-relaxed">
+      <p className="text-justify leading-relaxed">
         I&rsquo;m a Software Engineer based in Philippines, building full-stack
         web applications with{" "}
         <Badge href="https://react.dev/">
@@ -113,24 +113,24 @@ function Intro() {
           <PostGreSQLIcon className="size-4" />
           PostgreSQL
         </Badge>
-        {`. I like playing games, building things, watching anime series and
-        watching korean drama series. `}
-      </p>
-      <p className="leading-relaxed">
-        Currently, I work as Full-Stack Developer at{" "}
-        <Badge href="http://capex.com.ph">
-          <img src="/capex-logo.png" width={16} height={16} alt="capex-logo" />
-          CaPEx
+        . Currently, I work as Frontend Engineer at{" "}
+        <Badge href="http://scaleforge.tech">
+          <img
+            src="https://scaleforge.tech/favicon.ico"
+            width={16}
+            height={16}
+            alt="scaleforge-logo"
+          />
+          ScaleForge
         </Badge>
-        {". "}We are developing a Finance App using{" "}
-        <Badge href="https://nextjs.org/">
-          <NextIcon className="size-4" />
-          Nextjs
+        , where we build web apps using{" "}
+        <Badge href="https://svelte.dev/">
+          <SvelteIcon className="size-4" />
+          Svelte
         </Badge>{" "}
-        and{" "}
-        <Badge href="https://laravel.com/">
-          <LaravelIcon className="size-4" />
-          Laravel
+        and/or{" "}
+        <Badge href="https://nextjs.org/">
+          <NextIcon className="size-4" /> Nextjs
         </Badge>
         . Please feel free to reach out to me via{" "}
         <Badge href={"mailto:n@rohi.dev"}>
