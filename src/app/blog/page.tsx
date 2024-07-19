@@ -50,7 +50,13 @@ function BlogPosts() {
                 {post.metadata.title}
               </p>
               <p className="text-muted-foreground">
-                <Suspense fallback="- views">
+                <Suspense
+                  fallback={
+                    <span>
+                      <span className="blur-md">100</span> views
+                    </span>
+                  }
+                >
                   <Views slug={post.slug} />
                 </Suspense>
               </p>
@@ -65,8 +71,8 @@ async function Views({ slug }: { slug: string }) {
   noStore();
   const views = await getNumberOfViews(slug);
   return (
-    <>
+    <span>
       {views.toLocaleString()} view{views > 1 && "s"}
-    </>
+    </span>
   );
 }
