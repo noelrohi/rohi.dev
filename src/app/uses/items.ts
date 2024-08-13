@@ -1,6 +1,6 @@
 interface Item {
   category: string;
-  items: Array<string>;
+  items: Array<string | { type: string; itemName: string }>;
 }
 
 export const itemList = [
@@ -11,17 +11,17 @@ export const itemList = [
   {
     category: "Development",
     items: [
-      "Editor: VSCode",
-      "Theme: Github Dark Colorblind (Beta)",
-      "Framework: Next.js",
-      "Styling: Tailwind CSS",
-      "UI: Shadcn-UI",
-      "Database: Neon PostgreSQL",
-      "ORM: Drizzle",
-      "Linter and Formatter: Biome",
-      "Copilot: Supermaven",
-      "Hosting: Vercel",
-      "Database GUI: TablePlus",
+      { type: "Editor", itemName: "VSCode" },
+      { type: "Theme", itemName: "Github Dark Colorblind (Beta)" },
+      { type: "Framework", itemName: "Next.js" },
+      { type: "Styling", itemName: "Tailwind CSS" },
+      { type: "UI", itemName: "Shadcn-UI" },
+      { type: "Database", itemName: "Neon PostgreSQL" },
+      { type: "ORM", itemName: "Drizzle" },
+      { type: "Linter and Formatter", itemName: "Biome" },
+      { type: "Copilot", itemName: "Supermaven" },
+      { type: "Hosting", itemName: "Vercel" },
+      { type: "Database GUI", itemName: "TablePlus" },
     ],
   },
   {
@@ -36,7 +36,7 @@ export const itemList = [
     ],
   },
   {
-    category: "Apparel and Accessories",
-    items: ["Asics", "Casio", "Uniqlo", "Shien (mainly for pants)"],
+    category: "Fashion and Accessories",
+    items: ["Puma", "Casio", "Uniqlo", "Shein"],
   },
 ] satisfies Array<Item>;

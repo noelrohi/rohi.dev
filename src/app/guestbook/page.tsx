@@ -36,7 +36,7 @@ export default function Page() {
 function EntriesFallback() {
   return (
     <>
-      {Array.from({ length: 100 }).map((_, index) => {
+      {new Array(10).fill(0).map((_, index) => {
         const rand = getRandomInt({ min: 1, max: 100 });
         return (
           <div className="flex gap-2" key={index}>

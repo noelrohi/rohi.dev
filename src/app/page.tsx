@@ -22,6 +22,7 @@ import { StarIcon } from "@radix-ui/react-icons";
 import { Link } from "next-view-transitions";
 import { unstable_noStore as noStore } from "next/cache";
 import { Suspense } from "react";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -115,11 +116,12 @@ function Intro() {
         </Badge>
         . Currently, I work as Frontend Engineer at{" "}
         <Badge href="http://scaleforge.tech">
-          <img
+          <Image
             src="https://scaleforge.tech/favicon.ico"
             width={16}
             height={16}
             alt="scaleforge-logo"
+            priority
           />
           ScaleForge
         </Badge>
@@ -133,7 +135,7 @@ function Intro() {
           <NextIcon className="size-4" /> Nextjs
         </Badge>
         . Please feel free to reach out to me via{" "}
-        <Badge href={"mailto:n@rohi.dev"}>
+        <Badge href={"mailto:noelrohi59@gmail.com"}>
           <GmailIcon className="size-4" /> Email
         </Badge>
         {" or "}

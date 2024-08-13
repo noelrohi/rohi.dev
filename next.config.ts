@@ -1,11 +1,14 @@
-/** @type {import('next').NextConfig} */
+import "./src/env.mjs";
+
 const nextConfig = {
   experimental: {
     ppr: true,
-    reactCompiler: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  images: {
+    unoptimized: true,
   },
   redirects: () => {
     return [
