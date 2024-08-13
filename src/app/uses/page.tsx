@@ -18,7 +18,18 @@ export default function Page() {
           <div className="font-medium text-lg tracking-tighter">{category}</div>
           <ul className="list-disc pl-6 text-foreground/80">
             {items.map((item) => (
-              <li key={item}>{item}</li>
+              <Fragment key={item.toString()}>
+                {typeof item === "string" ? (
+                  <li className="text-foreground/80">{item}</li>
+                ) : (
+                  <li className="flex items-center gap-2">
+                    <div className="list-item text-foreground/80">
+                      {item.type}:
+                    </div>
+                    <div className="font-semibold">{item.itemName}</div>
+                  </li>
+                )}
+              </Fragment>
             ))}
           </ul>
         </Fragment>

@@ -53,7 +53,7 @@ function BlogPosts() {
                 <Suspense
                   fallback={
                     <span>
-                      <span className="blur-md">100</span> views
+                      <span className="blur-sm">100</span> views
                     </span>
                   }
                 >
