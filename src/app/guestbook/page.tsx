@@ -20,9 +20,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section className="space-y-4">
-      <div className="font-mono text-muted-foreground text-sm">
-        sign my guestbook
-      </div>
       <Suspense fallback={<Skeleton className="h-10 w-20" />}>
         <GuestBookForm />
       </Suspense>

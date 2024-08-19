@@ -1,9 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
+import { motion } from "framer-motion";
 
 export function ActiveLink({
   children,
@@ -15,8 +16,15 @@ export function ActiveLink({
     return pathname === props.href;
   }, [pathname, props.href]);
   return (
-    <Link {...props} className={cn("relative", className)}>
-      {children}
+    <Link
+      {...props}
+      className={cn(
+        "relative rounded-md px-2 py-1 text-sm",
+        className,
+        !isActive ? "text-foreground" : "text-primary-foreground",
+      )}
+    >
+      <div className="relative z-10">{children}</div>
       {isActive && <ActiveIdentifier />}
     </Link>
   );
@@ -24,13 +32,9 @@ export function ActiveLink({
 
 function ActiveIdentifier() {
   return (
-    <span
-      className="absolute inset-0 flex items-center justify-center"
-      style={{
-        viewTransitionName: "active-link",
-      }}
-    >
-      <span className="h-full w-full rounded-md bg-primary/10" />
-    </span>
+    <motion.span
+      className="absolute inset-0 z-0 rounded-md bg-primary"
+      layoutId="navbar"
+    />
   );
 }

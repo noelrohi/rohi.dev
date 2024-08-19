@@ -1,5 +1,6 @@
 import { getBlogPosts } from "@/lib/blog";
-import { Link } from "next-view-transitions";
+
+import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
 import type { Metadata } from "next/types";
 import { Suspense } from "react";
@@ -13,9 +14,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section className="space-y-4">
-      <div className="font-mono text-muted-foreground text-sm">
-        read my blog
-      </div>
       <BlogPosts />
     </section>
   );

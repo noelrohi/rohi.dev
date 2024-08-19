@@ -1,183 +1,110 @@
-import {
-  GmailIcon,
-  LinkedInIcon,
-  NextIcon,
-  PostGreSQLIcon,
-  ReactIcon,
-  SvelteIcon,
-  TypeScriptIcon,
-} from "@/components/icons";
 import { badgeVariants } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { getGithubRepoData } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
-import { StarIcon } from "@radix-ui/react-icons";
-import { Link } from "next-view-transitions";
-import { unstable_noStore as noStore } from "next/cache";
-import { Suspense } from "react";
-import Image from "next/image";
+import { experiences, projects } from "@/lib/consts";
+import Link from "next/link";
+import { getBlogPosts } from "@/lib/blog";
 
 export default function Page() {
   return (
-    <section>
-      <div className="space-y-4">
-        <div className="text-muted-foreground text-sm">Noel Rohi (he/him)</div>
-        <Intro />
-      </div>
-      <div className="my-8 font-bold text-lg">Featured Repositories:</div>
-      <Suspense fallback={<ProjectsFallback />}>
-        <Projects />
-      </Suspense>
+    <section className="space-y-10">
+      <Intro />
+      <Experience />
+      <Projects />
+      <Posts />
     </section>
   );
 }
 
-function ProjectsFallback() {
+function Posts() {
+  const posts = getBlogPosts();
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-      {new Array(6).fill(0).map((_, index) => {
-        return <Skeleton className="h-[127.6px] w-full rounded" key={index} />;
-      })}
+    <div className="space-y-4">
+      <div className="font-semibold text-lg">Latest Blogs </div>
+      <div className="flex flex-col gap-2">
+        {[...posts, ...posts].slice(0, 2).map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="group text-sm *:ml-2"
+          >
+            <span className="text-muted-foreground">
+              {Intl.DateTimeFormat().format(
+                new Date(post.metadata.publishedAt),
+              )}
+            </span>
+            <span className="font-medium group-hover:underline">
+              {post.metadata.title}
+            </span>
+          </Link>
+        ))}
+        <Link href="/blog" className="font-medium text-sm hover:underline">
+          {" "}
+          Read more{" "}
+        </Link>
+      </div>
     </div>
   );
 }
 
-async function Projects() {
-  noStore();
-  const repos = await getGithubRepoData();
+function Experience() {
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-      {repos.map(
-        ({ repoUrl, description, name, stars, homePage, ...project }) => (
-          <Link
-            key={name}
-            href={homePage || repoUrl || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Card className="h-full border bg-secondary text-secondary-foreground">
-              <CardHeader className="flex-1">
-                <div className="space-y-1">
-                  <CardTitle className="line-clamp-1">{name}</CardTitle>
-                  <CardDescription className="line-clamp-2 min-h-[32px] text-foreground/80 text-xs">
-                    {description ?? "No description provided"}
-                  </CardDescription>
+    <div className="space-y-4">
+      <div className="font-semibold text-lg">Experience</div>
+      <ol className="relative space-y-6 border-border border-s *:ms-4">
+        {experiences.map(({ jobTitle, company, presentJob }) => (
+          <li className="relative" key={jobTitle + company}>
+            <div
+              className={cn(
+                "-translate-x-[22px] absolute size-3 translate-y-1 rounded-full",
+                presentJob ? "bg-foreground" : "bg-border",
+              )}
+              aria-hidden
+            />
+            <div className="flex items-center gap-2">
+              <div className="font-medium">{jobTitle}</div>
+              {presentJob && (
+                <div
+                  className={cn(
+                    badgeVariants({ variant: "outline" }),
+                    "uppercase",
+                  )}
+                >
+                  Present
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex space-x-4 text-foreground/80 text-sm">
-                  <div className="flex items-center">
-                    <div
-                      className="mr-1 size-3 rounded-full bg-sky-400"
-                      aria-hidden
-                    />
-                    {project.language ?? "Unknown"}
-                  </div>
-                  <div className="flex items-center">
-                    <StarIcon className="mr-1 size-3" aria-hidden="true" />
-                    {stars}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              )}
+            </div>
+            <div className="text-foreground/70 text-sm">{company}</div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function Projects() {
+  return (
+    <div className="space-y-4">
+      <div className="font-semibold text-lg">Projects</div>
+      <div className="grid w-full grid-cols-2 gap-x-10 gap-y-5 md:grid-cols-3">
+        {projects.map(({ title, description, url, icon: Icon }) => (
+          <Link key={title} href={url} className="flex flex-col gap-2 text-sm">
+            <Icon />
+            <div className="font-medium">{title}</div>
+            <p className="max-w-xs font-normal text-foreground/70">
+              {description}
+            </p>
           </Link>
-        ),
-      )}
+        ))}
+      </div>
     </div>
   );
 }
 
 function Intro() {
   return (
-    <>
-      <p className="text-justify leading-relaxed">
-        I&rsquo;m a Software Engineer based in Philippines, building full-stack
-        web applications with{" "}
-        <Badge href="https://react.dev/">
-          <ReactIcon className="size-4" />
-          React
-        </Badge>
-        {", "}
-        <Badge href="https://www.typescriptlang.org/">
-          <TypeScriptIcon className="size-4" />
-          TypeScript
-        </Badge>{" "}
-        {"and "}
-        <Badge href="https://neon.tech">
-          <PostGreSQLIcon className="size-4" />
-          PostgreSQL
-        </Badge>
-        . Currently, I work as Frontend Engineer at{" "}
-        <Badge href="http://scaleforge.tech">
-          <Image
-            src="https://scaleforge.tech/favicon.ico"
-            width={16}
-            height={16}
-            alt="scaleforge-logo"
-            priority
-          />
-          ScaleForge
-        </Badge>
-        , where we build web apps using{" "}
-        <Badge href="https://svelte.dev/">
-          <SvelteIcon className="size-4" />
-          Svelte
-        </Badge>{" "}
-        and/or{" "}
-        <Badge href="https://nextjs.org/">
-          <NextIcon className="size-4" /> Nextjs
-        </Badge>
-        . Please feel free to reach out to me via{" "}
-        <Badge href={"mailto:noelrohi59@gmail.com"}>
-          <GmailIcon className="size-4" /> Email
-        </Badge>
-        {" or "}
-        <Badge href="https://www.linkedin.com/in/gneiru/">
-          <LinkedInIcon className="size-4" /> LinkedIn
-        </Badge>
-        .
-      </p>
-    </>
-  );
-}
-
-interface BadgeProps extends React.ComponentPropsWithoutRef<typeof Link> {
-  underlined?: boolean;
-}
-
-function Badge({
-  target = "_blank",
-  rel = "noopener noreferrer",
-  href,
-  className,
-  children,
-  underlined = false,
-  ...props
-}: BadgeProps) {
-  return (
-    <Link
-      {...props}
-      className={cn(
-        badgeVariants({
-          variant: "secondary",
-          className: "border border-border",
-        }),
-        "gap-2",
-        className,
-        underlined && "underline decoration-border underline-offset-4",
-      )}
-      href={href}
-      rel={rel}
-      target={target}
-    >
-      {children}
-    </Link>
+    <p>
+      A software engineer based in Philippines, building full-stack web
+      applications with React, TypeScript, and PostgreSQL.
+    </p>
   );
 }
