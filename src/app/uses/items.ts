@@ -1,42 +1,70 @@
 interface Item {
   category: string;
-  items: Array<string | { type: string; itemName: string }>;
+  items: Array<{ name: string; description?: string }>;
 }
 
 export const itemList = [
   {
-    category: "What's on my desk",
-    items: ["MacBook Air M1"],
+    category: "Desk",
+    items: [
+      {
+        name: "MacBook Air M1",
+        description: "A beast in terms of development and productivity.",
+      },
+    ],
   },
   {
     category: "Development",
     items: [
-      { type: "Editor", itemName: "VSCode" },
-      { type: "Theme", itemName: "Github Dark Colorblind (Beta)" },
-      { type: "Framework", itemName: "Next.js" },
-      { type: "Styling", itemName: "Tailwind CSS" },
-      { type: "UI", itemName: "Shadcn-UI" },
-      { type: "Database", itemName: "Neon PostgreSQL" },
-      { type: "ORM", itemName: "Drizzle" },
-      { type: "Linter and Formatter", itemName: "Biome" },
-      { type: "Copilot", itemName: "Supermaven" },
-      { type: "Hosting", itemName: "Vercel" },
-      { type: "Database GUI", itemName: "TablePlus" },
+      {
+        name: "VSCode",
+        description: "Favorite editor for coding.",
+      },
+      {
+        name: "Github Dark Colorblind (Beta)",
+        description: "Theme for VSCode.",
+      },
+      {
+        name: "Next.js",
+        description: "React framework",
+      },
+      {
+        name: "Tailwind CSS",
+        description: "Styling",
+      },
+      {
+        name: "Shadcn-UI",
+        description: "UI library",
+      },
+      {
+        name: "Neon PostgreSQL",
+        description: "Database",
+      },
+      {
+        name: "Drizzle",
+        description: "ORM",
+      },
+      { name: "Biome", description: "Linter and formatter" },
+      { name: "Supermaven", description: "Copilot" },
+      { name: "Vercel", description: "Hosting" },
+      { name: "TablePlus", description: "Database GUI" },
     ],
   },
-  {
-    category: "Software",
-    items: [
-      "Discord",
-      "Instagram",
-      "Spotify",
-      "Grammarly",
-      "Arc Browser",
-      "Arc Search (Mobile)",
-    ],
-  },
-  {
-    category: "Fashion and Accessories",
-    items: ["Puma", "Casio", "Uniqlo", "Shein"],
-  },
+  // {
+  //   category: "Fashion and Accessories",
+  //   items: [
+  //     {
+  //       name: "Puma",
+  //       description: "Speedcat or Palermo",
+  //     },
+  //     {
+  //       name: "Uniqlo",
+  //       description: "Airism Shirt, Socks, Utility Jacket",
+  //     },
+  //     {
+  //       name: "Shein",
+  //       description: "Vintage Pants, Caps",
+  //     },
+  //   ],
+  // },
 ] satisfies Array<Item>;
