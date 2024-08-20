@@ -9,7 +9,8 @@
     "ui": "pnpm dlx shadcn-ui",
     "postinstall": "drizzle-kit generate",
     "db": "drizzle-kit",
-    "fmt": "pnpm biome format ./src --write && pnpm biome check ./src --write --unsafe"
+    "fmt": "pnpm biome format ./src --write && pnpm biome check ./src --write --unsafe",
+    "knip": "bunx --bun knip"
   },
   "dependencies": {
     "@auth/core": "^0.34.2",

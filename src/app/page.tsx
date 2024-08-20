@@ -1,8 +1,8 @@
 import { badgeVariants } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import { experiences, projects } from "@/lib/consts";
-import Link from "next/link";
 import { getBlogPosts } from "@/lib/blog";
+import { experiences, projects } from "@/lib/consts";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -20,8 +20,8 @@ function Posts() {
   return (
     <div className="space-y-4">
       <div className="font-semibold text-lg">Latest Blogs </div>
-      <div className="flex flex-col gap-2">
-        {[...posts, ...posts].slice(0, 2).map((post) => (
+      <div className="flex flex-col gap-4">
+        {posts.slice(0, 2).map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
@@ -32,7 +32,7 @@ function Posts() {
                 new Date(post.metadata.publishedAt),
               )}
             </span>
-            <span className="font-medium group-hover:underline">
+            <span className="font-medium text-lg tracking-tighter group-hover:underline">
               {post.metadata.title}
             </span>
           </Link>

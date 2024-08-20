@@ -1,16 +1,12 @@
 import {
-  GitHubLogoIcon,
-  LinkedInLogoIcon,
-  TwitterLogoIcon,
   DesktopIcon,
+  GitHubLogoIcon,
   LaptopIcon,
+  LinkedInLogoIcon,
   PersonIcon,
+  TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import type { IconProps } from "@radix-ui/react-icons/dist/types";
-
-export const author = {
-  handle: "@gneiru",
-};
 
 export const projectURL = "https://rohi.dev";
 
