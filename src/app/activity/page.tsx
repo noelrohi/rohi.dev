@@ -3,9 +3,9 @@ import { env } from "@/env.mjs";
 import { getKdramaActivity, recentActivity, recentTrack } from "@/lib/helpers";
 import { dayjs } from "@/lib/utils";
 import { unstable_noStore as noStore } from "next/cache";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next/types";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

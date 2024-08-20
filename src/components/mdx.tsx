@@ -1,6 +1,6 @@
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import { highlight } from "sugar-high";
 import { ReactTweet } from "./tweet";
 

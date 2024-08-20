@@ -10,15 +10,13 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section className="space-y-4">
-      <div className="text-muted-foreground text-sm">
-        Here's everything I'm currently using
-      </div>
+      <p className="text-sm">Here's everything I'm currently using</p>
       {itemList.map(({ items, category }) => (
         <Fragment key={category}>
           <div className="font-medium text-lg tracking-tighter">{category}</div>
           <ul className="list-disc pl-6 text-foreground/80">
             {items.map((item) => (
-              <Fragment key={item.toString()}>
+              <Fragment key={item.name}>
                 <li className="flex items-center gap-2 text-sm">
                   <p className="list-item text-foreground/80">
                     <span className="font-medium">{item.name}</span>

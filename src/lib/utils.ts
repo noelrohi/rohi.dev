@@ -11,17 +11,6 @@ export function cn(...inputs: ClassValue[]) {
 
 export const dayjs = djs;
 
-export function generateImage({ title, date }: { date?: Date; title: string }) {
-  const postDate = date
-    ? date.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
-    : "";
-  return `https://og.rohi.dev/blog?date=${postDate}&title=${title}`;
-}
-
 export function getRandomInt(param: { min: number; max: number }) {
   const min = Math.ceil(param.min);
   const max = Math.floor(param.max);

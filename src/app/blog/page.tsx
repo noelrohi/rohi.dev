@@ -1,7 +1,7 @@
 import { getBlogPosts } from "@/lib/blog";
 
-import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
+import Link from "next/link";
 import type { Metadata } from "next/types";
 import { Suspense } from "react";
 import { getNumberOfViews } from "./queries";

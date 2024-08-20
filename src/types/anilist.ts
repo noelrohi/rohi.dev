@@ -2,19 +2,19 @@ export interface Main {
   data: Data;
 }
 
-export interface Data {
+interface Data {
   MediaListCollection: MediaListCollection;
 }
 
-export interface MediaListCollection {
+interface MediaListCollection {
   lists: List[];
 }
 
-export interface List {
+interface List {
   entries: Entry[];
 }
 
-export interface Entry {
+interface Entry {
   updatedAt: number;
   status: "COMPLETED" | "REPEATING" | "CURRENT";
   id: number;
@@ -22,17 +22,17 @@ export interface Entry {
   media: Media;
 }
 
-export interface Media {
+interface Media {
   coverImage: CoverImage;
   title: Title;
   id: number;
 }
 
-export interface CoverImage {
+interface CoverImage {
   extraLarge: string;
 }
 
-export interface Title {
+interface Title {
   userPreferred: string;
   english: string;
 }

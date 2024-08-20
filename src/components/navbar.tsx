@@ -1,6 +1,6 @@
 import { ActiveLink } from "@/components/active-link";
-import { links, socials } from "@/lib/consts";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { links, socials } from "@/lib/consts";
 import Link from "next/link";
 
 export function Navbar() {
