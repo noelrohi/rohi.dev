@@ -20,7 +20,12 @@ export function Navbar() {
       </div>
       <div className="flex gap-4">
         {socials.map(({ href, icon: Icon }) => (
-          <Link key={href} href={href}>
+          <Link
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Icon className="size-6" />
           </Link>
         ))}
