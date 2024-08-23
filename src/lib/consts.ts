@@ -1,12 +1,11 @@
+import { XIcon } from "@/components/icons";
 import {
   DesktopIcon,
   GitHubLogoIcon,
   LaptopIcon,
   LinkedInLogoIcon,
   PersonIcon,
-  TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-import type { IconProps } from "@radix-ui/react-icons/dist/types";
 
 export const projectURL = "https://rohi.dev";
 
@@ -25,9 +24,7 @@ export const links: Array<{
   { path: "/uses", label: "Uses" },
 ];
 
-type Icon = React.ForwardRefExoticComponent<
-  IconProps & React.RefAttributes<SVGSVGElement>
->;
+type Icon = typeof GitHubLogoIcon;
 
 export const socials: Array<{
   href: string;
@@ -42,8 +39,8 @@ export const socials: Array<{
     icon: LinkedInLogoIcon,
   },
   {
-    href: "https://twitter.com/noelrohi",
-    icon: TwitterLogoIcon,
+    href: "https://x.com/noelrohi",
+    icon: XIcon,
   },
 ];
 
