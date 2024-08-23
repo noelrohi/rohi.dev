@@ -8,7 +8,7 @@ export function Navbar() {
     <div className="flex flex-col gap-6">
       <div>
         <Avatar className="size-[50px]">
-          <AvatarImage src="https://github.com/gneiru.png" alt="@shadcn" />
+          <AvatarImage src="https://github.com/noelrohi.png" alt="@shadcn" />
           <AvatarFallback>NR</AvatarFallback>
         </Avatar>
         <div className="mt-1.5">

@@ -16,7 +16,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/gneiru/rohi.dev.git
+  git clone https://github.com/noelrohi/rohi.dev.git
 ```
 
 Go to the project directory
