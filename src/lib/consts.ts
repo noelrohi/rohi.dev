@@ -34,15 +34,15 @@ export const socials: Array<{
   icon: Icon;
 }> = [
   {
-    href: "https://github.com/gneiru",
+    href: "https://github.com/noelrohi",
     icon: GitHubLogoIcon,
   },
   {
-    href: "https://www.linkedin.com/in/gneiru/",
+    href: "https://www.linkedin.com/in/noelrohi/",
     icon: LinkedInLogoIcon,
   },
   {
-    href: "https://twitter.com/gneiru",
+    href: "https://twitter.com/noelrohi",
     icon: TwitterLogoIcon,
   },
 ];

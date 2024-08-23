@@ -18,7 +18,7 @@ const projectSchema = z.array(
 
 // export async function getGithubRepoData() {
 //   try {
-//     const url = new URL("https://api.github.com/users/gneiru/repos");
+//     const url = new URL("https://api.github.com/users/noelrohi/repos");
 //     url.searchParams.set("type", "owner");
 //     url.searchParams.set("sort", "pushed");
 //     url.searchParams.set("per_page", "10");
@@ -95,7 +95,7 @@ export async function recentActivity(type: "MANGA" | "ANIME") {
 
 export async function recentTrack() {
   const res = await fetch(
-    `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=gneiru&api_key=${env.LAST_FM_API_KEY}&format=json`,
+    `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=noelrohi&api_key=${env.LAST_FM_API_KEY}&format=json`,
   );
   const data = await res.json();
   const trakcs: Track[] = data.recenttracks.track;
