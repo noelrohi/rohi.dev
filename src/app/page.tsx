@@ -37,9 +37,12 @@ function Posts() {
             </span>
           </Link>
         ))}
-        <Link href="/blog" className="font-medium text-sm hover:underline">
-          {" "}
-          Read more{" "}
+        <Link
+          href="/blog"
+          className="font-medium text-sm hover:underline"
+          aria-label="Read more articles on my blog"
+        >
+          Read more articles
         </Link>
       </div>
     </div>
