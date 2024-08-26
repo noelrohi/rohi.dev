@@ -29,18 +29,22 @@ type Icon = typeof GitHubLogoIcon;
 export const socials: Array<{
   href: string;
   icon: Icon;
+  label: string;
 }> = [
   {
     href: "https://github.com/noelrohi",
     icon: GitHubLogoIcon,
+    label: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/noelrohi/",
     icon: LinkedInLogoIcon,
+    label: "LinkedIn",
   },
   {
     href: "https://x.com/noelrohi",
     icon: XIcon,
+    label: "X",
   },
 ];
 

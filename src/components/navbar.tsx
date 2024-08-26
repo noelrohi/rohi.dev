@@ -19,18 +19,20 @@ export function Navbar() {
         </div>
       </div>
       <div className="flex gap-4">
-        {socials.map(({ href, icon: Icon }) => (
+        {socials.map(({ href, icon: Icon, label }) => (
           <Link
             key={href}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={label}
           >
+            <span className="sr-only">{label}</span>
             <Icon className="size-6" />
           </Link>
         ))}
       </div>
-      <hr className="" />
+      <hr />
       <nav className="mb-8 flex flex-wrap items-center gap-2">
         {links
           .filter((l) => !l.hidden)
