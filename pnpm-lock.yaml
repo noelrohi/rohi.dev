@@ -14,6 +14,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: 0.9.0
         version: 0.9.0
+      '@neoconfetti/react':
+        specifier: ^0.1.1
+        version: 0.1.1
       '@neondatabase/serverless':
         specifier: ^0.9.4
         version: 0.9.4
@@ -565,6 +568,9 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@neoconfetti/react@0.1.1':
+    resolution: {integrity: sha512-OqKn/QZYkrCaMBg/a1JTjG1Th0n7YPopIHctqgBi3C34bTV2wbrKJPCIDuNSltsaEpVWjQPbhLYwRpNUMnqhnQ==}
 
   '@neondatabase/serverless@0.9.4':
     resolution: {integrity: sha512-D0AXgJh6xkf+XTlsO7iwE2Q1w8981E1cLCPAALMU2YKtkF/1SF6BiAzYARZFYo175ON+b1RNIy9TdSFHm5nteg==}
@@ -2814,6 +2820,8 @@ snapshots:
       '@types/mdx': 2.0.10
       '@types/react': 18.3.3
       react: 18.3.1
+
+  '@neoconfetti/react@0.1.1': {}
 
   '@neondatabase/serverless@0.9.4':
     dependencies:

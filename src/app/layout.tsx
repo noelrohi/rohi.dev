@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Confetti } from "@/components/confetti";
 
 export const metadata: Metadata = {
   metadataBase: new URL(projectURL),
@@ -62,6 +63,7 @@ export default function RootLayout({
           <ModeToggle className="fixed right-4 bottom-4 rounded-lg bg-transparent" />
         </ThemeProvider>
         <Analytics />
+        <Confetti />
       </body>
     </html>
   );
