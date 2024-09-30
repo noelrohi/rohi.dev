@@ -1,4 +1,4 @@
-import { XIcon } from "@/components/icons";
+import { CalIcon, XIcon } from "@/components/icons";
 import {
   DesktopIcon,
   GitHubLogoIcon,
@@ -45,6 +45,11 @@ export const socials: Array<{
     href: "https://x.com/noelrohi",
     icon: XIcon,
     label: "X",
+  },
+  {
+    href: "https://cal.com/noelrohi/15min",
+    icon: CalIcon,
+    label: "Cal.com",
   },
 ];
 
