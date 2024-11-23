@@ -18,7 +18,7 @@ export const itemList = [
     items: [
       {
         name: "Cursor",
-        description: "Favorite AI editor for coding (Fork of VSCode).",
+        description: "Favorite AI editor for coding, Fork of VSCode.",
       },
       {
         name: "Github Dark Colorblind (Beta)",
@@ -38,16 +38,16 @@ export const itemList = [
       },
       {
         name: "Turso LibSQL",
-        description: "Database",
+        description: "Database, Fork of SQLite",
       },
       {
         name: "Drizzle",
-        description: "ORM",
+        description: "Database ORM",
       },
       { name: "Biome", description: "Linter and formatter" },
       { name: "Supermaven", description: "Copilot" },
       { name: "Vercel", description: "Hosting" },
-      { name: "Supabase", description: "File storage" },
+      { name: "Uploadthing", description: "File storage / uploads" },
       { name: "TablePlus", description: "Database GUI" },
     ],
   },
