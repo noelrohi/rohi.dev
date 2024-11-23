@@ -3,11 +3,9 @@ import { ModeToggle } from "@/components/theme-toggle";
 import { projectURL } from "@/lib/consts";
 import { fontMono, fontSans } from "@/lib/fonts";
 import "@/styles/globals.css";
-import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Confetti } from "@/components/confetti";
 
 export const metadata: Metadata = {
   metadataBase: new URL(projectURL),
@@ -47,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={clsx(
           fontSans.variable,
@@ -62,8 +60,6 @@ export default function RootLayout({
           </div>
           <ModeToggle className="fixed right-4 bottom-4 rounded-lg bg-transparent" />
         </ThemeProvider>
-        <Analytics />
-        <Confetti />
       </body>
     </html>
   );

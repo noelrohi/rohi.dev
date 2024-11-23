@@ -19,8 +19,6 @@ export const links: Array<{
     label: "About",
   },
   { path: "/blog", label: "Blog" },
-  { path: "/guestbook", label: "Guestbook" },
-  { path: "/activity", label: "activity", hidden: true },
   { path: "/uses", label: "Uses" },
 ];
 

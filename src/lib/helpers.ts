@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import type { Main } from "@/types/anilist";
 import type { Track } from "@/types/spotify";
 import { z } from "zod";

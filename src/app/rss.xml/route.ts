@@ -21,8 +21,12 @@ function generateRSS() {
                 <link>${projectURL}/blog/${blog.slug}/</link>
                 <guid isPermaLink="true">${projectURL}/blog/${blog.slug}/</guid>
                 <description>${blog.metadata.summary}</description>
-                <pubDate>${new Date(blog.metadata.publishedAt).toUTCString()}</pubDate>
-                <content:encoded>${convertToContentEncoded(blog.content)}</content:encoded>
+                <pubDate>${new Date(
+                  blog.metadata.publishedAt,
+                ).toUTCString()}</pubDate>
+                <content:encoded>${convertToContentEncoded(
+                  blog.content,
+                )}</content:encoded>
               </item>`,
   );
 

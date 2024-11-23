@@ -17,8 +17,8 @@ export const itemList = [
     category: "Development",
     items: [
       {
-        name: "VSCode",
-        description: "Favorite editor for coding.",
+        name: "Cursor",
+        description: "Favorite AI editor for coding (Fork of VSCode).",
       },
       {
         name: "Github Dark Colorblind (Beta)",
@@ -33,11 +33,11 @@ export const itemList = [
         description: "Styling",
       },
       {
-        name: "Shadcn-UI",
+        name: "Shadcn/ui",
         description: "UI library",
       },
       {
-        name: "Neon PostgreSQL",
+        name: "Turso LibSQL",
         description: "Database",
       },
       {
@@ -47,6 +47,7 @@ export const itemList = [
       { name: "Biome", description: "Linter and formatter" },
       { name: "Supermaven", description: "Copilot" },
       { name: "Vercel", description: "Hosting" },
+      { name: "Supabase", description: "File storage" },
       { name: "TablePlus", description: "Database GUI" },
     ],
   },
@@ -54,16 +55,20 @@ export const itemList = [
   //   category: "Fashion and Accessories",
   //   items: [
   //     {
-  //       name: "Puma",
-  //       description: "Speedcat or Palermo",
-  //     },
-  //     {
   //       name: "Uniqlo",
-  //       description: "Airism Shirt, Socks, Utility Jacket",
+  //       description: "Shirts, Jackets, Socks",
   //     },
   //     {
   //       name: "Shein",
-  //       description: "Vintage Pants, Caps",
+  //       description: "Pants",
+  //     },
+  //     {
+  //       name: "Homura",
+  //       description: "Necklace and Rings",
+  //     },
+  //     {
+  //       name: "Nike / Puma / New Balance",
+  //       description: "Shoes",
   //     },
   //   ],
   // },

@@ -1,10 +1,7 @@
 import { getBlogPosts } from "@/lib/blog";
-
-import { unstable_noStore as noStore } from "next/cache";
+import { formatDistanceToNowStrict } from "date-fns";
 import Link from "next/link";
 import type { Metadata } from "next/types";
-import { Suspense } from "react";
-import { getNumberOfViews } from "./queries";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -19,7 +16,9 @@ export default function Page() {
   );
 }
 
-function BlogPosts() {
+async function BlogPosts() {
+  "use cache";
+
   const allBlogs = getBlogPosts();
   return (
     <>
@@ -48,29 +47,13 @@ function BlogPosts() {
                 {post.metadata.title}
               </p>
               <p className="text-muted-foreground">
-                <Suspense
-                  fallback={
-                    <span>
-                      <span className="blur-sm">100</span> views
-                    </span>
-                  }
-                >
-                  <Views slug={post.slug} />
-                </Suspense>
+                {formatDistanceToNowStrict(post.metadata.publishedAt, {
+                  addSuffix: true,
+                })}
               </p>
             </div>
           </Link>
         ))}
     </>
-  );
-}
-
-async function Views({ slug }: { slug: string }) {
-  noStore();
-  const views = await getNumberOfViews(slug);
-  return (
-    <span>
-      {views.toLocaleString()} view{views > 1 && "s"}
-    </span>
   );
 }

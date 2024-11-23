@@ -1,25 +1,22 @@
+"use cache";
+
 import { CustomMDX } from "@/components/mdx";
-import { db } from "@/db";
-import { views } from "@/db/schema/main";
 import { getBlogPosts } from "@/lib/blog";
 import { projectURL } from "@/lib/consts";
-import { dayjs } from "@/lib/utils";
-import { sql } from "drizzle-orm";
+import { formatDate, formatDistanceToNowStrict } from "date-fns";
 import type { Metadata } from "next";
-import { unstable_noStore as noStore, revalidatePath } from "next/cache";
 import { notFound } from "next/navigation";
-import { Suspense, cache } from "react";
-import { getNumberOfViews } from "../queries";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  props: PageProps,
+): Promise<Metadata | undefined> {
+  const params = await props.params;
   const post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
@@ -33,9 +30,10 @@ export async function generateMetadata({
   } = post.metadata;
   const ogImage = image
     ? `${projectURL}${image}`
-    : `https://og.rohi.dev/blog?title=${title}&date=${dayjs(
+    : `https://og.rohi.dev/blog?title=${title}&date=${formatDate(
         publishedTime,
-      ).format("MMM DD, YYYY")}`;
+        "MMM dd, yyyy",
+      )}`;
 
   return {
     title,
@@ -61,25 +59,8 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(dateToFormat: string) {
-  noStore();
-  const date = !dateToFormat.includes("T")
-    ? `${dateToFormat}T00:00:00`
-    : dateToFormat;
-  const targetDate = new Date(date);
-
-  const formattedDate = dayjs(dateToFormat).fromNow();
-
-  const fullDate = targetDate.toLocaleString("en-us", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  return `${fullDate} (${formattedDate})`;
-}
-
-export default function Blog({ params }: PageProps) {
+export default async function Blog(props: PageProps) {
+  const params = await props.params;
   const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -119,41 +100,18 @@ export default function Blog({ params }: PageProps) {
       >
         {post.metadata.title}
       </h1>
-      <div className="mt-2 mb-8 flex max-w-[650px] items-center justify-between text-sm">
-        <Suspense fallback={<p className="h-5" />}>
-          <p className="text-neutral-600 text-sm dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
-          </p>
-        </Suspense>
-        <Suspense fallback={<p className="h-5" />}>
-          <Views slug={post.slug} />
-        </Suspense>
+      <div className="mt-2 mb-8 flex max-w-[650px] text-sm">
+        <p className="text-neutral-600 text-sm dark:text-neutral-400">
+          {formatDate(post.metadata.publishedAt, "MMM dd, yyyy")} (
+          {formatDistanceToNowStrict(post.metadata.publishedAt, {
+            addSuffix: true,
+          })}
+          )
+        </p>
       </div>
       <article className="prose prose-quoteless prose-neutral dark:prose-invert">
         <CustomMDX source={post.content} />
       </article>
     </section>
-  );
-}
-
-const incrementViews = cache(async (slug: string) => {
-  await db
-    .insert(views)
-    .values({ slug, count: 1 })
-    .onConflictDoUpdate({
-      target: views.slug,
-      set: { count: sql<number>`${views.count} + 1` },
-    });
-  revalidatePath("/blog");
-  revalidatePath(`/blog/${slug}`);
-});
-
-async function Views({ slug }: { slug: string }) {
-  const numberOfViews = await getNumberOfViews(slug);
-  await incrementViews(slug);
-  return (
-    <p className="text-muted-foreground">
-      {numberOfViews.toLocaleString()} view{numberOfViews > 1 && "s"}
-    </p>
   );
 }
