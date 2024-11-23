@@ -1,5 +1,3 @@
-"use cache";
-
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/lib/blog";
 import { projectURL } from "@/lib/consts";
