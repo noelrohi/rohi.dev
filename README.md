@@ -1,13 +1,9 @@
 # Minimal personal website
 
-## Heavily inspired by [https://leerob.io](https://github.com/leerob/leerob.io)
-
 ## Techstack
-- [Nextjs14](https://nextjs.org/)
-- [Shadcn-UI](https://ui.shadcn.com/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [Drizzle ORM](https://orm.drizzle.team/)
-- [Neon PostgreSQL](https://neon.tech/)
+- [Next.js 15](https://nextjs.org/)
+- [Shadcn/ui](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [Biome](https://biomejs.dev/)
 
 
@@ -29,12 +25,6 @@ Install dependencies
 
 ```bash
   npm install
-```
-
-Migrate the database
-
-```bash
-  npm run db migrate
 ```
 
 Start the server
