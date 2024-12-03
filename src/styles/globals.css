@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 252 62% 99%;
+    --foreground: 252 67% 2%;
+    --muted: 72 22% 94%;
+    --muted-foreground: 72 1% 39%;
+    --popover: 252 62% 98%;
+    --popover-foreground: 252 67% 1%;
+    --card: 252 62% 98%;
+    --card-foreground: 252 67% 1%;
+    --border: 252 3% 94%;
+    --input: 252 3% 94%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 72 11% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 15 99% 31%;
+    --destructive-foreground: 15 99% 91%;
+    --ring: 252 11% 35%;
+    --radius: 0.5rem;
+    --scrollbar-thumb: 217.9 10.6% 64.9%;
+    --scrollbar-track: transparent;
+    --selection-background: #ccfbf1;
+    --selection-foreground: #3f988f;
+    --kbd-background: 216 12.2% 83.9%;
+    --kbd-foreground: 220.9 39.3% 11%;
+    --kbd-border: 217.9 10.6% 64.9%;
+    --highlight-background: #d9f99d;
+    --highlight-foreground: #fde047;
+    --radius-small: 4px;
+    --radius-base: 8px;
+    --radius-large: 12px;
+  }
+
+  .dark {
+    --background: 270, 5%, 7%;
+    --foreground: 252 37% 98%;
+    --muted: 0 0% 10.98%;
+    --muted-foreground: 0 0% 62.75%;
+    --popover: 0 0% 8.63%;
+    --popover-foreground: 252 37% 99%;
+    --card: 0 0% 6.27%;
+    --card-foreground: 252 37% 99%;
+    --border: 0 0% 15.69%;
+    --input: 0 0% 10.98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 164.12 100% 80%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 21.31% 11.96%;
+    --highlight-background: #713f12;
+    --highlight-foreground: #fde047;
+    --selection-background: #042f2e;
+    --selection-foreground: #6ee7b7;
+    --destructive-foreground: 0 100% 75.1%;
+    --ring: 27.06 100% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+::-moz-selection {
+  @apply text-selection-foreground bg-selection-background;
+}
+
+::selection {
+  @apply text-selection-foreground bg-selection-background;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@keyframes slideFromDownAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    visibility: hidden;
+  }
+
+  1% {
+    visibility: visible;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-from-down-and-fade-1 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.1s both;
+}
+
+.animate-slide-from-down-and-fade-2 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.2s both;
+}
+
+.animate-slide-from-down-and-fade-3 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.3s both;
+}
+
+.animate-slide-from-down-and-fade-4 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.4s both;
+}
+
+.animate-slide-from-down-and-fade-5 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.5s both;
+}
+
+.animate-slide-from-down-and-fade-6 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.6s both;
+}
+
+article {
+  h1 + h2 {
+    margin-top: 4px !important;
+  }
+
+  h1 + p,
+  h2 + p {
+    margin-top: 8px !important;
+  }
+
+  figure + h1,
+  p + h1 {
+    margin-top: 48px !important;
+  }
+
+  [data-highlight] {
+    @apply relative;
+  }
+
+  [data-highlight]::before {
+    @apply absolute inset-0 -inset-x-1 -z-10 bg-transparent transition scale-y-[1.1] content-[""] duration-500;
+  }
+
+  [data-highlight="true"]::before {
+    @apply bg-selection-background text-selection-foreground scale-y-110 !important;
+  }
+
+  [data-highlight="false"]::before {
+    @apply bg-transparent scale-y-100;
+  }
+}
