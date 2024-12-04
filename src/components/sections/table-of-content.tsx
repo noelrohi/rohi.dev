@@ -1,15 +1,17 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { motion } from "framer-motion"
-import React, { useCallback, useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import React, { useCallback, useEffect, useState } from "react";
 
 export function TableOfContents() {
   const [headings, setHeadings] = useState<
     { id: string; text: string; level: string }[]
-  >([])
-  const [visibleHeadings, setVisibleHeadings] = useState<Set<string>>(new Set())
+  >([]);
+  const [visibleHeadings, setVisibleHeadings] = useState<Set<string>>(
+    new Set(),
+  );
 
   const getHeadings = useCallback(() => {
     return Array.from(document.querySelectorAll("h1, h2, h3"))
@@ -18,71 +20,71 @@ export function TableOfContents() {
         id: heading.id,
         text: heading.textContent || "",
         level: heading.tagName.toLowerCase(),
-        top: (heading as HTMLElement).offsetTop
-      }))
-  }, [])
+        top: (heading as HTMLElement).offsetTop,
+      }));
+  }, []);
 
   useEffect(() => {
-    const collectedHeadings = getHeadings()
-    setHeadings(collectedHeadings)
+    const collectedHeadings = getHeadings();
+    setHeadings(collectedHeadings);
 
     const observerOptions = {
       root: null,
-      threshold: 0
-    }
+      threshold: 0,
+    };
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      const visibleSet = new Set(visibleHeadings)
+      const visibleSet = new Set(visibleHeadings);
 
       for (const entry of entries) {
-        const headingId = entry.target.id
+        const headingId = entry.target.id;
 
         if (entry.isIntersecting) {
-          visibleSet.add(headingId)
+          visibleSet.add(headingId);
         } else {
-          visibleSet.delete(headingId)
+          visibleSet.delete(headingId);
         }
       }
 
-      setVisibleHeadings(new Set(visibleSet))
-    }
+      setVisibleHeadings(new Set(visibleSet));
+    };
 
     const observer = new IntersectionObserver(
       handleIntersection,
-      observerOptions
-    )
+      observerOptions,
+    );
 
     for (const heading of collectedHeadings) {
-      const element = document.getElementById(heading.id)
-      if (element) observer.observe(element)
+      const element = document.getElementById(heading.id);
+      if (element) observer.observe(element);
     }
 
     return () => {
-      observer.disconnect()
-    }
-  }, [getHeadings, visibleHeadings])
+      observer.disconnect();
+    };
+  }, [getHeadings, visibleHeadings]);
 
   const scroll = (id: string) => {
     for (const heading of Array.from(document.querySelectorAll("h1, h2, h3"))) {
-      heading.setAttribute("data-highlight", "false")
+      heading.setAttribute("data-highlight", "false");
     }
 
-    const element = document.getElementById(id)
+    const element = document.getElementById(id);
 
     if (element) {
-      const top = element.offsetTop - 100
+      const top = element.offsetTop - 100;
       window.scrollTo({
         top: top,
-        behavior: "smooth"
-      })
+        behavior: "smooth",
+      });
 
-      element.setAttribute("data-highlight", "true")
+      element.setAttribute("data-highlight", "true");
 
       setTimeout(() => {
-        element.setAttribute("data-highlight", "false")
-      }, 2000)
+        element.setAttribute("data-highlight", "false");
+      }, 2000);
     }
-  }
+  };
 
   return (
     <React.Fragment>
@@ -95,17 +97,18 @@ export function TableOfContents() {
       >
         <div className="mt-0 flex flex-col gap-0">
           {headings.map((heading) => (
-            <div key={heading.id} className="mt-0">
+            <div key={heading.text} className="mt-0">
               <button
                 type="button"
                 onClick={() => scroll(heading.id)}
                 className={cn({
-                  "mt-0 ml-2 border-l border-l-muted py-1 text-left text-muted-foreground  opacity-100 transition ease-in-out hover:opacity-50": true,
+                  "mt-0 ml-2 border-l border-l-muted py-1 text-left text-muted-foreground  opacity-100 transition ease-in-out hover:opacity-50":
+                    true,
                   "text-bold": visibleHeadings.has(heading.id),
                   "pl-4": heading.level === "h1",
                   "pl-6": heading.level === "h2",
                   "pl-7": heading.level === "h3",
-                  "border-l border-l-primary": visibleHeadings.has(heading.id)
+                  "border-l border-l-primary": visibleHeadings.has(heading.id),
                 })}
                 data-active={visibleHeadings.has(heading.id) ? "true" : "false"}
               >
@@ -116,5 +119,5 @@ export function TableOfContents() {
         </div>
       </motion.nav>
     </React.Fragment>
-  )
+  );
 }

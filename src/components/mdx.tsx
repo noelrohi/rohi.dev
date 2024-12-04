@@ -25,10 +25,19 @@ const components = {
   },
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      data-highlight="false"
       id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className={cn(
-        "font-medium  lg:leading-[1.1]  mb-2 text-[15px]",
+        "peer font-medium lg:leading-[1.1] mb-2 text-lg",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
+      className={cn(
+        "peer [&+h1]:mt-4 [&+h3]:mt-4 font-medium lg:leading-[1.1] mb-2 text-base",
         className,
       )}
       {...props}
@@ -36,10 +45,9 @@ const components = {
   ),
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      data-highlight="false"
       id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className={cn(
-        "mt-9 scroll-m-20 font-medium font-sans lg:leading-[1.1] group text-[15.5px]",
+        "peer [&+h1]:mt-4 [&+h2]:mt-4 mt-9 scroll-m-20 font-medium font-sans lg:leading-[1.1] group text-[15.5px]",
         className,
       )}
       {...props}
@@ -57,7 +65,7 @@ const components = {
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
       className={cn(
-        "prose prose-neutral dark:prose-invert text-[15px] mt-2 ml-2 list-disc",
+        "prose prose-neutral dark:prose-invert text-[15px] mt-2 ml-2 mb-6 list-disc",
         className,
       )}
       {...props}
