@@ -36,7 +36,7 @@ interface CustomLinkProps {
   children: React.ReactNode;
 }
 
-export function CustomLink({ href, children }: CustomLinkProps) {
+function CustomLink({ href, children }: CustomLinkProps) {
   return (
     <Link
       href={href}
