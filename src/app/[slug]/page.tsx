@@ -82,6 +82,12 @@ export default function BlogPage({ params }: BlogPage) {
           </time>
           <div className="text-[0.6rem]">•</div>
           <div>{readingTime(post.content).minutes} minutes read</div>
+          {post.isDraft && (
+            <>
+              <div className="text-[0.6rem]">•</div>
+              <div>Draft</div>
+            </>
+          )}
         </div>
       </div>
 
