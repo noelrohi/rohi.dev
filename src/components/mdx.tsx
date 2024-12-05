@@ -27,7 +27,7 @@ const components = {
     <h1
       id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className={cn(
-        "peer font-medium lg:leading-[1.1] mb-2 text-lg",
+        "peer font-medium lg:leading-[1.1] mt-8 mb-4 text-2xl",
         className,
       )}
       {...props}
@@ -37,7 +37,7 @@ const components = {
     <h2
       id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className={cn(
-        "peer [&+h1]:mt-4 [&+h3]:mt-4 font-medium lg:leading-[1.1] mb-2 text-base",
+        "peer [&+h1]:mt-6 [&+h3]:mt-6 font-medium lg:leading-[1.1] mt-6 mb-4 text-xl",
         className,
       )}
       {...props}
@@ -47,7 +47,7 @@ const components = {
     <h3
       id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className={cn(
-        "peer [&+h1]:mt-4 [&+h2]:mt-4 mt-9 scroll-m-20 font-medium font-sans lg:leading-[1.1] group text-[15.5px]",
+        "peer [&+h1]:mt-6 [&+h2]:mt-6 mt-6 mb-3 scroll-m-20 font-medium font-sans lg:leading-[1.1] group text-lg",
         className,
       )}
       {...props}
@@ -56,7 +56,7 @@ const components = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
-        "prose prose-neutral dark:prose-invert text-[15px] leading-7 [&:not(:first-child)]:mt-6  ",
+        "prose prose-neutral dark:prose-invert text-[15px] leading-7 [&:not(:first-child)]:mt-4 mb-4",
         className,
       )}
       {...props}
@@ -65,17 +65,20 @@ const components = {
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
       className={cn(
-        "prose prose-neutral dark:prose-invert text-[15px] mt-2 ml-2 mb-6 list-disc",
+        "prose prose-neutral dark:prose-invert text-[15px] mt-4 ml-6 mb-6 list-disc space-y-2",
         className,
       )}
       {...props}
     />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("mt-2 ml-2 list-decimal", className)} {...props} />
+    <ol
+      className={cn("mt-4 ml-6 mb-6 list-decimal space-y-2", className)}
+      {...props}
+    />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => {
-    return <li className={cn(" mt-2 ml-2 list-item", className)} {...props} />;
+    return <li className={cn("mt-2 list-item", className)} {...props} />;
   },
   a: ({
     className,
