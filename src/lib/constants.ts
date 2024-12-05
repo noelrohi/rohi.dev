@@ -7,7 +7,7 @@ interface Project {
 
 interface WorkExperience {
   company: string;
-  status?: "freelance" | "contract" | "present";
+  status?: string;
   position: string;
 }
 
@@ -35,18 +35,12 @@ export const projects = [
 export const workExperience = [
   {
     company: "ScaleForge",
-    status: "present",
+    status: "Present",
     position: "Frontend Engineer",
   },
   {
     company: "CaPEx",
-    status: "contract",
     position: "Web Developer",
-  },
-  {
-    company: "Exploretale Technologies",
-    status: "freelance",
-    position: "Frontend Engineer",
   },
 ] satisfies WorkExperience[];
 
