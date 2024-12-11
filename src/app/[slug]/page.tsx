@@ -53,6 +53,8 @@ export default function BlogPage({ params }: BlogPage) {
   const post = allPosts.find((post) => post._meta.path === params.slug);
   if (!post) return notFound();
 
+  const minutes = readingTime(post.content).minutes;
+
   return (
     <div className="px-4 sm:px-7 py-4 animation-delay-300 w-full ">
       <div className="w-fit top-[10rem] right-auto left-[2rem] hidden xl:top-[3rem] xl:left-[12rem] xl:right-auto xl:block fixed mt-0 h-full  justify-start space-y-4 transition text-[14px] ">
@@ -81,7 +83,9 @@ export default function BlogPage({ params }: BlogPage) {
             {post.time}
           </time>
           <div className="text-[0.6rem]">•</div>
-          <div>{readingTime(post.content).minutes} minutes read</div>
+          <div>
+            {minutes} minute{minutes > 1 ? "s" : ""} read
+          </div>
           {post.isDraft && (
             <>
               <div className="text-[0.6rem]">•</div>
