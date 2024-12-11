@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { ImageViewer } from "@/components/shells/image-viewer";
 import { projectURL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -70,7 +69,6 @@ export default function RootLayout({
           <main className="mx-auto w-full mb-16 max-w-screen-sm py-8">
             {children}
           </main>
-          <ImageViewer />
         </ThemeProvider>
       </body>
     </html>
