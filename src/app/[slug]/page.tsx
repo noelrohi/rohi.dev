@@ -1,4 +1,4 @@
-import { MDX } from "@/components/mdx";
+import { MDX } from "@/components/mdx/mdx-components";
 import { BlogPagination } from "@/components/sections/blog-pagination";
 import { TableOfContents } from "@/components/sections/table-of-content";
 import { projectURL } from "@/lib/constants";
