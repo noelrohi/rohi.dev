@@ -10,7 +10,7 @@ const nextConfig = {
         hostname: "utfs.io"
       }
     ]
-  }
+  },
 }
 
 // withContentCollections must be the outermost plugin
