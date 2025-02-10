@@ -1,9 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-
 import { motion } from "framer-motion";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 
 export function TableOfContents() {
   const [headings, setHeadings] = useState<
@@ -34,19 +33,20 @@ export function TableOfContents() {
     };
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      const visibleSet = new Set(visibleHeadings);
+      setVisibleHeadings((prevVisible) => {
+        const newVisible = new Set(prevVisible);
 
-      for (const entry of entries) {
-        const headingId = entry.target.id;
-
-        if (entry.isIntersecting) {
-          visibleSet.add(headingId);
-        } else {
-          visibleSet.delete(headingId);
+        for (const entry of entries) {
+          const headingId = entry.target.id;
+          if (entry.isIntersecting) {
+            newVisible.add(headingId);
+          } else {
+            newVisible.delete(headingId);
+          }
         }
-      }
 
-      setVisibleHeadings(new Set(visibleSet));
+        return newVisible;
+      });
     };
 
     const observer = new IntersectionObserver(
@@ -62,15 +62,15 @@ export function TableOfContents() {
     return () => {
       observer.disconnect();
     };
-  }, [getHeadings, visibleHeadings]);
+  }, [getHeadings]); // Removed visibleHeadings dependency
 
-  const scroll = (id: string) => {
-    for (const heading of Array.from(document.querySelectorAll("h1, h2, h3"))) {
+  const scroll = useCallback((id: string) => {
+    const headings = Array.from(document.querySelectorAll("h1, h2, h3"));
+    headings.forEach((heading) => {
       heading.setAttribute("data-highlight", "false");
-    }
+    });
 
     const element = document.getElementById(id);
-
     if (element) {
       const top = element.offsetTop - 100;
       window.scrollTo({
@@ -84,7 +84,44 @@ export function TableOfContents() {
         element.setAttribute("data-highlight", "false");
       }, 2000);
     }
-  };
+  }, []);
+
+  const renderHeading = useCallback(
+    (heading: { id: string; text: string; level: string }) => {
+      const isVisible = visibleHeadings.has(heading.id);
+
+      return (
+        <div key={heading.text} className="mt-0">
+          <button
+            type="button"
+            onClick={() => scroll(heading.id)}
+            className={cn({
+              "mt-0 ml-2 border-l border-l-muted py-1 text-left text-muted-foreground opacity-100 transition ease-in-out hover:opacity-50":
+                true,
+              "text-bold": isVisible,
+              "pl-4": heading.level === "h1",
+              "pl-6": heading.level === "h2",
+              "pl-7": heading.level === "h3",
+              "border-l border-l-primary": isVisible,
+            })}
+            data-active={isVisible ? "true" : "false"}
+          >
+            {heading.text}
+          </button>
+        </div>
+      );
+    },
+    [visibleHeadings, scroll],
+  );
+
+  const headingsList = useMemo(
+    () => (
+      <div className="mt-0 flex flex-col gap-0">
+        {headings.map(renderHeading)}
+      </div>
+    ),
+    [headings, renderHeading],
+  );
 
   return (
     <React.Fragment>
@@ -95,28 +132,7 @@ export function TableOfContents() {
         transition={{ duration: 0.25 }}
         className="top-[10rem] right-auto left-[2rem] hidden xl:top-[3rem] xl:right-[5rem] xl:left-auto xl:block fixed mt-0 h-full w-48 justify-start space-y-4 transition text-[14px]"
       >
-        <div className="mt-0 flex flex-col gap-0">
-          {headings.map((heading) => (
-            <div key={heading.text} className="mt-0">
-              <button
-                type="button"
-                onClick={() => scroll(heading.id)}
-                className={cn({
-                  "mt-0 ml-2 border-l border-l-muted py-1 text-left text-muted-foreground  opacity-100 transition ease-in-out hover:opacity-50":
-                    true,
-                  "text-bold": visibleHeadings.has(heading.id),
-                  "pl-4": heading.level === "h1",
-                  "pl-6": heading.level === "h2",
-                  "pl-7": heading.level === "h3",
-                  "border-l border-l-primary": visibleHeadings.has(heading.id),
-                })}
-                data-active={visibleHeadings.has(heading.id) ? "true" : "false"}
-              >
-                {heading.text}
-              </button>
-            </div>
-          ))}
-        </div>
+        {headingsList}
       </motion.nav>
     </React.Fragment>
   );

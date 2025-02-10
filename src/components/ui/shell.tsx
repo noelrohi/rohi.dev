@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export function ShellSection({
   className,
@@ -11,12 +11,12 @@ export function ShellSection({
     <section
       className={cn(
         `animate-slide-from-down-and-fade-${index} space-y-4 text-sm`,
-        className
+        className,
       )}
       {...props}
     >
-      <h3 className="font-medium text-[15px]">{title}</h3>
+      <h2 className="font-medium text-[15px]">{title}</h2>
       {children}
     </section>
-  )
+  );
 }
