@@ -15,7 +15,7 @@ export default function NotFound() {
           Feeling lost? Just go back to <Link href="/">home</Link>.
           <br />
           Wanna read? Check out the{" "}
-          <Link href={`/${latestPost._meta.path}`}>latest post</Link>
+          <Link href={`/blog/${latestPost._meta.path}`}>latest post</Link>
         </div>
       </div>
     </div>

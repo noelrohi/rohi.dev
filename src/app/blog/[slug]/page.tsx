@@ -33,7 +33,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime: time,
-      url: `${projectURL}/${post._meta.path}`,
+      url: `${projectURL}/blog/${post._meta.path}`,
       images: [
         {
           url: ogImage,
