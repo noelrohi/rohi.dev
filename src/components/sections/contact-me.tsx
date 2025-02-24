@@ -19,11 +19,13 @@ export function ContactMe() {
             Discord
           </CustomLink>
           . You can also follow me on{" "}
-          <CustomLink href="https://git.new/noelrohi?ref=rohi.dev">
+          <CustomLink href="https://git.new/noelrohi?ref=noelrohi.com">
             Github
           </CustomLink>{" "}
           and{" "}
-          <CustomLink href="https://dub.sh/noelrohi?ref=rohi.dev">X</CustomLink>{" "}
+          <CustomLink href="https://dub.sh/noelrohi?ref=noelrohi.com">
+            X
+          </CustomLink>{" "}
           if you find my work interesting.
         </p>
       </div>

@@ -13,6 +13,12 @@ interface WorkExperience {
 
 export const projects = [
   {
+    title: "agent directory",
+    description: "agent directory.",
+    href: "https://agents.noelrohi.com",
+    status: "maintained",
+  },
+  {
     title: "thr",
     description: "threads clone.",
     href: "https://thr.rohi.dev",
@@ -22,13 +28,13 @@ export const projects = [
     title: "anirohi",
     description: "anime watching platform.",
     href: "https://ani.rohi.dev",
-    status: "maintained",
+    status: "archived",
   },
   {
     title: "kd",
     description: "kdrama watching platform.",
     href: "https://kd.rohi.dev",
-    status: "maintained",
+    status: "archived",
   },
 ] satisfies Project[];
 
@@ -44,4 +50,4 @@ export const workExperience = [
   },
 ] satisfies WorkExperience[];
 
-export const projectURL = "https://rohi.dev";
+export const projectURL = "https://noelrohi.com";

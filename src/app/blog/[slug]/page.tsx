@@ -23,7 +23,7 @@ export async function generateMetadata({
   }
 
   const { title, time, description } = post;
-  const ogImage = `https://og.rohi.dev/blog?title=${title}&date=${time}`;
+  const ogImage = `https://og.noelrohi.com/blog?title=${title}&date=${time}`;
 
   return {
     title,
