@@ -55,6 +55,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" async /> */}
+        <script
+          defer
+          src="https://assets.onedollarstats.com/stonks.js"
+          id="stonks"
+        ></script>
       </head>
       <body
         className={cn(
