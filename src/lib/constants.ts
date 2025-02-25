@@ -13,8 +13,8 @@ interface WorkExperience {
 
 export const projects = [
   {
-    title: "agent directory",
-    description: "agent directory.",
+    title: "agentc.directory",
+    description: "a directory of agentic products.",
     href: "https://agents.noelrohi.com",
     status: "maintained",
   },
