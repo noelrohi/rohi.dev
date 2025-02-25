@@ -15,7 +15,7 @@ export const projects = [
   {
     title: "agentc.directory",
     description: "a directory of agentic products.",
-    href: "https://agents.noelrohi.com",
+    href: "https://agentc.directory?ref=noelrohi.com",
     status: "maintained",
   },
   {
