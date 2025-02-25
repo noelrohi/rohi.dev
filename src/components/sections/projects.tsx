@@ -11,7 +11,6 @@ export function Projects() {
             key={index}
             href={project.href}
             target="_blank"
-            rel="noopener noreferrer"
             className="group relative flex cursor-pointer flex-row items-center justify-between rounded-md duration-300 hover:before:absolute hover:before:-inset-2.5 hover:before:rounded-md hover:before:bg-accent/20 hover:before:content-['']"
           >
             <div className="flex flex-col space-y-1 z-10">
