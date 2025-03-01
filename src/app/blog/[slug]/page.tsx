@@ -10,14 +10,13 @@ import { notFound } from "next/navigation";
 import { readingTime } from "reading-time-estimator";
 
 interface BlogPage {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 export async function generateMetadata({
   params,
 }: BlogPage): Promise<Metadata | undefined> {
-  const post = allPosts.find((post) => post._meta.path === params.slug);
+  const { slug } = await params;
+  const post = allPosts.find((post) => post._meta.path === slug);
   if (!post) {
     return;
   }
@@ -49,8 +48,9 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPage({ params }: BlogPage) {
-  const post = allPosts.find((post) => post._meta.path === params.slug);
+export default async function BlogPage({ params }: BlogPage) {
+  const { slug } = await params;
+  const post = allPosts.find((post) => post._meta.path === slug);
   if (!post) return notFound();
 
   const minutes = readingTime(post.content).minutes;
