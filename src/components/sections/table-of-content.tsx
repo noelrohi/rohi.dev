@@ -27,26 +27,29 @@ export function TableOfContents() {
     const collectedHeadings = getHeadings();
     setHeadings(collectedHeadings);
 
+    let timeoutId: NodeJS.Timeout;
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setVisibleHeadings((prevVisible) => {
+          const newVisible = new Set(prevVisible);
+          for (const entry of entries) {
+            const headingId = entry.target.id;
+            if (entry.isIntersecting) {
+              newVisible.add(headingId);
+            } else {
+              newVisible.delete(headingId);
+            }
+          }
+          return newVisible;
+        });
+      }, 100);
+    };
+
     const observerOptions = {
       root: null,
       threshold: 0,
-    };
-
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      setVisibleHeadings((prevVisible) => {
-        const newVisible = new Set(prevVisible);
-
-        for (const entry of entries) {
-          const headingId = entry.target.id;
-          if (entry.isIntersecting) {
-            newVisible.add(headingId);
-          } else {
-            newVisible.delete(headingId);
-          }
-        }
-
-        return newVisible;
-      });
+      rootMargin: "0px 0px -10% 0px",
     };
 
     const observer = new IntersectionObserver(
@@ -61,15 +64,11 @@ export function TableOfContents() {
 
     return () => {
       observer.disconnect();
+      clearTimeout(timeoutId);
     };
-  }, [getHeadings]); // Removed visibleHeadings dependency
+  }, [getHeadings]);
 
   const scroll = useCallback((id: string) => {
-    const headings = Array.from(document.querySelectorAll("h1, h2, h3"));
-    headings.forEach((heading) => {
-      heading.setAttribute("data-highlight", "false");
-    });
-
     const element = document.getElementById(id);
     if (element) {
       const top = element.offsetTop - 100;
@@ -78,10 +77,9 @@ export function TableOfContents() {
         behavior: "smooth",
       });
 
-      element.setAttribute("data-highlight", "true");
-
+      element.classList.add("highlight-heading");
       setTimeout(() => {
-        element.setAttribute("data-highlight", "false");
+        element.classList.remove("highlight-heading");
       }, 2000);
     }
   }, []);
