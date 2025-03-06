@@ -1,6 +1,6 @@
-import { ThemeProvider } from "@/components/providers/theme-provider";
 import { projectURL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 import "@/styles/globals.css";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
